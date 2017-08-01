@@ -71,8 +71,6 @@
     			
             
     			
-    			<a q-on="click: openSlider(e, 'friends')" href="javascript:void(0)">友链</a>
-    			
             
     			
     			<a q-on="click: openSlider(e, 'aboutme')" href="javascript:void(0)">关于我</a>
@@ -159,6 +157,81 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-boot-jetty" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/08/01/boot-jetty/">boot-jetty</a>
+    </h1>
+  
+
+        
+        <a href="/2017/08/01/boot-jetty/" class="archive-article-date">
+  	<time datetime="2017-07-31T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-01</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>1.理解jmeter中的聚合报告<br><figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">Label -为请求取样器的名称</div><div class="line"></div><div class="line">Samples - 用同一个请求取样器，发送请求的数量(注意：该值是不断累计的)。比如，<span class="number">10</span>个线程数设置为<span class="number">10</span>，迭代<span class="number">10</span>次，那么每运行一次测试，该值就增加<span class="number">10</span>*<span class="number">10</span>=<span class="number">100</span></div><div class="line"></div><div class="line">Average - 默认情况下是单个Request的平均响应时间，当使用了Transaction Controller 时，也可以以Transaction为单位显示平均响应时间</div><div class="line"></div><div class="line">Median - 中位数。表示响应时间本不大于该时间值的请求样本数占总数的<span class="number">50</span>%</div><div class="line"></div><div class="line"><span class="number">90</span>% Line - 表示响应时间不大于该时间值的请求样本数占总数的<span class="number">90</span>%</div><div class="line"></div><div class="line">Min - 针对同一请求取样器，请求样本的最小响应时间</div><div class="line"></div><div class="line">Max - 针对同一请求取样器，请求样本的最大响应时间</div><div class="line"></div><div class="line">Error % - 出现错误的请求样本的百分比</div><div class="line"></div><div class="line">Throughput - 吞吐量以“requests/second、requests /minute、requests /hour”来衡量。 时间单位已经被选取为second，所以，显示速率至少是<span class="number">1.0</span>，即每秒<span class="number">1</span>个请求。 当吞吐量被保存到CVS文件时，采用的是requests/second，所以<span class="number">30.0</span> requests/second 在CVS中被保存为<span class="number">0.5</span></div><div class="line"></div><div class="line">Kb/sec - 以Kilobytes/seond来衡量的吞吐量</div></pre></td></tr></table></figure></p>
+<p>2.Tomcat的简单配置<br><figure class="highlight yaml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="attr">server:</span></div><div class="line"><span class="attr">  tomcat:</span></div><div class="line"><span class="attr">    max-threads:</span> <span class="number">500</span>   <span class="comment"># 默认连接是200个  我们调成500</span></div><div class="line"><span class="attr">    compression:</span> <span class="string">on</span>    <span class="comment"># 开启压缩</span></div></pre></td></tr></table></figure></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">jetty</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/08/01/boot-jetty/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-spring-boot-redis2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -181,14 +254,8 @@
       
         <p>spring-boot 中redis加连接池与不加连接池的对比</p>
 <figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">redi</span><span class="variable">s:</span></div><div class="line">    hos<span class="variable">t:</span> <span class="number">127.0</span>.<span class="number">0.1</span></div><div class="line">    por<span class="variable">t:</span> <span class="number">6379</span></div><div class="line">    poo<span class="variable">l:</span></div><div class="line">      <span class="built_in">max</span>-active: <span class="number">50</span></div><div class="line">      <span class="built_in">max</span>-wai<span class="variable">t:</span> -<span class="number">1</span></div><div class="line">      <span class="built_in">max</span>-idle: <span class="number">30</span></div><div class="line">      <span class="built_in">min</span>-idle: <span class="number">10</span></div></pre></td></tr></table></figure>
-<ol>
-<li>没有连接池</li>
-</ol>
-<figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">查询个人信息	<span class="number">49661</span>	<span class="number">7369</span>	<span class="number">5607</span>	<span class="number">12251</span>	<span class="number">15276</span>	<span class="number">22977</span>	<span class="number">3</span>	<span class="number">55819</span>	<span class="number">0.006040957693159622</span>	<span class="number">40.206127141422975</span>	<span class="number">28.618696318948555</span>	<span class="number">7.922400836480699</span></div><div class="line">总体	        <span class="number">49661</span>	<span class="number">7369</span>	<span class="number">5607</span>	<span class="number">12251</span>	<span class="number">15276</span>	<span class="number">22977</span>	<span class="number">3</span>	<span class="number">55819</span>	<span class="number">0.006040957693159622</span>	<span class="number">40.206127141422975</span>	<span class="number">28.618696318948555</span>	<span class="number">7.922400836480699</span></div></pre></td></tr></table></figure>
-<ol>
-<li>有连接池</li>
-</ol>
-<figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">查询个人信息	<span class="number">18529</span>	<span class="number">2239</span>	<span class="number">2074</span>	<span class="number">3517</span>	<span class="number">4155</span>	<span class="number">5600</span>	<span class="number">17</span>	<span class="number">10045</span>	<span class="number">0.0260132764855092</span>	<span class="number">120.72740066980283</span>	<span class="number">90.50167842663117</span>	<span class="number">23.310681386338757</span></div><div class="line">总体			<span class="number">18529</span>	<span class="number">2239</span>	<span class="number">2074</span>	<span class="number">3517</span>	<span class="number">4155</span>	<span class="number">5600</span>	<span class="number">17</span>	<span class="number">10045</span>	<span class="number">0.0260132764855092</span>	<span class="number">120.72740066980283</span>	<span class="number">90.50167842663117</span>	<span class="number">23.310681386338757</span></div></pre></td></tr></table></figure>
+<p>1.没有连接池<br><figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">查询个人信息	</div><div class="line"><span class="number">49661</span>	<span class="number">7369</span>	<span class="number">5607</span>	<span class="number">12251</span>	<span class="number">15276</span>	<span class="number">22977</span>	<span class="number">3</span>	<span class="number">55819</span>	<span class="number">0.006040957693159622</span>	<span class="number">40.206127141422975</span>	<span class="number">28.618696318948555</span>	<span class="number">7.922400836480699</span></div><div class="line">总体	        </div><div class="line"><span class="number">49661</span>	<span class="number">7369</span>	<span class="number">5607</span>	<span class="number">12251</span>	<span class="number">15276</span>	<span class="number">22977</span>	<span class="number">3</span>	<span class="number">55819</span>	<span class="number">0.006040957693159622</span>	<span class="number">40.206127141422975</span>	<span class="number">28.618696318948555</span>	<span class="number">7.922400836480699</span></div></pre></td></tr></table></figure></p>
+<p>2.有连接池<br><figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">查询个人信息	</div><div class="line"><span class="number">18529</span>	<span class="number">2239</span>	<span class="number">2074</span>	<span class="number">3517</span>	<span class="number">4155</span>	<span class="number">5600</span>	<span class="number">17</span>	<span class="number">10045</span>	<span class="number">0.0260132764855092</span>	<span class="number">120.72740066980283</span>	<span class="number">90.50167842663117</span>	<span class="number">23.310681386338757</span></div><div class="line">总体			</div><div class="line"><span class="number">18529</span>	<span class="number">2239</span>	<span class="number">2074</span>	<span class="number">3517</span>	<span class="number">4155</span>	<span class="number">5600</span>	<span class="number">17</span>	<span class="number">10045</span>	<span class="number">0.0260132764855092</span>	<span class="number">120.72740066980283</span>	<span class="number">90.50167842663117</span>	<span class="number">23.310681386338757</span></div></pre></td></tr></table></figure></p>
 
       
 
@@ -393,7 +460,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/07/10/spring-boot-mybaties/">spring-boot-jetty</a>
+      <a class="article-title" href="/2017/07/10/spring-boot-mybaties/">spring-boot-mybaties</a>
     </h1>
   
 
@@ -421,76 +488,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2017/07/10/spring-boot-mybaties/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-boot-jetty" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/30/boot-jetty/">boot-jetty</a>
-    </h1>
-  
-
-        
-        <a href="/2017/06/30/boot-jetty/" class="archive-article-date">
-  	<time datetime="2017-06-29T18:13:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-30</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <ol>
-<li><p>理解jmeter中的聚合报告</p>
-<figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">Label -为请求取样器的名称</div><div class="line">   </div><div class="line">   Samples - 用同一个请求取样器，发送请求的数量(注意：该值是不断累计的)。比如，<span class="number">10</span>个线程数设置为<span class="number">10</span>，迭代<span class="number">10</span>次，那么每运行一次测试，该值就增加<span class="number">10</span>*<span class="number">10</span>=<span class="number">100</span></div><div class="line"></div><div class="line">Average - 默认情况下是单个Request的平均响应时间，当使用了Transaction Controller 时，也可以以Transaction为单位显示平均响应时间</div><div class="line"></div><div class="line">Median - 中位数。表示响应时间本不大于该时间值的请求样本数占总数的<span class="number">50</span>%</div><div class="line"></div><div class="line"><span class="number">90</span>% Line - 表示响应时间不大于该时间值的请求样本数占总数的<span class="number">90</span>%</div><div class="line"></div><div class="line">Min - 针对同一请求取样器，请求样本的最小响应时间</div><div class="line"></div><div class="line">Max - 针对同一请求取样器，请求样本的最大响应时间</div><div class="line"></div><div class="line">Error % - 出现错误的请求样本的百分比</div><div class="line"></div><div class="line">Throughput - 吞吐量以“requests/second、requests /minute、requests /hour”来衡量。 时间单位已经被选取为second，所以，显示速率至少是<span class="number">1.0</span>，即每秒<span class="number">1</span>个请求。 当吞吐量被保存到CVS文件时，采用的是requests/second，所以<span class="number">30.0</span> requests/second 在CVS中被保存为<span class="number">0.5</span></div><div class="line"></div><div class="line">Kb/sec - 以Kilobytes/seond来衡量的吞吐量</div></pre></td></tr></table></figure>
-</li>
-<li><p>Tomcat的简单配置</p>
- <figure class="highlight yaml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="attr">server:</span></div><div class="line"><span class="attr">  tomcat:</span></div><div class="line"><span class="attr">    max-threads:</span> <span class="number">500</span>   <span class="comment"># 默认连接是200个  我们调成500</span></div><div class="line"><span class="attr">    compression:</span> <span class="string">on</span>    <span class="comment"># 开启压缩</span></div></pre></td></tr></table></figure>
-</li>
-</ol>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/06/30/boot-jetty/">展开全文 >></a>
         </p>
       
 
@@ -571,8 +568,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
       
     
       
-      
-      
     
       
       
@@ -584,15 +579,13 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
     
     
       
-      <li style="width: 33.333333333333336%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">所有文章</a></li>
+      <li style="width: 50%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">所有文章</a></li>
       
         
       
-      <li style="width: 33.333333333333336%" q-on="click: openSlider(e, 'friends')"><a href="javascript:void(0)" q-class="active:friends">友链</a></li>
-      
         
       
-      <li style="width: 33.333333333333336%" q-on="click: openSlider(e, 'aboutme')"><a href="javascript:void(0)" q-class="active:aboutme">关于我</a></li>
+      <li style="width: 50%" q-on="click: openSlider(e, 'aboutme')"><a href="javascript:void(0)" q-class="active:aboutme">关于我</a></li>
       
         
     </ul>
@@ -611,6 +604,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
             <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
           </label>
           <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">jetty</a>
+              </li>
             
             <div class="clearfix"></div>
           </ul>
@@ -655,10 +652,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
     	</section>
     
 
-    
-    	<section class="tools-section tools-section-friends" q-show="friends">
-  		
-    	</section>
     
 
     
