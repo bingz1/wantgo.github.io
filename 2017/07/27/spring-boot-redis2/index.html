@@ -9,13 +9,13 @@
   <title>spring-boot-redis2 | wantgo的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="spring-boot 中redis加连接池与不加连接池的对比 12345678redis:    host: 127.0.0.1    port: 6379    pool:      max-active: 50      max-wait: -1      max-idle: 30      min-idle: 10 1.没有连接池1234查询个人信息	49661	7369	5607	122">
-<meta name="keywords" content="java python">
+<meta name="keywords" content="spring-boot">
 <meta property="og:type" content="article">
 <meta property="og:title" content="spring-boot-redis2">
 <meta property="og:url" content="//blog.wantgo.me/2017/07/27/spring-boot-redis2/index.html">
 <meta property="og:site_name" content="wantgo的博客">
 <meta property="og:description" content="spring-boot 中redis加连接池与不加连接池的对比 12345678redis:    host: 127.0.0.1    port: 6379    pool:      max-active: 50      max-wait: -1      max-idle: 30      min-idle: 10 1.没有连接池1234查询个人信息	49661	7369	5607	122">
-<meta property="og:updated_time" content="2017-08-01T07:00:09.000Z">
+<meta property="og:updated_time" content="2017-08-01T07:56:19.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="spring-boot-redis2">
 <meta name="twitter:description" content="spring-boot 中redis加连接池与不加连接池的对比 12345678redis:    host: 127.0.0.1    port: 6379    pool:      max-active: 50      max-wait: -1      max-idle: 30      min-idle: 10 1.没有连接池1234查询个人信息	49661	7369	5607	122">
@@ -23,7 +23,7 @@
     <link rel="alternative" href="/atom.xml" title="wantgo的博客" type="application/atom+xml">
   
   
-    <link rel="icon" href="/favicon.png">
+    <link rel="icon" href="/img/favicon.png">
   
   <link rel="stylesheet" type="text/css" href="/./main.266c1c.css">
   <style type="text/css">
@@ -35,6 +35,16 @@
   
 
   
+<script>
+var _hmt = _hmt || [];
+(function() {
+	var hm = document.createElement("script");
+	hm.src = "https://hm.baidu.com/hm.js?ed7693c99c384b150ccace4c30663b4b";
+	var s = document.getElementsByTagName("script")[0]; 
+	s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
 
 </head>
 
@@ -47,7 +57,7 @@
 <div class="intrude-less">
 	<header id="header" class="inner">
 		<a href="/" class="profilepic">
-			<img src="" class="js-avatar">
+			<img src="/img/avatar.jpeg" class="js-avatar">
 		</a>
 		<hgroup>
 		  <h1 class="header-author"><a href="/">wantgo</a></h1>
@@ -105,7 +115,7 @@
 	<div class="intrude-less">
 		<header id="header" class="inner">
 			<div class="profilepic">
-				<img src="" class="js-avatar">
+				<img src="/img/avatar.jpeg" class="js-avatar">
 			</div>
 			<hgroup>
 			  <h1 class="header-author js-header-author">wantgo</h1>
@@ -197,6 +207,11 @@
                   <div class="reward-box">
                     
                     
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/Wechat.jpeg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
                   </div>
                 </span>
               </span>
@@ -209,10 +224,72 @@
     <div class="article-info article-info-index">
       
       
-      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">spring-boot</a>
+        		</li>
+      		
+		</ul>
+	</div>
 
       
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://blog.wantgo.me/2017/07/27/spring-boot-redis2/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
@@ -222,11 +299,11 @@
   
 <nav id="article-nav">
   
-    <a href="/2017/08/01/boot-jetty/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/08/01/spring-boot-jetty/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          boot-jetty
+          spring-boot-jetty
         
       </div>
     </a>
@@ -360,6 +437,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
             <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
           </label>
           <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">spring-boot</a>
+              </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">jetty</a>
