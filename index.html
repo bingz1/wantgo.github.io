@@ -167,6 +167,86 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-aws密码登录" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/08/07/aws密码登录/">aws密码登录</a>
+    </h1>
+  
+
+        
+        <a href="/2017/08/07/aws密码登录/" class="archive-article-date">
+  	<time datetime="2017-08-07T07:26:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-07</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>aws 默认不支持账号密码登录,有时会遇到账号密码登录的场景,按照如下步骤可完成<br>通过ssh直接登录到系统</p>
+<p>1.设置当前用户的密码<br><figure class="highlight powershell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo passwd user <span class="comment">#user当前登录系统的用户</span></div></pre></td></tr></table></figure></p>
+<p>2.修改配置文件<br><figure class="highlight powershell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo vim /etc/ssh/sshd_config</div></pre></td></tr></table></figure></p>
+<p>修改如下三个地方<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span><span class="bash">PermitRootLogin prohibit-password</span></div><div class="line">PermitRootLogin yes</div><div class="line"></div><div class="line"><span class="meta">#</span><span class="bash"> Change to no to <span class="built_in">disable</span> tunnelled clear text passwords</span></div><div class="line">PasswordAuthentication yes</div><div class="line"></div><div class="line"><span class="meta">#</span><span class="bash"> Set this to <span class="string">'yes'</span> to <span class="built_in">enable</span> PAM authentication, account processing,</span></div><div class="line"><span class="meta">#</span><span class="bash"> and session processing. If this is enabled, PAM authentication will</span></div><div class="line"><span class="meta">#</span><span class="bash"> be allowed through the ChallengeResponseAuthentication and</span></div><div class="line"><span class="meta">#</span><span class="bash"> PasswordAuthentication.  Depending on your PAM configuration,</span></div><div class="line"><span class="meta">#</span><span class="bash"> PAM authentication via ChallengeResponseAuthentication may bypass</span></div><div class="line"><span class="meta">#</span><span class="bash"> the setting of <span class="string">"PermitRootLogin without-password"</span>.</span></div><div class="line"><span class="meta">#</span><span class="bash"> If you just want the PAM account and session checks to run without</span></div><div class="line"><span class="meta">#</span><span class="bash"> PAM authentication, <span class="keyword">then</span> <span class="built_in">enable</span> this but <span class="built_in">set</span> PasswordAuthentication</span></div><div class="line"><span class="meta">#</span><span class="bash"> and ChallengeResponseAuthentication to <span class="string">'no'</span>.</span></div><div class="line">UsePAM yes</div></pre></td></tr></table></figure></p>
+<p>3.重启服务<br><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">service sshd restart</span></div></pre></td></tr></table></figure></p>
+<p>4.换一台公钥不在服务器上的机器登录验证<br><figure class="highlight nginx"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">ssh</span> user<span class="variable">@ip</span></div></pre></td></tr></table></figure></p>
+<p>会提示输入密码.输入第一次设置的密码即可登录到服务器</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">aws</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/08/07/aws密码登录/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-spring-boot-jetty" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -656,6 +736,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">spring-boot</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">aws</a>
               </li>
             
             <div class="clearfix"></div>
