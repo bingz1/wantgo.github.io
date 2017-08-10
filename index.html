@@ -167,6 +167,167 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-aws rds 相关参数" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/08/10/aws rds 相关参数/">aws rds相关参数设置</a>
+    </h1>
+  
+
+        
+        <a href="/2017/08/10/aws rds 相关参数/" class="archive-article-date">
+  	<time datetime="2017-08-10T10:15:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-10</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p> 记录一下比较常用的设置</p>
+<ol>
+<li>启用慢查询<br>slow_query_log：要创建慢速查询日志，请设置为 1。默认值为 0<br>long_query_time：要防止在慢速查询日志中记录快速运行的查询，请指定需要记录的最短查询执行时间值，以秒为单位。默认值为 10 秒，最小值为 0。如果 log_output = FILE，则可以指定精确到微秒的浮点值。如果 log_output = TABLE，则必须指定精确到秒的整数值。系统只记录执行时间超过 long_query_time 值的查询。例如，将 long_query_time 设置为 0.1 可防止记录任何运行时间少于 100 毫秒的查询。<br>2.</li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">mysql</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/08/10/aws rds 相关参数/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-gh-ost安装及使用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/08/10/gh-ost安装及使用/">gh-ost安装及使用</a>
+    </h1>
+  
+
+        
+        <a href="/2017/08/10/gh-ost安装及使用/" class="archive-article-date">
+  	<time datetime="2017-08-10T06:36:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-10</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>1.由于表结构更改会锁表,当表数据量大时,直接增加字段会对业务影响较大,但是互联网应用会频繁更改功能,不得不面对这样的需求.<br>  许多大的公司也会遇到这样的问题,GitHub开源了他们自己的方案:gh-ost.<br>  学习下如何使用<br>  使用限制:主库必须产生Row格式的二进制日志</p>
+<p>2.<a href="https://github.com/github/gh-ost" target="_blank" rel="external">github地址</a><br>3.安装<br><a href="https://github.com/github/gh-ost/releases/tag/v1.0.40" target="_blank" rel="external">下载地址</a><br>  可以直接下载编译好的文件,也可以下载源码自己编译,自己编译需要注意本机go版本<br>  (1)确认go版本<br>   gh-ost is a Go project; it is built with Go 1.8 (though 1.7 should work as well).<br>   编译的时候,推荐使用1.8,1.7也是可以的,所以先查看本机安装的go版本<br>   <figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">~ <span class="keyword">go</span> <span class="keyword">version</span></div><div class="line"><span class="keyword">go</span> <span class="keyword">version</span> go1.<span class="number">8.3</span> darwin/amd64</div></pre></td></tr></table></figure></p>
+<p>   (2)自己直接下载,解压得到 <code>gh-ost</code> 文件<br>   (3)查看版本<br>      <figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="string">./gh-ost</span> <span class="params">--version</span>      </div><div class="line">1.0.40</div></pre></td></tr></table></figure></p>
+<p>   (4)为方便使用,将执行文件加到当前系统路径下</p>
+<p>   vim .bash_profile</p>
+   <figure class="highlight monkey"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">alias</span> <span class="title">gh</span>-<span class="title">ost</span>=<span class="string">"~/soft/gh-ost"</span></div></pre></td></tr></table></figure>
+<p>   使配置文件生效<br>   source ./.bash_profile</p>
+<p>4.使用</p>
+<p>  1.更新字段名称<br>  <figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">gh-ost <span class="params">--host=127</span>.0.0.1 <span class="params">--database=test</span> <span class="params">--table=t_test</span> <span class="params">--user=</span><span class="string">"test"</span> <span class="params">--password=</span><span class="string">"test"</span>  <span class="params">--alter=</span><span class="string">"change column iu_renamed name  VARCHAR(100)"</span> <span class="params">--approve-renamed-columns</span> <span class="params">--assume-rbr</span> <span class="params">--initially-drop-ghost-table</span> <span class="params">--initially-drop-old-table</span> <span class="params">--allow-on-master</span> <span class="params">--exact-rowcount</span>  <span class="params">--execute</span></div></pre></td></tr></table></figure></p>
+<p>  2.添加字段<br>  <figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">gh-ost <span class="params">--host=127</span>.0.0.1 <span class="params">--database=test</span> <span class="params">--table=t_test</span> <span class="params">--user=</span><span class="string">"test"</span> <span class="params">--password=</span><span class="string">"test"</span>  <span class="params">--alter=</span><span class="string">"add column test_id int(11) DEFAULT NULL COMMENT 'test'"</span> <span class="params">--assume-rbr</span> <span class="params">--initially-drop-ghost-table</span> <span class="params">--initially-drop-old-table</span> <span class="params">--allow-on-master</span> <span class="params">--exact-rowcount</span>  <span class="params">--execute</span></div></pre></td></tr></table></figure></p>
+<p> 5.参考资料<br>    <a href="https://github.com/wing324/helloworld_zh/blob/master/MySQL/gh-ost/GitHub%E5%BC%80%E6%BA%90MySQL%20Online%20DDL%E5%B7%A5%E5%85%B7gh-ost%E5%8F%82%E6%95%B0%E8%A7%A3%E6%9E%90.md" target="_blank" rel="external">各个属性的含义</a><br>    <a href="https://github.com/github/gh-ost/tree/master/localtests" target="_blank" rel="external">各种例子</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">mysql</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/08/10/gh-ost安装及使用/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-aws密码登录" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -731,15 +892,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">aws</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">jetty</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">spring-boot</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">aws</a>
               </li>
             
             <div class="clearfix"></div>

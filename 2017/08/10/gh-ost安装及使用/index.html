@@ -6,19 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="//blog.wantgo.me">
-  <title>aws密码登录 | wantgo的博客</title>
+  <title>gh-ost安装及使用 | wantgo的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="aws 默认不支持账号密码登录,有时会遇到账号密码登录的场景,按照如下步骤可完成通过ssh直接登录到系统 1.设置当前用户的密码1sudo passwd user #user当前登录系统的用户 2.修改配置文件1sudo vim /etc/ssh/sshd_config 修改如下三个地方12345678910111213141516#PermitRootLogin prohibit-passwor">
-<meta name="keywords" content="aws">
+  <meta name="description" content="1.由于表结构更改会锁表,当表数据量大时,直接增加字段会对业务影响较大,但是互联网应用会频繁更改功能,不得不面对这样的需求.  许多大的公司也会遇到这样的问题,GitHub开源了他们自己的方案:gh-ost.  学习下如何使用  使用限制:主库必须产生Row格式的二进制日志 2.github地址3.安装下载地址  可以直接下载编译好的文件,也可以下载源码自己编译,自己编译需要注意本机go版本  (">
+<meta name="keywords" content="mysql">
 <meta property="og:type" content="article">
-<meta property="og:title" content="aws密码登录">
-<meta property="og:url" content="//blog.wantgo.me/2017/08/07/aws密码登录/index.html">
+<meta property="og:title" content="gh-ost安装及使用">
+<meta property="og:url" content="//blog.wantgo.me/2017/08/10/gh-ost安装及使用/index.html">
 <meta property="og:site_name" content="wantgo的博客">
-<meta property="og:description" content="aws 默认不支持账号密码登录,有时会遇到账号密码登录的场景,按照如下步骤可完成通过ssh直接登录到系统 1.设置当前用户的密码1sudo passwd user #user当前登录系统的用户 2.修改配置文件1sudo vim /etc/ssh/sshd_config 修改如下三个地方12345678910111213141516#PermitRootLogin prohibit-passwor">
-<meta property="og:updated_time" content="2017-08-07T08:02:31.000Z">
+<meta property="og:description" content="1.由于表结构更改会锁表,当表数据量大时,直接增加字段会对业务影响较大,但是互联网应用会频繁更改功能,不得不面对这样的需求.  许多大的公司也会遇到这样的问题,GitHub开源了他们自己的方案:gh-ost.  学习下如何使用  使用限制:主库必须产生Row格式的二进制日志 2.github地址3.安装下载地址  可以直接下载编译好的文件,也可以下载源码自己编译,自己编译需要注意本机go版本  (">
+<meta property="og:updated_time" content="2017-08-10T14:23:32.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="aws密码登录">
-<meta name="twitter:description" content="aws 默认不支持账号密码登录,有时会遇到账号密码登录的场景,按照如下步骤可完成通过ssh直接登录到系统 1.设置当前用户的密码1sudo passwd user #user当前登录系统的用户 2.修改配置文件1sudo vim /etc/ssh/sshd_config 修改如下三个地方12345678910111213141516#PermitRootLogin prohibit-passwor">
+<meta name="twitter:title" content="gh-ost安装及使用">
+<meta name="twitter:description" content="1.由于表结构更改会锁表,当表数据量大时,直接增加字段会对业务影响较大,但是互联网应用会频繁更改功能,不得不面对这样的需求.  许多大的公司也会遇到这样的问题,GitHub开源了他们自己的方案:gh-ost.  学习下如何使用  使用限制:主库必须产生Row格式的二进制日志 2.github地址3.安装下载地址  可以直接下载编译好的文件,也可以下载源码自己编译,自己编译需要注意本机go版本  (">
   
     <link rel="alternative" href="/atom.xml" title="wantgo的博客" type="application/atom+xml">
   
@@ -166,33 +166,37 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-aws密码登录" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-gh-ost安装及使用" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      aws密码登录
+      gh-ost安装及使用
     </h1>
   
 
         
-        <a href="/2017/08/07/aws密码登录/" class="archive-article-date">
-  	<time datetime="2017-08-07T07:26:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-07</time>
+        <a href="/2017/08/10/gh-ost安装及使用/" class="archive-article-date">
+  	<time datetime="2017-08-10T06:36:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-10</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>aws 默认不支持账号密码登录,有时会遇到账号密码登录的场景,按照如下步骤可完成<br>通过ssh直接登录到系统</p>
-<p>1.设置当前用户的密码<br><figure class="highlight powershell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo passwd user <span class="comment">#user当前登录系统的用户</span></div></pre></td></tr></table></figure></p>
-<p>2.修改配置文件<br><figure class="highlight powershell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo vim /etc/ssh/sshd_config</div></pre></td></tr></table></figure></p>
-<p>修改如下三个地方<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span><span class="bash">PermitRootLogin prohibit-password</span></div><div class="line">PermitRootLogin yes</div><div class="line"></div><div class="line"><span class="meta">#</span><span class="bash"> Change to no to <span class="built_in">disable</span> tunnelled clear text passwords</span></div><div class="line">PasswordAuthentication yes</div><div class="line"></div><div class="line"><span class="meta">#</span><span class="bash"> Set this to <span class="string">'yes'</span> to <span class="built_in">enable</span> PAM authentication, account processing,</span></div><div class="line"><span class="meta">#</span><span class="bash"> and session processing. If this is enabled, PAM authentication will</span></div><div class="line"><span class="meta">#</span><span class="bash"> be allowed through the ChallengeResponseAuthentication and</span></div><div class="line"><span class="meta">#</span><span class="bash"> PasswordAuthentication.  Depending on your PAM configuration,</span></div><div class="line"><span class="meta">#</span><span class="bash"> PAM authentication via ChallengeResponseAuthentication may bypass</span></div><div class="line"><span class="meta">#</span><span class="bash"> the setting of <span class="string">"PermitRootLogin without-password"</span>.</span></div><div class="line"><span class="meta">#</span><span class="bash"> If you just want the PAM account and session checks to run without</span></div><div class="line"><span class="meta">#</span><span class="bash"> PAM authentication, <span class="keyword">then</span> <span class="built_in">enable</span> this but <span class="built_in">set</span> PasswordAuthentication</span></div><div class="line"><span class="meta">#</span><span class="bash"> and ChallengeResponseAuthentication to <span class="string">'no'</span>.</span></div><div class="line">UsePAM yes</div></pre></td></tr></table></figure></p>
-<p>3.重启服务<br><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">service sshd restart</span></div></pre></td></tr></table></figure></p>
-<p>4.换一台公钥不在服务器上的机器登录验证<br><figure class="highlight nginx"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">ssh</span> user<span class="variable">@ip</span></div></pre></td></tr></table></figure></p>
-<p>会提示输入密码.输入第一次设置的密码即可登录到服务器</p>
+        <p>1.由于表结构更改会锁表,当表数据量大时,直接增加字段会对业务影响较大,但是互联网应用会频繁更改功能,不得不面对这样的需求.<br>  许多大的公司也会遇到这样的问题,GitHub开源了他们自己的方案:gh-ost.<br>  学习下如何使用<br>  使用限制:主库必须产生Row格式的二进制日志</p>
+<p>2.<a href="https://github.com/github/gh-ost" target="_blank" rel="external">github地址</a><br>3.安装<br><a href="https://github.com/github/gh-ost/releases/tag/v1.0.40" target="_blank" rel="external">下载地址</a><br>  可以直接下载编译好的文件,也可以下载源码自己编译,自己编译需要注意本机go版本<br>  (1)确认go版本<br>   gh-ost is a Go project; it is built with Go 1.8 (though 1.7 should work as well).<br>   编译的时候,推荐使用1.8,1.7也是可以的,所以先查看本机安装的go版本<br>   <figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">~ <span class="keyword">go</span> <span class="keyword">version</span></div><div class="line"><span class="keyword">go</span> <span class="keyword">version</span> go1.<span class="number">8.3</span> darwin/amd64</div></pre></td></tr></table></figure></p>
+<p>   (2)自己直接下载,解压得到 <code>gh-ost</code> 文件<br>   (3)查看版本<br>      <figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="string">./gh-ost</span> <span class="params">--version</span>      </div><div class="line">1.0.40</div></pre></td></tr></table></figure></p>
+<p>   (4)为方便使用,将执行文件加到当前系统路径下</p>
+<p>   vim .bash_profile</p>
+   <figure class="highlight monkey"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">alias</span> <span class="title">gh</span>-<span class="title">ost</span>=<span class="string">"~/soft/gh-ost"</span></div></pre></td></tr></table></figure>
+<p>   使配置文件生效<br>   source ./.bash_profile</p>
+<p>4.使用</p>
+<p>  1.更新字段名称<br>  <figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">gh-ost <span class="params">--host=127</span>.0.0.1 <span class="params">--database=test</span> <span class="params">--table=t_test</span> <span class="params">--user=</span><span class="string">"test"</span> <span class="params">--password=</span><span class="string">"test"</span>  <span class="params">--alter=</span><span class="string">"change column iu_renamed name  VARCHAR(100)"</span> <span class="params">--approve-renamed-columns</span> <span class="params">--assume-rbr</span> <span class="params">--initially-drop-ghost-table</span> <span class="params">--initially-drop-old-table</span> <span class="params">--allow-on-master</span> <span class="params">--exact-rowcount</span>  <span class="params">--execute</span></div></pre></td></tr></table></figure></p>
+<p>  2.添加字段<br>  <figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">gh-ost <span class="params">--host=127</span>.0.0.1 <span class="params">--database=test</span> <span class="params">--table=t_test</span> <span class="params">--user=</span><span class="string">"test"</span> <span class="params">--password=</span><span class="string">"test"</span>  <span class="params">--alter=</span><span class="string">"add column test_id int(11) DEFAULT NULL COMMENT 'test'"</span> <span class="params">--assume-rbr</span> <span class="params">--initially-drop-ghost-table</span> <span class="params">--initially-drop-old-table</span> <span class="params">--allow-on-master</span> <span class="params">--exact-rowcount</span>  <span class="params">--execute</span></div></pre></td></tr></table></figure></p>
+<p> 5.参考资料<br>    <a href="https://github.com/wing324/helloworld_zh/blob/master/MySQL/gh-ost/GitHub%E5%BC%80%E6%BA%90MySQL%20Online%20DDL%E5%B7%A5%E5%85%B7gh-ost%E5%8F%82%E6%95%B0%E8%A7%A3%E6%9E%90.md" target="_blank" rel="external">各个属性的含义</a><br>    <a href="https://github.com/github/gh-ost/tree/master/localtests" target="_blank" rel="external">各种例子</a></p>
 
       
 
@@ -232,7 +236,7 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">aws</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">mysql</a>
         		</li>
       		
 		</ul>
@@ -288,7 +292,7 @@ var _hmt = _hmt || [];
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://blog.wantgo.me/2017/08/07/aws密码登录/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://blog.wantgo.me/2017/08/10/gh-ost安装及使用/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -302,18 +306,18 @@ var _hmt = _hmt || [];
   
 <nav id="article-nav">
   
-    <a href="/2017/08/10/gh-ost安装及使用/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/08/10/aws rds 相关参数/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          gh-ost安装及使用
+          aws rds相关参数设置
         
       </div>
     </a>
   
   
-    <a href="/2017/08/01/spring-boot-jetty/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">spring-boot-jetty</div>
+    <a href="/2017/08/07/aws密码登录/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">aws密码登录</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -343,7 +347,7 @@ var _hmt = _hmt || [];
   
 
   
-  <div id="SOHUCS" sid="aws密码登录" ></div> 
+  <div id="SOHUCS" sid="gh-ost安装及使用" ></div> 
 <script type="text/javascript"> 
 (function(){ 
 var appid = "cyt6UXlwH"; 

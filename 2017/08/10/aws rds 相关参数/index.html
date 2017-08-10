@@ -6,19 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="//blog.wantgo.me">
-  <title>aws密码登录 | wantgo的博客</title>
+  <title>aws rds相关参数设置 | wantgo的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="aws 默认不支持账号密码登录,有时会遇到账号密码登录的场景,按照如下步骤可完成通过ssh直接登录到系统 1.设置当前用户的密码1sudo passwd user #user当前登录系统的用户 2.修改配置文件1sudo vim /etc/ssh/sshd_config 修改如下三个地方12345678910111213141516#PermitRootLogin prohibit-passwor">
-<meta name="keywords" content="aws">
+  <meta name="description" content="记录一下比较常用的设置  启用慢查询slow_query_log：要创建慢速查询日志，请设置为 1。默认值为 0long_query_time：要防止在慢速查询日志中记录快速运行的查询，请指定需要记录的最短查询执行时间值，以秒为单位。默认值为 10 秒，最小值为 0。如果 log_output = FILE，则可以指定精确到微秒的浮点值。如果 log_output = TABLE，则必须指定精确">
+<meta name="keywords" content="mysql">
 <meta property="og:type" content="article">
-<meta property="og:title" content="aws密码登录">
-<meta property="og:url" content="//blog.wantgo.me/2017/08/07/aws密码登录/index.html">
+<meta property="og:title" content="aws rds相关参数设置">
+<meta property="og:url" content="//blog.wantgo.me/2017/08/10/aws rds 相关参数/index.html">
 <meta property="og:site_name" content="wantgo的博客">
-<meta property="og:description" content="aws 默认不支持账号密码登录,有时会遇到账号密码登录的场景,按照如下步骤可完成通过ssh直接登录到系统 1.设置当前用户的密码1sudo passwd user #user当前登录系统的用户 2.修改配置文件1sudo vim /etc/ssh/sshd_config 修改如下三个地方12345678910111213141516#PermitRootLogin prohibit-passwor">
-<meta property="og:updated_time" content="2017-08-07T08:02:31.000Z">
+<meta property="og:description" content="记录一下比较常用的设置  启用慢查询slow_query_log：要创建慢速查询日志，请设置为 1。默认值为 0long_query_time：要防止在慢速查询日志中记录快速运行的查询，请指定需要记录的最短查询执行时间值，以秒为单位。默认值为 10 秒，最小值为 0。如果 log_output = FILE，则可以指定精确到微秒的浮点值。如果 log_output = TABLE，则必须指定精确">
+<meta property="og:updated_time" content="2017-08-10T10:33:19.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="aws密码登录">
-<meta name="twitter:description" content="aws 默认不支持账号密码登录,有时会遇到账号密码登录的场景,按照如下步骤可完成通过ssh直接登录到系统 1.设置当前用户的密码1sudo passwd user #user当前登录系统的用户 2.修改配置文件1sudo vim /etc/ssh/sshd_config 修改如下三个地方12345678910111213141516#PermitRootLogin prohibit-passwor">
+<meta name="twitter:title" content="aws rds相关参数设置">
+<meta name="twitter:description" content="记录一下比较常用的设置  启用慢查询slow_query_log：要创建慢速查询日志，请设置为 1。默认值为 0long_query_time：要防止在慢速查询日志中记录快速运行的查询，请指定需要记录的最短查询执行时间值，以秒为单位。默认值为 10 秒，最小值为 0。如果 log_output = FILE，则可以指定精确到微秒的浮点值。如果 log_output = TABLE，则必须指定精确">
   
     <link rel="alternative" href="/atom.xml" title="wantgo的博客" type="application/atom+xml">
   
@@ -166,33 +166,30 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-aws密码登录" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-aws rds 相关参数" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      aws密码登录
+      aws rds相关参数设置
     </h1>
   
 
         
-        <a href="/2017/08/07/aws密码登录/" class="archive-article-date">
-  	<time datetime="2017-08-07T07:26:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-07</time>
+        <a href="/2017/08/10/aws rds 相关参数/" class="archive-article-date">
+  	<time datetime="2017-08-10T10:15:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-10</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>aws 默认不支持账号密码登录,有时会遇到账号密码登录的场景,按照如下步骤可完成<br>通过ssh直接登录到系统</p>
-<p>1.设置当前用户的密码<br><figure class="highlight powershell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo passwd user <span class="comment">#user当前登录系统的用户</span></div></pre></td></tr></table></figure></p>
-<p>2.修改配置文件<br><figure class="highlight powershell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo vim /etc/ssh/sshd_config</div></pre></td></tr></table></figure></p>
-<p>修改如下三个地方<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span><span class="bash">PermitRootLogin prohibit-password</span></div><div class="line">PermitRootLogin yes</div><div class="line"></div><div class="line"><span class="meta">#</span><span class="bash"> Change to no to <span class="built_in">disable</span> tunnelled clear text passwords</span></div><div class="line">PasswordAuthentication yes</div><div class="line"></div><div class="line"><span class="meta">#</span><span class="bash"> Set this to <span class="string">'yes'</span> to <span class="built_in">enable</span> PAM authentication, account processing,</span></div><div class="line"><span class="meta">#</span><span class="bash"> and session processing. If this is enabled, PAM authentication will</span></div><div class="line"><span class="meta">#</span><span class="bash"> be allowed through the ChallengeResponseAuthentication and</span></div><div class="line"><span class="meta">#</span><span class="bash"> PasswordAuthentication.  Depending on your PAM configuration,</span></div><div class="line"><span class="meta">#</span><span class="bash"> PAM authentication via ChallengeResponseAuthentication may bypass</span></div><div class="line"><span class="meta">#</span><span class="bash"> the setting of <span class="string">"PermitRootLogin without-password"</span>.</span></div><div class="line"><span class="meta">#</span><span class="bash"> If you just want the PAM account and session checks to run without</span></div><div class="line"><span class="meta">#</span><span class="bash"> PAM authentication, <span class="keyword">then</span> <span class="built_in">enable</span> this but <span class="built_in">set</span> PasswordAuthentication</span></div><div class="line"><span class="meta">#</span><span class="bash"> and ChallengeResponseAuthentication to <span class="string">'no'</span>.</span></div><div class="line">UsePAM yes</div></pre></td></tr></table></figure></p>
-<p>3.重启服务<br><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">service sshd restart</span></div></pre></td></tr></table></figure></p>
-<p>4.换一台公钥不在服务器上的机器登录验证<br><figure class="highlight nginx"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">ssh</span> user<span class="variable">@ip</span></div></pre></td></tr></table></figure></p>
-<p>会提示输入密码.输入第一次设置的密码即可登录到服务器</p>
+        <p> 记录一下比较常用的设置</p>
+<ol>
+<li>启用慢查询<br>slow_query_log：要创建慢速查询日志，请设置为 1。默认值为 0<br>long_query_time：要防止在慢速查询日志中记录快速运行的查询，请指定需要记录的最短查询执行时间值，以秒为单位。默认值为 10 秒，最小值为 0。如果 log_output = FILE，则可以指定精确到微秒的浮点值。如果 log_output = TABLE，则必须指定精确到秒的整数值。系统只记录执行时间超过 long_query_time 值的查询。例如，将 long_query_time 设置为 0.1 可防止记录任何运行时间少于 100 毫秒的查询。<br>2.</li>
+</ol>
 
       
 
@@ -232,7 +229,7 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">aws</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">mysql</a>
         		</li>
       		
 		</ul>
@@ -288,7 +285,7 @@ var _hmt = _hmt || [];
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://blog.wantgo.me/2017/08/07/aws密码登录/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://blog.wantgo.me/2017/08/10/aws rds 相关参数/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -302,18 +299,9 @@ var _hmt = _hmt || [];
   
 <nav id="article-nav">
   
-    <a href="/2017/08/10/gh-ost安装及使用/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          gh-ost安装及使用
-        
-      </div>
-    </a>
   
-  
-    <a href="/2017/08/01/spring-boot-jetty/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">spring-boot-jetty</div>
+    <a href="/2017/08/10/gh-ost安装及使用/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">gh-ost安装及使用</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -343,7 +331,7 @@ var _hmt = _hmt || [];
   
 
   
-  <div id="SOHUCS" sid="aws密码登录" ></div> 
+  <div id="SOHUCS" sid="aws rds 相关参数" ></div> 
 <script type="text/javascript"> 
 (function(){ 
 var appid = "cyt6UXlwH"; 
