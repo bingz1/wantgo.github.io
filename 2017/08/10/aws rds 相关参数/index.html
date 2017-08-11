@@ -15,7 +15,7 @@
 <meta property="og:url" content="//blog.wantgo.me/2017/08/10/aws rds 相关参数/index.html">
 <meta property="og:site_name" content="wantgo的博客">
 <meta property="og:description" content="记录一下比较常用的设置  启用慢查询slow_query_log：要创建慢速查询日志，请设置为 1。默认值为 0long_query_time：要防止在慢速查询日志中记录快速运行的查询，请指定需要记录的最短查询执行时间值，以秒为单位。默认值为 10 秒，最小值为 0。如果 log_output = FILE，则可以指定精确到微秒的浮点值。如果 log_output = TABLE，则必须指定精确">
-<meta property="og:updated_time" content="2017-08-10T10:33:19.000Z">
+<meta property="og:updated_time" content="2017-08-10T16:23:01.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="aws rds相关参数设置">
 <meta name="twitter:description" content="记录一下比较常用的设置  启用慢查询slow_query_log：要创建慢速查询日志，请设置为 1。默认值为 0long_query_time：要防止在慢速查询日志中记录快速运行的查询，请指定需要记录的最短查询执行时间值，以秒为单位。默认值为 10 秒，最小值为 0。如果 log_output = FILE，则可以指定精确到微秒的浮点值。如果 log_output = TABLE，则必须指定精确">
@@ -188,7 +188,7 @@ var _hmt = _hmt || [];
       
         <p> 记录一下比较常用的设置</p>
 <ol>
-<li>启用慢查询<br>slow_query_log：要创建慢速查询日志，请设置为 1。默认值为 0<br>long_query_time：要防止在慢速查询日志中记录快速运行的查询，请指定需要记录的最短查询执行时间值，以秒为单位。默认值为 10 秒，最小值为 0。如果 log_output = FILE，则可以指定精确到微秒的浮点值。如果 log_output = TABLE，则必须指定精确到秒的整数值。系统只记录执行时间超过 long_query_time 值的查询。例如，将 long_query_time 设置为 0.1 可防止记录任何运行时间少于 100 毫秒的查询。<br>2.</li>
+<li>启用慢查询<br>slow_query_log：要创建慢速查询日志，请设置为 1。默认值为 0<br>long_query_time：要防止在慢速查询日志中记录快速运行的查询，请指定需要记录的最短查询执行时间值，以秒为单位。默认值为 10 秒，最小值为 0。如果 log_output = FILE，则可以指定精确到微秒的浮点值。如果 log_output = TABLE，则必须指定精确到秒的整数值。系统只记录执行时间超过 long_query_time 值的查询。例如，将 long_query_time 设置为 0.1 可防止记录任何运行时间少于 100 毫秒的查询。<br>log_queries_not_using_indexes：要将所有不使用索引的查询记录到慢速查询日志，请设置为 1。默认值为 0。<br>2.禁用bin_log<br>innodb_flush_log_at_trx_commit也可以设置为0来提高sql的执行效率</li>
 </ol>
 
       
@@ -368,7 +368,7 @@ window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="tex
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
-		open_in_new: false,
+		open_in_new: true,
 		toc_hide_index: true,
 		root: "/",
 		innerArchive: true,
@@ -430,11 +430,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
+                <a href="javascript:void(0)" class="js-tag color4">aws</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">aws</a>
+                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
               </li>
              
               <li class="article-tag-list-item">

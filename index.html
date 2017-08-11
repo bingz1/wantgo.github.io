@@ -189,7 +189,7 @@ var _hmt = _hmt || [];
       
         <p> 记录一下比较常用的设置</p>
 <ol>
-<li>启用慢查询<br>slow_query_log：要创建慢速查询日志，请设置为 1。默认值为 0<br>long_query_time：要防止在慢速查询日志中记录快速运行的查询，请指定需要记录的最短查询执行时间值，以秒为单位。默认值为 10 秒，最小值为 0。如果 log_output = FILE，则可以指定精确到微秒的浮点值。如果 log_output = TABLE，则必须指定精确到秒的整数值。系统只记录执行时间超过 long_query_time 值的查询。例如，将 long_query_time 设置为 0.1 可防止记录任何运行时间少于 100 毫秒的查询。<br>2.</li>
+<li>启用慢查询<br>slow_query_log：要创建慢速查询日志，请设置为 1。默认值为 0<br>long_query_time：要防止在慢速查询日志中记录快速运行的查询，请指定需要记录的最短查询执行时间值，以秒为单位。默认值为 10 秒，最小值为 0。如果 log_output = FILE，则可以指定精确到微秒的浮点值。如果 log_output = TABLE，则必须指定精确到秒的整数值。系统只记录执行时间超过 long_query_time 值的查询。例如，将 long_query_time 设置为 0.1 可防止记录任何运行时间少于 100 毫秒的查询。<br>log_queries_not_using_indexes：要将所有不使用索引的查询记录到慢速查询日志，请设置为 1。默认值为 0。<br>2.禁用bin_log<br>innodb_flush_log_at_trx_commit也可以设置为0来提高sql的执行效率</li>
 </ol>
 
       
@@ -274,7 +274,7 @@ var _hmt = _hmt || [];
 <p>4.使用</p>
 <p>  1.更新字段名称<br>  <figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">gh-ost <span class="params">--host=127</span>.0.0.1 <span class="params">--database=test</span> <span class="params">--table=t_test</span> <span class="params">--user=</span><span class="string">"test"</span> <span class="params">--password=</span><span class="string">"test"</span>  <span class="params">--alter=</span><span class="string">"change column iu_renamed name  VARCHAR(100)"</span> <span class="params">--approve-renamed-columns</span> <span class="params">--assume-rbr</span> <span class="params">--initially-drop-ghost-table</span> <span class="params">--initially-drop-old-table</span> <span class="params">--allow-on-master</span> <span class="params">--exact-rowcount</span>  <span class="params">--execute</span></div></pre></td></tr></table></figure></p>
 <p>  2.添加字段<br>  <figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">gh-ost <span class="params">--host=127</span>.0.0.1 <span class="params">--database=test</span> <span class="params">--table=t_test</span> <span class="params">--user=</span><span class="string">"test"</span> <span class="params">--password=</span><span class="string">"test"</span>  <span class="params">--alter=</span><span class="string">"add column test_id int(11) DEFAULT NULL COMMENT 'test'"</span> <span class="params">--assume-rbr</span> <span class="params">--initially-drop-ghost-table</span> <span class="params">--initially-drop-old-table</span> <span class="params">--allow-on-master</span> <span class="params">--exact-rowcount</span>  <span class="params">--execute</span></div></pre></td></tr></table></figure></p>
-<p> 5.参考资料<br>    <a href="https://github.com/wing324/helloworld_zh/blob/master/MySQL/gh-ost/GitHub%E5%BC%80%E6%BA%90MySQL%20Online%20DDL%E5%B7%A5%E5%85%B7gh-ost%E5%8F%82%E6%95%B0%E8%A7%A3%E6%9E%90.md" target="_blank" rel="external">各个属性的含义</a><br>    <a href="https://github.com/github/gh-ost/tree/master/localtests" target="_blank" rel="external">各种例子</a></p>
+<p> 5.参考资料<br>    <a href="http://www.cnblogs.com/wangtao_20/p/3504395.html" target="_blank" rel="external">为什么要用工具</a><br>    <a href="http://www.infoq.com/cn/articles/github-mysql-gh-ost-online-change-table-definition-tool" target="_blank" rel="external">功能讲解</a><br>    <a href="https://github.com/wing324/helloworld_zh/blob/master/MySQL/gh-ost/GitHub%E5%BC%80%E6%BA%90MySQL%20Online%20DDL%E5%B7%A5%E5%85%B7gh-ost%E5%8F%82%E6%95%B0%E8%A7%A3%E6%9E%90.md" target="_blank" rel="external">各个属性的含义</a><br>    <a href="https://github.com/github/gh-ost/tree/master/localtests" target="_blank" rel="external">各种例子</a></p>
 
       
 
@@ -826,7 +826,7 @@ var _hmt = _hmt || [];
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
-		open_in_new: false,
+		open_in_new: true,
 		toc_hide_index: true,
 		root: "/",
 		innerArchive: true,
@@ -888,11 +888,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
+                <a href="javascript:void(0)" class="js-tag color4">aws</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">aws</a>
+                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
               </li>
              
               <li class="article-tag-list-item">

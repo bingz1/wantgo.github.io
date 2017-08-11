@@ -15,7 +15,7 @@
 <meta property="og:url" content="//blog.wantgo.me/2017/08/10/gh-ost安装及使用/index.html">
 <meta property="og:site_name" content="wantgo的博客">
 <meta property="og:description" content="1.由于表结构更改会锁表,当表数据量大时,直接增加字段会对业务影响较大,但是互联网应用会频繁更改功能,不得不面对这样的需求.  许多大的公司也会遇到这样的问题,GitHub开源了他们自己的方案:gh-ost.  学习下如何使用  使用限制:主库必须产生Row格式的二进制日志 2.github地址3.安装下载地址  可以直接下载编译好的文件,也可以下载源码自己编译,自己编译需要注意本机go版本  (">
-<meta property="og:updated_time" content="2017-08-10T14:23:32.000Z">
+<meta property="og:updated_time" content="2017-08-10T15:51:35.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="gh-ost安装及使用">
 <meta name="twitter:description" content="1.由于表结构更改会锁表,当表数据量大时,直接增加字段会对业务影响较大,但是互联网应用会频繁更改功能,不得不面对这样的需求.  许多大的公司也会遇到这样的问题,GitHub开源了他们自己的方案:gh-ost.  学习下如何使用  使用限制:主库必须产生Row格式的二进制日志 2.github地址3.安装下载地址  可以直接下载编译好的文件,也可以下载源码自己编译,自己编译需要注意本机go版本  (">
@@ -196,7 +196,7 @@ var _hmt = _hmt || [];
 <p>4.使用</p>
 <p>  1.更新字段名称<br>  <figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">gh-ost <span class="params">--host=127</span>.0.0.1 <span class="params">--database=test</span> <span class="params">--table=t_test</span> <span class="params">--user=</span><span class="string">"test"</span> <span class="params">--password=</span><span class="string">"test"</span>  <span class="params">--alter=</span><span class="string">"change column iu_renamed name  VARCHAR(100)"</span> <span class="params">--approve-renamed-columns</span> <span class="params">--assume-rbr</span> <span class="params">--initially-drop-ghost-table</span> <span class="params">--initially-drop-old-table</span> <span class="params">--allow-on-master</span> <span class="params">--exact-rowcount</span>  <span class="params">--execute</span></div></pre></td></tr></table></figure></p>
 <p>  2.添加字段<br>  <figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">gh-ost <span class="params">--host=127</span>.0.0.1 <span class="params">--database=test</span> <span class="params">--table=t_test</span> <span class="params">--user=</span><span class="string">"test"</span> <span class="params">--password=</span><span class="string">"test"</span>  <span class="params">--alter=</span><span class="string">"add column test_id int(11) DEFAULT NULL COMMENT 'test'"</span> <span class="params">--assume-rbr</span> <span class="params">--initially-drop-ghost-table</span> <span class="params">--initially-drop-old-table</span> <span class="params">--allow-on-master</span> <span class="params">--exact-rowcount</span>  <span class="params">--execute</span></div></pre></td></tr></table></figure></p>
-<p> 5.参考资料<br>    <a href="https://github.com/wing324/helloworld_zh/blob/master/MySQL/gh-ost/GitHub%E5%BC%80%E6%BA%90MySQL%20Online%20DDL%E5%B7%A5%E5%85%B7gh-ost%E5%8F%82%E6%95%B0%E8%A7%A3%E6%9E%90.md" target="_blank" rel="external">各个属性的含义</a><br>    <a href="https://github.com/github/gh-ost/tree/master/localtests" target="_blank" rel="external">各种例子</a></p>
+<p> 5.参考资料<br>    <a href="http://www.cnblogs.com/wangtao_20/p/3504395.html" target="_blank" rel="external">为什么要用工具</a><br>    <a href="http://www.infoq.com/cn/articles/github-mysql-gh-ost-online-change-table-definition-tool" target="_blank" rel="external">功能讲解</a><br>    <a href="https://github.com/wing324/helloworld_zh/blob/master/MySQL/gh-ost/GitHub%E5%BC%80%E6%BA%90MySQL%20Online%20DDL%E5%B7%A5%E5%85%B7gh-ost%E5%8F%82%E6%95%B0%E8%A7%A3%E6%9E%90.md" target="_blank" rel="external">各个属性的含义</a><br>    <a href="https://github.com/github/gh-ost/tree/master/localtests" target="_blank" rel="external">各种例子</a></p>
 
       
 
@@ -384,7 +384,7 @@ window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="tex
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
-		open_in_new: false,
+		open_in_new: true,
 		toc_hide_index: true,
 		root: "/",
 		innerArchive: true,
@@ -446,11 +446,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
+                <a href="javascript:void(0)" class="js-tag color4">aws</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">aws</a>
+                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
               </li>
              
               <li class="article-tag-list-item">
