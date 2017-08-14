@@ -167,6 +167,130 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-AES和DES的比较" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/08/14/AES和DES的比较/">AES和DES的比较</a>
+    </h1>
+  
+
+        
+        <a href="/2017/08/14/AES和DES的比较/" class="archive-article-date">
+  	<time datetime="2017-08-14T11:08:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-14</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>1.最近在调研APP端和服务端加密功能,需要用到对称加密算法,常用的对称加密算法有DES,3DES,AES<br>  AES是美国国家标准技术研究所NIST旨在取代DES 的新一代的加密标准</p>
+<style>
+.article-entry table {
+    width: 50%;
+}
+</style>
+
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th style="text-align:center">秘钥长度</th>
+<th style="text-align:right">运算速度</th>
+<th style="text-align:right">安全性</th>
+<th style="text-align:right">资源消耗</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DES</td>
+<td style="text-align:center">56位</td>
+<td style="text-align:right">较快</td>
+<td style="text-align:right">低</td>
+<td style="text-align:right">中</td>
+</tr>
+<tr>
+<td>3DES</td>
+<td style="text-align:center">112位或168位</td>
+<td style="text-align:right">慢</td>
+<td style="text-align:right">中</td>
+<td style="text-align:right">高</td>
+</tr>
+<tr>
+<td>AES</td>
+<td style="text-align:center">128,192,156位</td>
+<td style="text-align:right">快</td>
+<td style="text-align:right">高</td>
+<td style="text-align:right">低</td>
+</tr>
+</tbody>
+</table>
+<p> 所以 推荐使用AES加密算法</p>
+<p>2.DES代码段</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DES</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Logger LOGGER = LoggerFactory.getLogger(DES.class);</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line"><span class="comment">     * 加密</span></div><div class="line"><span class="comment">     * <span class="doctag">@param</span> datasource String</span></div><div class="line"><span class="comment">     * <span class="doctag">@param</span> password   String</span></div><div class="line"><span class="comment">     * <span class="doctag">@return</span> byte[]</span></div><div class="line"><span class="comment">     */</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">encrypt</span><span class="params">(String datasource, String password)</span> </span>&#123;</div><div class="line">        <span class="keyword">byte</span>[] result = datasource.getBytes();</div><div class="line">        SecureRandom random = <span class="keyword">new</span> SecureRandom();</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            DESKeySpec desKey = <span class="keyword">new</span> DESKeySpec(password.getBytes());</div><div class="line">            <span class="comment">//创建一个密匙工厂，然后用它把DESKeySpec转换成</span></div><div class="line">            SecretKeyFactory keyFactory = SecretKeyFactory.getInstance(<span class="string">"DES"</span>);</div><div class="line">            SecretKey securekey = keyFactory.generateSecret(desKey);</div><div class="line">            <span class="comment">//Cipher对象实际完成加密操作</span></div><div class="line">            Cipher cipher = Cipher.getInstance(<span class="string">"DES"</span>);</div><div class="line">            <span class="comment">//用密匙初始化Cipher对象</span></div><div class="line">            cipher.init(Cipher.ENCRYPT_MODE, securekey, random);</div><div class="line">            <span class="comment">//现在，获取数据并加密</span></div><div class="line">            <span class="comment">//正式执行加密操作</span></div><div class="line">            <span class="keyword">return</span> <span class="keyword">new</span> BASE64Encoder().encode(cipher.doFinal(result));</div><div class="line"></div><div class="line">        &#125; <span class="keyword">catch</span> (Throwable e) &#123;</div><div class="line">            <span class="keyword">if</span> (LOGGER.isErrorEnabled()) &#123;</div><div class="line">                LOGGER.error(<span class="string">"DES加密异常:&#123;&#125;"</span>, datasource, e);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line"><span class="comment">     * 解密</span></div><div class="line"><span class="comment">     *</span></div><div class="line"><span class="comment">     * <span class="doctag">@param</span> datasource String</span></div><div class="line"><span class="comment">     * <span class="doctag">@param</span> password   String</span></div><div class="line"><span class="comment">     * <span class="doctag">@return</span> byte[]</span></div><div class="line"><span class="comment">     */</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">decrypt</span><span class="params">(String datasource, String password)</span> </span>&#123;</div><div class="line">        <span class="comment">// DES算法要求有一个可信任的随机数源</span></div><div class="line">        SecureRandom random = <span class="keyword">new</span> SecureRandom();</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            <span class="comment">// 创建一个DESKeySpec对象</span></div><div class="line">            DESKeySpec desKey = <span class="keyword">new</span> DESKeySpec(password.getBytes());</div><div class="line">            <span class="comment">// 创建一个密匙工厂</span></div><div class="line">            SecretKeyFactory keyFactory = SecretKeyFactory.getInstance(<span class="string">"DES"</span>);</div><div class="line">            <span class="comment">// 将DESKeySpec对象转换成SecretKey对象</span></div><div class="line">            SecretKey securekey = keyFactory.generateSecret(desKey);</div><div class="line">            <span class="comment">// Cipher对象实际完成解密操作</span></div><div class="line">            Cipher cipher = Cipher.getInstance(<span class="string">"DES"</span>);</div><div class="line">            <span class="comment">// 用密匙初始化Cipher对象</span></div><div class="line">            cipher.init(Cipher.DECRYPT_MODE, securekey, random);</div><div class="line">            <span class="comment">// 真正开始解密操作</span></div><div class="line">            <span class="keyword">return</span> <span class="keyword">new</span> String(cipher.doFinal(<span class="keyword">new</span> BASE64Decoder().decodeBuffer(datasource)));</div><div class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</div><div class="line">            <span class="keyword">if</span> (LOGGER.isErrorEnabled()) &#123;</div><div class="line">                LOGGER.error(<span class="string">"DES解密异常:&#123;&#125;"</span>, datasource, e);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>AES 代码段<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AES</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Logger LOGGER = LoggerFactory.getLogger(DES.class);</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line"><span class="comment">     * 加密</span></div><div class="line"><span class="comment">     * <span class="doctag">@param</span> datasource 需要加密的内容</span></div><div class="line"><span class="comment">     * <span class="doctag">@param</span> password  加密密码</span></div><div class="line"><span class="comment">     * <span class="doctag">@return</span></span></div><div class="line"><span class="comment">     */</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">encrypt</span><span class="params">(String datasource, String password)</span> </span>&#123;</div><div class="line"></div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            KeyGenerator kgen = KeyGenerator.getInstance(<span class="string">"AES"</span>);</div><div class="line">            SecureRandom secureRandom = SecureRandom.getInstance(<span class="string">"SHA1PRNG"</span> );</div><div class="line">            secureRandom.setSeed(password.getBytes());</div><div class="line">            kgen.init(<span class="number">128</span>, secureRandom);</div><div class="line">            SecretKey secretKey = kgen.generateKey();</div><div class="line">            <span class="keyword">byte</span>[] enCodeFormat = secretKey.getEncoded();</div><div class="line">            SecretKeySpec key = <span class="keyword">new</span> SecretKeySpec(enCodeFormat, <span class="string">"AES"</span>);</div><div class="line">            Cipher cipher = Cipher.getInstance(<span class="string">"AES"</span>);<span class="comment">// 创建密码器</span></div><div class="line">            <span class="keyword">byte</span>[] byteContent = datasource.getBytes(<span class="string">"utf-8"</span>);</div><div class="line">            cipher.init(Cipher.ENCRYPT_MODE, key);<span class="comment">// 初始化</span></div><div class="line">            <span class="keyword">byte</span>[] result = cipher.doFinal(byteContent);</div><div class="line">            <span class="keyword">return</span> <span class="keyword">new</span> BASE64Encoder().encode(result); <span class="comment">// 加密</span></div><div class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</div><div class="line">            <span class="keyword">if</span> (LOGGER.isErrorEnabled()) &#123;</div><div class="line">                LOGGER.error(<span class="string">"AES加密异常:&#123;&#125;"</span>, datasource, e);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**解密</span></div><div class="line"><span class="comment">     * <span class="doctag">@param</span> datasource  待解密内容</span></div><div class="line"><span class="comment">     * <span class="doctag">@param</span> password 解密密钥</span></div><div class="line"><span class="comment">     * <span class="doctag">@return</span></span></div><div class="line"><span class="comment">     */</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">decrypt</span><span class="params">(String datasource, String password)</span> </span>&#123;</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            KeyGenerator kgen = KeyGenerator.getInstance(<span class="string">"AES"</span>);</div><div class="line">            SecureRandom secureRandom = SecureRandom.getInstance(<span class="string">"SHA1PRNG"</span> );</div><div class="line">            secureRandom.setSeed(password.getBytes());</div><div class="line">            kgen.init(<span class="number">128</span>, secureRandom);</div><div class="line">            SecretKey secretKey = kgen.generateKey();</div><div class="line">            <span class="keyword">byte</span>[] enCodeFormat = secretKey.getEncoded();</div><div class="line">            SecretKeySpec key = <span class="keyword">new</span> SecretKeySpec(enCodeFormat, <span class="string">"AES"</span>);</div><div class="line">            Cipher cipher = Cipher.getInstance(<span class="string">"AES"</span>);<span class="comment">// 创建密码器</span></div><div class="line">            cipher.init(Cipher.DECRYPT_MODE, key);<span class="comment">// 初始化</span></div><div class="line">            <span class="keyword">byte</span>[] result = cipher.doFinal(<span class="keyword">new</span> BASE64Decoder().decodeBuffer(datasource));</div><div class="line">            <span class="keyword">return</span> <span class="keyword">new</span> String(result); <span class="comment">// 加密</span></div><div class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</div><div class="line">            <span class="keyword">if</span> (LOGGER.isErrorEnabled()) &#123;</div><div class="line">                LOGGER.error(<span class="string">"AES解密异常:&#123;&#125;"</span>, datasource, e);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<ol>
+<li>速度比较<br>测试代码<figure class="highlight arduino"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> class AesTest &#123;</div><div class="line"></div><div class="line">    <span class="comment">//待加密内容</span></div><div class="line">    <span class="keyword">String</span> str = <span class="string">"中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试"</span>;</div><div class="line">    <span class="comment">//密码，长度要是8的倍数</span></div><div class="line">    <span class="keyword">String</span> password = <span class="string">"9588028820109132570743325311898426347857298773549468758875018579537757772163084478873699447306034466200616411960574122434059469100235892702736860872901247123456"</span>;</div><div class="line"></div><div class="line">    @Test</div><div class="line">    <span class="keyword">public</span> <span class="keyword">void</span> test() throws Exception &#123;</div><div class="line"></div><div class="line">        Long <span class="built_in">begin</span> = System.currentTimeMillis();</div><div class="line">        <span class="built_in">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">100000</span>;i++)&#123;</div><div class="line">            DES.decrypt(DES.encrypt(str,password),password);</div><div class="line">        &#125;</div><div class="line">        Long <span class="built_in">end</span> = System.currentTimeMillis();</div><div class="line">        System.out.<span class="built_in">println</span>(<span class="string">"DES时间:"</span>+(<span class="built_in">end</span>-<span class="built_in">begin</span>));</div><div class="line"></div><div class="line">        Long beginAES = System.currentTimeMillis();</div><div class="line">        <span class="built_in">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">100000</span>;i++)&#123;</div><div class="line">            AES.decrypt(AES.encrypt(str,password),password);</div><div class="line">        &#125;</div><div class="line">        Long endAES = System.currentTimeMillis();</div><div class="line">        System.out.<span class="built_in">println</span>(<span class="string">"AES时间:"</span>+(endAES-beginAES));</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>测试结果<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">DES</span>时间<span class="selector-pseudo">:41969</span></div><div class="line"><span class="selector-tag">AES</span>时间<span class="selector-pseudo">:24278</span></div></pre></td></tr></table></figure></p>
+<p>AES速度比DES速度更快一点</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">加密,解密</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/08/14/AES和DES的比较/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-aws rds 相关参数" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -189,7 +313,8 @@ var _hmt = _hmt || [];
       
         <p> 记录一下比较常用的设置</p>
 <ol>
-<li>启用慢查询<br>slow_query_log：要创建慢速查询日志，请设置为 1。默认值为 0<br>long_query_time：要防止在慢速查询日志中记录快速运行的查询，请指定需要记录的最短查询执行时间值，以秒为单位。默认值为 10 秒，最小值为 0。如果 log_output = FILE，则可以指定精确到微秒的浮点值。如果 log_output = TABLE，则必须指定精确到秒的整数值。系统只记录执行时间超过 long_query_time 值的查询。例如，将 long_query_time 设置为 0.1 可防止记录任何运行时间少于 100 毫秒的查询。<br>log_queries_not_using_indexes：要将所有不使用索引的查询记录到慢速查询日志，请设置为 1。默认值为 0。<br>2.禁用bin_log<br>innodb_flush_log_at_trx_commit也可以设置为0来提高sql的执行效率</li>
+<li>启用慢查询<br>slow_query_log：要创建慢速查询日志，请设置为 1。默认值为 0<br>long_query_time：要防止在慢速查询日志中记录快速运行的查询，请指定需要记录的最短查询执行时间值，以秒为单位。默认值为 10 秒，最小值为 0。如果 log_output = FILE，则可以指定精确到微秒的浮点值。如果 log_output = TABLE，则必须指定精确到秒的整数值。系统只记录执行时间超过 long_query_time 值的查询。例如，将 long_query_time 设置为 0.1 可防止记录任何运行时间少于 100 毫秒的查询。<br>log_queries_not_using_indexes：要将所有不使用索引的查询记录到慢速查询日志，请设置为 1。默认值为 0。<br>2.提交主从备份速度,降低延迟<br>innodb_flush_log_at_trx_commit也可以设置为0来提高sql的执行效率</li>
+<li>跳过复制过程中的不重要错误<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">CALL</span> mysql.rds_skip_repl_error;</div></pre></td></tr></table></figure></li>
 </ol>
 
       
@@ -725,81 +850,10 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-spring-boot-mybaties" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/07/10/spring-boot-mybaties/">spring-boot-mybaties</a>
-    </h1>
-  
-
-        
-        <a href="/2017/07/10/spring-boot-mybaties/" class="archive-article-date">
-  	<time datetime="2017-07-10T07:37:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>本地调试  打印SQL语句<br>mybatis-config.xml文件的 settings 标签下 增加如下配置</p>
-<figure class="highlight routeros"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;setting <span class="attribute">name</span>=<span class="string">"logImpl"</span> <span class="attribute">value</span>=<span class="string">"STDOUT_LOGGING"</span> /&gt;</div></pre></td></tr></table></figure>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">spring-boot</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/07/10/spring-boot-mybaties/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
+    <nav id="page-nav">
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+    </nav>
   
 
 
@@ -889,6 +943,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">aws</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">mysql</a>
               </li>
              
@@ -901,7 +959,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">aws</a>
+                <a href="javascript:void(0)" class="js-tag color1">加密,解密</a>
               </li>
             
             <div class="clearfix"></div>
