@@ -6,19 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="//blog.wantgo.me">
-  <title>spring-boot-mybaties | wantgo的博客</title>
+  <title>线上缓存未删除问题定位 | wantgo的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="本地调试  打印SQL语句mybatis-config.xml文件的 settings 标签下 增加如下配置 1&amp;lt;setting name=&amp;quot;logImpl&amp;quot; value=&amp;quot;STDOUT_LOGGING&amp;quot; /&amp;gt;">
-<meta name="keywords" content="spring-boot">
+  <meta name="description" content="问题描述 用户申请学生认证,管理人员审核通过后,该用户的身份标记为学生.并推送消息给用户,用户可以享受学生押金. 管理人员点击通过.更新数据库,清缓存. 发现问题是:数据库字段修改了,缓存也执行了delete操作,但是在某些时候,缓存里的值,仍然是旧的值.  刚开始是怀疑 redis里的缓存在delete的时候,没有被有效的清除掉,spring-data-redis提供的delete的方法没有返">
+<meta name="keywords" content="redis">
 <meta property="og:type" content="article">
-<meta property="og:title" content="spring-boot-mybaties">
-<meta property="og:url" content="//blog.wantgo.me/2017/07/10/spring-boot-mybaties/index.html">
+<meta property="og:title" content="线上缓存未删除问题定位">
+<meta property="og:url" content="//blog.wantgo.me/2017/08/23/缓存未删除问题定位/index.html">
 <meta property="og:site_name" content="wantgo的博客">
-<meta property="og:description" content="本地调试  打印SQL语句mybatis-config.xml文件的 settings 标签下 增加如下配置 1&amp;lt;setting name=&amp;quot;logImpl&amp;quot; value=&amp;quot;STDOUT_LOGGING&amp;quot; /&amp;gt;">
-<meta property="og:updated_time" content="2017-08-01T08:10:38.000Z">
+<meta property="og:description" content="问题描述 用户申请学生认证,管理人员审核通过后,该用户的身份标记为学生.并推送消息给用户,用户可以享受学生押金. 管理人员点击通过.更新数据库,清缓存. 发现问题是:数据库字段修改了,缓存也执行了delete操作,但是在某些时候,缓存里的值,仍然是旧的值.  刚开始是怀疑 redis里的缓存在delete的时候,没有被有效的清除掉,spring-data-redis提供的delete的方法没有返">
+<meta property="og:updated_time" content="2017-08-23T07:51:40.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="spring-boot-mybaties">
-<meta name="twitter:description" content="本地调试  打印SQL语句mybatis-config.xml文件的 settings 标签下 增加如下配置 1&amp;lt;setting name=&amp;quot;logImpl&amp;quot; value=&amp;quot;STDOUT_LOGGING&amp;quot; /&amp;gt;">
+<meta name="twitter:title" content="线上缓存未删除问题定位">
+<meta name="twitter:description" content="问题描述 用户申请学生认证,管理人员审核通过后,该用户的身份标记为学生.并推送消息给用户,用户可以享受学生押金. 管理人员点击通过.更新数据库,清缓存. 发现问题是:数据库字段修改了,缓存也执行了delete操作,但是在某些时候,缓存里的值,仍然是旧的值.  刚开始是怀疑 redis里的缓存在delete的时候,没有被有效的清除掉,spring-data-redis提供的delete的方法没有返">
   
     <link rel="alternative" href="/atom.xml" title="wantgo的博客" type="application/atom+xml">
   
@@ -166,28 +166,42 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-spring-boot-mybaties" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-缓存未删除问题定位" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      spring-boot-mybaties
+      线上缓存未删除问题定位
     </h1>
   
 
         
-        <a href="/2017/07/10/spring-boot-mybaties/" class="archive-article-date">
-  	<time datetime="2017-07-10T07:37:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-10</time>
+        <a href="/2017/08/23/缓存未删除问题定位/" class="archive-article-date">
+  	<time datetime="2017-08-23T02:13:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-23</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>本地调试  打印SQL语句<br>mybatis-config.xml文件的 settings 标签下 增加如下配置</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;setting name=&quot;logImpl&quot; value=&quot;STDOUT_LOGGING&quot; /&gt;</div></pre></td></tr></table></figure>
+        <ol>
+<li><p>问题描述<br> 用户申请学生认证,管理人员审核通过后,该用户的身份标记为学生.并推送消息给用户,用户可以享受学生押金.<br> 管理人员点击通过.更新数据库,清缓存.<br> 发现问题是:数据库字段修改了,缓存也执行了delete操作,但是在某些时候,缓存里的值,仍然是旧的值.</p>
+</li>
+<li><p>刚开始是怀疑 redis里的缓存在delete的时候,没有被有效的清除掉,spring-data-redis提供的delete的方法没有返回值,修改源码,加上返回值,<br>在做删除操作的时候,记录下返回值,记下日志.</p>
+</li>
+<li><p>确实发现在更新的时候,有删除缓存的操作,但是缓存里的值还是旧值.<br>(1) 缓存在进行删除的时候,没有删除掉<br>(2) 缓存在删除后,sql数据并没有更新,在查询的时候仍然是旧值,所以就缓存了旧值</p>
+</li>
+<li><p>ttl key 返回key的过期时间,发现key的缓存时间和更新的时间节点很接近,<br>其实证明删除操作没问题,是缓存的时候,查到了旧值.<br>为什么会查询到旧值呢,是mysql更新不及时吗?</p>
+</li>
+<li><p>查询方法,发现方法上面加了 @Transactional 注解<br> 开启事务<br> 更新数据<br> 删除缓存<br> 其他操作<br> 提交事务</p>
+</li>
+</ol>
+<pre><code>如果在删除缓存,未提交事务之前,进行了查询操作,则会进行缓存,缓存拿到的值是旧值.
+</code></pre><ol>
+<li>解决方案<br>(1) 删除缓存操作换成更新缓存操作<br>(2) 去掉事务,让SQL修改立即生效,通过异常捕获来修补数据</li>
+</ol>
 
       
 
@@ -227,7 +241,7 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">spring-boot</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">redis</a>
         		</li>
       		
 		</ul>
@@ -283,7 +297,7 @@ var _hmt = _hmt || [];
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://blog.wantgo.me/2017/07/10/spring-boot-mybaties/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://blog.wantgo.me/2017/08/23/缓存未删除问题定位/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -297,15 +311,11 @@ var _hmt = _hmt || [];
   
 <nav id="article-nav">
   
-    <a href="/2017/07/12/spring-boot-redis/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          spring-boot-redis
-        
-      </div>
-    </a>
   
+    <a href="/2017/08/14/AES和DES的比较/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">AES和DES的比较</div>
+      <i class="icon-circle-right"></i>
+    </a>
   
 </nav>
 
@@ -333,7 +343,7 @@ var _hmt = _hmt || [];
   
 
   
-  <div id="SOHUCS" sid="spring-boot-mybaties" ></div> 
+  <div id="SOHUCS" sid="缓存未删除问题定位" ></div> 
 <script type="text/javascript"> 
 (function(){ 
 var appid = "cyt6UXlwH"; 

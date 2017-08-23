@@ -188,8 +188,8 @@ var _hmt = _hmt || [];
       
         <p>spring-boot 中redis加连接池与不加连接池的对比</p>
 <figure class="highlight yml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="attr">redis:</span></div><div class="line"><span class="attr">    host:</span> <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span></div><div class="line"><span class="attr">    port:</span> <span class="number">6379</span></div><div class="line"><span class="attr">    pool:</span></div><div class="line"><span class="attr">      max-active:</span> <span class="number">50</span></div><div class="line"><span class="attr">      max-wait:</span> <span class="bullet">-1</span></div><div class="line"><span class="attr">      max-idle:</span> <span class="number">30</span></div><div class="line"><span class="attr">      min-idle:</span> <span class="number">10</span></div></pre></td></tr></table></figure>
-<p>1.没有连接池<br><figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">查询个人信息	</div><div class="line"><span class="number">49661</span>	<span class="number">7369</span>	<span class="number">5607</span>	<span class="number">12251</span>	<span class="number">15276</span>	<span class="number">22977</span>	<span class="number">3</span>	<span class="number">55819</span>	<span class="number">0.006040957693159622</span>	<span class="number">40.206127141422975</span>	<span class="number">28.618696318948555</span>	<span class="number">7.922400836480699</span></div><div class="line">总体	        </div><div class="line"><span class="number">49661</span>	<span class="number">7369</span>	<span class="number">5607</span>	<span class="number">12251</span>	<span class="number">15276</span>	<span class="number">22977</span>	<span class="number">3</span>	<span class="number">55819</span>	<span class="number">0.006040957693159622</span>	<span class="number">40.206127141422975</span>	<span class="number">28.618696318948555</span>	<span class="number">7.922400836480699</span></div></pre></td></tr></table></figure></p>
-<p>2.有连接池<br><figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">查询个人信息	</div><div class="line"><span class="number">18529</span>	<span class="number">2239</span>	<span class="number">2074</span>	<span class="number">3517</span>	<span class="number">4155</span>	<span class="number">5600</span>	<span class="number">17</span>	<span class="number">10045</span>	<span class="number">0.0260132764855092</span>	<span class="number">120.72740066980283</span>	<span class="number">90.50167842663117</span>	<span class="number">23.310681386338757</span></div><div class="line">总体			</div><div class="line"><span class="number">18529</span>	<span class="number">2239</span>	<span class="number">2074</span>	<span class="number">3517</span>	<span class="number">4155</span>	<span class="number">5600</span>	<span class="number">17</span>	<span class="number">10045</span>	<span class="number">0.0260132764855092</span>	<span class="number">120.72740066980283</span>	<span class="number">90.50167842663117</span>	<span class="number">23.310681386338757</span></div></pre></td></tr></table></figure></p>
+<p>1.没有连接池<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">查询个人信息	</div><div class="line">49661	7369	5607	12251	15276	22977	3	55819	0.006040957693159622	40.206127141422975	28.618696318948555	7.922400836480699</div><div class="line">总体	        </div><div class="line">49661	7369	5607	12251	15276	22977	3	55819	0.006040957693159622	40.206127141422975	28.618696318948555	7.922400836480699</div></pre></td></tr></table></figure></p>
+<p>2.有连接池<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">查询个人信息	</div><div class="line">18529	2239	2074	3517	4155	5600	17	10045	0.0260132764855092	120.72740066980283	90.50167842663117	23.310681386338757</div><div class="line">总体			</div><div class="line">18529	2239	2074	3517	4155	5600	17	10045	0.0260132764855092	120.72740066980283	90.50167842663117	23.310681386338757</div></pre></td></tr></table></figure></p>
 
       
 
@@ -439,6 +439,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">加密,解密</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">aws</a>
               </li>
              
@@ -455,7 +459,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">加密,解密</a>
+                <a href="javascript:void(0)" class="js-tag color1">redis</a>
               </li>
             
             <div class="clearfix"></div>

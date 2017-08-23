@@ -186,7 +186,7 @@ var _hmt = _hmt || [];
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>1.理解jmeter中的聚合报告<br><figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">Label -为请求取样器的名称</div><div class="line"></div><div class="line">Samples - 用同一个请求取样器，发送请求的数量(注意：该值是不断累计的)。比如，<span class="number">10</span>个线程数设置为<span class="number">10</span>，迭代<span class="number">10</span>次，那么每运行一次测试，该值就增加<span class="number">10</span>*<span class="number">10</span>=<span class="number">100</span></div><div class="line"></div><div class="line">Average - 默认情况下是单个Request的平均响应时间，当使用了Transaction Controller 时，也可以以Transaction为单位显示平均响应时间</div><div class="line"></div><div class="line">Median - 中位数。表示响应时间本不大于该时间值的请求样本数占总数的<span class="number">50</span>%</div><div class="line"></div><div class="line"><span class="number">90</span>% Line - 表示响应时间不大于该时间值的请求样本数占总数的<span class="number">90</span>%</div><div class="line"></div><div class="line">Min - 针对同一请求取样器，请求样本的最小响应时间</div><div class="line"></div><div class="line">Max - 针对同一请求取样器，请求样本的最大响应时间</div><div class="line"></div><div class="line">Error % - 出现错误的请求样本的百分比</div><div class="line"></div><div class="line">Throughput - 吞吐量以“requests/second、requests /minute、requests /hour”来衡量。 时间单位已经被选取为second，所以，显示速率至少是<span class="number">1.0</span>，即每秒<span class="number">1</span>个请求。 当吞吐量被保存到CVS文件时，采用的是requests/second，所以<span class="number">30.0</span> requests/second 在CVS中被保存为<span class="number">0.5</span></div><div class="line"></div><div class="line">Kb/sec - 以Kilobytes/seond来衡量的吞吐量</div></pre></td></tr></table></figure></p>
+        <p>1.理解jmeter中的聚合报告<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">Label -为请求取样器的名称</div><div class="line"></div><div class="line">Samples - 用同一个请求取样器，发送请求的数量(注意：该值是不断累计的)。比如，10个线程数设置为10，迭代10次，那么每运行一次测试，该值就增加10*10=100</div><div class="line"></div><div class="line">Average - 默认情况下是单个Request的平均响应时间，当使用了Transaction Controller 时，也可以以Transaction为单位显示平均响应时间</div><div class="line"></div><div class="line">Median - 中位数。表示响应时间本不大于该时间值的请求样本数占总数的50%</div><div class="line"></div><div class="line">90% Line - 表示响应时间不大于该时间值的请求样本数占总数的90%</div><div class="line"></div><div class="line">Min - 针对同一请求取样器，请求样本的最小响应时间</div><div class="line"></div><div class="line">Max - 针对同一请求取样器，请求样本的最大响应时间</div><div class="line"></div><div class="line">Error % - 出现错误的请求样本的百分比</div><div class="line"></div><div class="line">Throughput - 吞吐量以“requests/second、requests /minute、requests /hour”来衡量。 时间单位已经被选取为second，所以，显示速率至少是1.0，即每秒1个请求。 当吞吐量被保存到CVS文件时，采用的是requests/second，所以30.0 requests/second 在CVS中被保存为0.5</div><div class="line"></div><div class="line">Kb/sec - 以Kilobytes/seond来衡量的吞吐量</div></pre></td></tr></table></figure></p>
 <p>2.Tomcat的简单配置<br><figure class="highlight yml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="attr">server:</span></div><div class="line"><span class="attr">  tomcat:</span></div><div class="line"><span class="attr">    max-threads:</span> <span class="number">500</span>   <span class="comment"># 默认连接是200个  我们调成500</span></div><div class="line"><span class="attr">    compression:</span> <span class="string">on</span>    <span class="comment"># 开启压缩</span></div></pre></td></tr></table></figure></p>
 
       
@@ -437,6 +437,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">加密,解密</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">aws</a>
               </li>
              
@@ -453,7 +457,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">加密,解密</a>
+                <a href="javascript:void(0)" class="js-tag color1">redis</a>
               </li>
             
             <div class="clearfix"></div>
