@@ -6,18 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="//blog.wantgo.me">
-  <title>Tag: aws | wantgo的博客</title>
+  <title>postgis的使用 | wantgo的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="河南大学10级,目前就职于oBike">
-<meta name="keywords" content="java python">
-<meta property="og:type" content="website">
-<meta property="og:title" content="wantgo的博客">
-<meta property="og:url" content="//blog.wantgo.me/tags/aws/index.html">
+  <meta name="description" content="1.查看附近单车功能2.是否在某个区域内功能3.附近有哪些多边形 基础查询1234567891011121314#创建表信息CREATE TABLE lbs(gid serial PRIMARY KEY, point geography(POINT,4326),polygon geography(POLYGON,4326));#插入数据INSERT INTO lbs (gid,point,poly">
+<meta name="keywords" content="postgre">
+<meta property="og:type" content="article">
+<meta property="og:title" content="postgis的使用">
+<meta property="og:url" content="//blog.wantgo.me/2017/08/31/postGis的使用/index.html">
 <meta property="og:site_name" content="wantgo的博客">
-<meta property="og:description" content="河南大学10级,目前就职于oBike">
+<meta property="og:description" content="1.查看附近单车功能2.是否在某个区域内功能3.附近有哪些多边形 基础查询1234567891011121314#创建表信息CREATE TABLE lbs(gid serial PRIMARY KEY, point geography(POINT,4326),polygon geography(POLYGON,4326));#插入数据INSERT INTO lbs (gid,point,poly">
+<meta property="og:updated_time" content="2017-09-08T06:37:39.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="wantgo的博客">
-<meta name="twitter:description" content="河南大学10级,目前就职于oBike">
+<meta name="twitter:title" content="postgis的使用">
+<meta name="twitter:description" content="1.查看附近单车功能2.是否在某个区域内功能3.附近有哪些多边形 基础查询1234567891011121314#创建表信息CREATE TABLE lbs(gid serial PRIMARY KEY, point geography(POINT,4326),polygon geography(POLYGON,4326));#插入数据INSERT INTO lbs (gid,point,poly">
   
     <link rel="alternative" href="/atom.xml" title="wantgo的博客" type="application/atom+xml">
   
@@ -165,60 +166,191 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-postGis的使用" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/08/07/aws密码登录/" class="archive-article-date">
-  	<time datetime="2017-08-07T07:26:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-07</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/08/07/aws密码登录/">aws密码登录</a>
+    <h1 class="article-title" itemprop="name">
+      postgis的使用
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2017/08/31/postGis的使用/" class="archive-article-date">
+  	<time datetime="2017-08-31T03:08:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-31</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>1.查看附近单车功能<br>2.是否在某个区域内功能<br>3.附近有哪些多边形</p>
+<p>基础查询<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">#创建表信息</div><div class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> lbs(gid <span class="built_in">serial</span> PRIMARY <span class="keyword">KEY</span>, point geography(POINT,<span class="number">4326</span>),polygon geography(POLYGON,<span class="number">4326</span>));</div><div class="line"></div><div class="line">#插入数据</div><div class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> lbs (gid,point,polygon) <span class="keyword">VALUES</span> (<span class="number">1</span>,ST_GeographyFromText(<span class="string">'SRID=4326;POINT(121.456076 31.206964)'</span>), ST_GeographyFromText(<span class="string">'SRID=4326;POLYGON((121.450824 31.202472,121.450824 31.2114555,121.461327 31.202472,121.461327 31.211455,121.450824 31.202472))'</span>));</div><div class="line"></div><div class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> lbs (gid,point,polygon) <span class="keyword">VALUES</span> (<span class="number">2</span>,ST_GeographyFromText(<span class="string">'SRID=4326;POINT(121.465170 31.216699)'</span>), ST_GeographyFromText(<span class="string">'SRID=4326;POLYGON((121.459918 31.212207,121.459918 31.221191,31.221191 121.470421,121.470421 31.221191,121.459918 31.212207))'</span>));</div><div class="line"></div><div class="line">#查询表信息</div><div class="line"><span class="keyword">select</span> * <span class="keyword">from</span> lbs;</div><div class="line"></div><div class="line">#按照不同形式查询信息</div><div class="line"><span class="keyword">select</span> ST_AsGeoJson(point) <span class="keyword">from</span> lbs;</div><div class="line"><span class="keyword">select</span> asText(point) <span class="keyword">from</span> lbs;</div></pre></td></tr></table></figure></p>
+<p>功能查询<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">#1.查看两个点的距离</div><div class="line"><span class="keyword">SELECT</span> ST_Distance(<span class="string">'POINT(121.456076 31.206964)'</span>::geography, <span class="string">'POINT(121.465170 31.216699)'</span>:: geography);</div><div class="line"></div><div class="line"> st_distance  </div><div class="line"><span class="comment">--------------</span></div><div class="line"> 1384.1871299</div><div class="line"></div><div class="line">#2.查看附近1000米的点 ST_DWithin</div><div class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> lbs <span class="keyword">WHERE</span> ST_DWithin(point, ST_GeographyFromText(<span class="string">'SRID=4326;POINT(121.456076 31.206964)'</span>), <span class="number">1000</span>);</div><div class="line"></div><div class="line">#3.查看点是否在对边形内 ST_Within</div><div class="line"><span class="keyword">SELECT</span> gid,ST_AsText(point),ST_AsText(polygon),ST_Within(ST_GeomFromEWKT(<span class="string">'SRID=4326;POINT(121.461170 31.216699)'</span>), ST_GeomFromEWKT(ST_AsEWKT(polygon))) <span class="keyword">FROM</span> lbs ;</div><div class="line"><span class="keyword">SELECT</span> gid,ST_AsText(point),ST_AsText(polygon),ST_Within(ST_GeomFromEWKT(<span class="string">'SRID=4326;POINT(121.461170 31.216699)'</span>), polygon) <span class="keyword">FROM</span> lbs ;</div><div class="line"></div><div class="line">#4.判断两个多边形是否相交 ST_Intersects</div><div class="line"><span class="keyword">SELECT</span> gid,ST_AsText(point),ST_AsText(polygon) <span class="keyword">FROM</span> lbs <span class="keyword">where</span> ST_Intersects(ST_GeographyFromText(<span class="string">'SRID=4326;POLYGON((121.459918 31.212207,121.459918 31.221191,31.221191 121.470421,121.470421 31.221191,121.459918 31.212207))'</span>), polygon);</div><div class="line"></div><div class="line">#5.查询出不同格式信息的方法</div><div class="line"><span class="keyword">select</span> ST_GeographyFromText(<span class="string">'SRID=4326;POLYGON((121.459918 31.212207,121.459918 31.221191,31.221191 121.470421,121.470421 31.221191,121.459918 31.212207))'</span>);</div><div class="line"></div><div class="line"><span class="keyword">select</span> ST_GeomFromEWKT(<span class="string">'SRID=4326;POLYGON((121.459918 31.212207,121.459918 31.221191,31.221191 121.470421,121.470421 31.2211917,121.459918 31.212207))'</span>);</div><div class="line"></div><div class="line"><span class="keyword">SELECT</span> <span class="string">'SRID=4;POINT(0 0)'</span>::geometry;</div></pre></td></tr></table></figure></p>
+<p><a href="http://www.cnblogs.com/wuhenke/archive/2010/08/02/1790747.html" target="_blank" rel="external">参考连接</a></p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/Wechat.jpeg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">aws</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">postgre</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://blog.wantgo.me/2017/08/31/postGis的使用/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2017/09/08/linux命令使用总结/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Linux命令使用总结
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/2017/08/29/postGIS的安装/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Mac下PostGis的安装</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+  <div id="SOHUCS" sid="postGis的使用" ></div> 
+<script type="text/javascript"> 
+(function(){ 
+var appid = "cyt6UXlwH"; 
+var conf = "prod_2010e762104bacc575d70e91d8d60500"; 
+var width = window.innerWidth || document.documentElement.clientWidth; 
+if (width < 960) { 
+window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="//changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("//changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); </script>
+  
+
+  
 
 
           </div>
@@ -241,9 +373,9 @@ var _hmt = _hmt || [];
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: true,
 		toc_hide_index: true,
