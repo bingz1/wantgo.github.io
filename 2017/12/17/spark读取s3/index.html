@@ -8,17 +8,17 @@
   <link rel="dns-prefetch" href="//blog.wantgo.me">
   <title>spark 读取s3 | wantgo的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="由于我们在新加坡和法兰克福有两个s3的中心,所以在使用spark读取s3的时候,遇到了很多坑,记录一下.  访问新加坡中心的s3  123456val conf = new SparkConf().setMaster(&amp;quot;local&amp;quot;)    val sc = SparkSession.builder().config(conf).getOrCreate().sparkConte">
+  <meta name="description" content="由于我们在新加坡和法兰克福有两个s3的中心,所以在使用spark读取s3的时候,遇到了很多坑,记录一下.  访问新加坡中心的s3 123456val conf = new SparkConf().setMaster(&amp;quot;local&amp;quot;)   val sc = SparkSession.builder().config(conf).getOrCreate().sparkContext">
 <meta name="keywords" content="spark">
 <meta property="og:type" content="article">
 <meta property="og:title" content="spark 读取s3">
 <meta property="og:url" content="//blog.wantgo.me/2017/12/17/spark读取s3/index.html">
 <meta property="og:site_name" content="wantgo的博客">
-<meta property="og:description" content="由于我们在新加坡和法兰克福有两个s3的中心,所以在使用spark读取s3的时候,遇到了很多坑,记录一下.  访问新加坡中心的s3  123456val conf = new SparkConf().setMaster(&amp;quot;local&amp;quot;)    val sc = SparkSession.builder().config(conf).getOrCreate().sparkConte">
-<meta property="og:updated_time" content="2017-12-17T04:37:29.579Z">
+<meta property="og:description" content="由于我们在新加坡和法兰克福有两个s3的中心,所以在使用spark读取s3的时候,遇到了很多坑,记录一下.  访问新加坡中心的s3 123456val conf = new SparkConf().setMaster(&amp;quot;local&amp;quot;)   val sc = SparkSession.builder().config(conf).getOrCreate().sparkContext">
+<meta property="og:updated_time" content="2017-12-17T07:43:55.857Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="spark 读取s3">
-<meta name="twitter:description" content="由于我们在新加坡和法兰克福有两个s3的中心,所以在使用spark读取s3的时候,遇到了很多坑,记录一下.  访问新加坡中心的s3  123456val conf = new SparkConf().setMaster(&amp;quot;local&amp;quot;)    val sc = SparkSession.builder().config(conf).getOrCreate().sparkConte">
+<meta name="twitter:description" content="由于我们在新加坡和法兰克福有两个s3的中心,所以在使用spark读取s3的时候,遇到了很多坑,记录一下.  访问新加坡中心的s3 123456val conf = new SparkConf().setMaster(&amp;quot;local&amp;quot;)   val sc = SparkSession.builder().config(conf).getOrCreate().sparkContext">
   
     <link rel="alternative" href="/atom.xml" title="wantgo的博客" type="application/atom+xml">
   
@@ -188,21 +188,16 @@ var _hmt = _hmt || [];
       
         <p>由于我们在新加坡和法兰克福有两个s3的中心,所以在使用spark读取s3的时候,遇到了很多坑,记录一下.</p>
 <ol>
-<li>访问新加坡中心的s3</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">val conf = new SparkConf().setMaster(&quot;local&quot;)</div><div class="line">    val sc = SparkSession.builder().config(conf).getOrCreate().sparkContext</div><div class="line">    sc.hadoopConfiguration.set(&quot;fs.s3n.awsAccessKeyId&quot;, &quot;*&quot;)</div><div class="line">    sc.hadoopConfiguration.set(&quot;fs.s3n.awsSecretAccessKey&quot;, &quot;*&quot;)</div><div class="line"></div><div class="line">    val myRDD = sc.textFile(&quot;s3n://***&quot;)</div></pre></td></tr></table></figure>
-<ol>
-<li>访问法兰克福中心<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">val conf = new SparkConf().setMaster(&quot;local&quot;)</div><div class="line">    val sc = SparkSession.builder().config(conf).getOrCreate().sparkContext</div><div class="line">    sc.hadoopConfiguration.set(&quot;fs.s3a.access.key&quot;, &quot;*&quot;)</div><div class="line">    sc.hadoopConfiguration.set(&quot;fs.s3a.secret.key&quot;, &quot;*&quot;)</div><div class="line">    sc.hadoopConfiguration.set(&quot;fs.s3a.endpoint&quot;, &quot;s3.eu-central-1.amazonaws.com&quot;)</div><div class="line"></div><div class="line">    val myRDD = sc.textFile(&quot;s3a://**&quot;)</div></pre></td></tr></table></figure>
+<li><p>访问新加坡中心的s3</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">val conf = new SparkConf().setMaster(&quot;local&quot;)</div><div class="line">   val sc = SparkSession.builder().config(conf).getOrCreate().sparkContext</div><div class="line">   sc.hadoopConfiguration.set(&quot;fs.s3n.awsAccessKeyId&quot;, &quot;*&quot;)</div><div class="line">   sc.hadoopConfiguration.set(&quot;fs.s3n.awsSecretAccessKey&quot;, &quot;*&quot;)</div><div class="line"></div><div class="line">   val myRDD = sc.textFile(&quot;s3n://***&quot;)</div></pre></td></tr></table></figure>
+</li>
+<li><p>访问法兰克福中心</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">val conf = new SparkConf().setMaster(&quot;local&quot;)</div><div class="line">   val sc = SparkSession.builder().config(conf).getOrCreate().sparkContext</div><div class="line">   sc.hadoopConfiguration.set(&quot;fs.s3a.access.key&quot;, &quot;*&quot;)</div><div class="line">   sc.hadoopConfiguration.set(&quot;fs.s3a.secret.key&quot;, &quot;*&quot;)</div><div class="line">   sc.hadoopConfiguration.set(&quot;fs.s3a.endpoint&quot;, &quot;s3.eu-central-1.amazonaws.com&quot;)</div><div class="line"></div><div class="line">   val myRDD = sc.textFile(&quot;s3a://**&quot;)</div></pre></td></tr></table></figure>
 </li>
 </ol>
 <p>需要引入的外部包<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&quot;org.apache.hadoop&quot; % &quot;hadoop-aws&quot; % &quot;2.8.0&quot;,</div><div class="line">&quot;net.java.dev.jets3t&quot; % &quot;jets3t&quot; % &quot;0.9.4&quot;</div></pre></td></tr></table></figure></p>
-<ol>
-<li><p>由于新加坡的s3和法兰克福的s3使用的不同协议<br>所以,新加坡的需要使用 s3n<br> 法兰克福的使用 s3a, 需要指定节点位置<br>s3a需要使用 jets3t的0.9.4的版本,所以需要单独添加.</p>
-</li>
-<li><p>参考资料</p>
-</li>
-</ol>
-<p><a href="https://issues-test.apache.org/jira/browse/HADOOP-13325" target="_blank" rel="external">法兰克福需要使用s3a</a></p>
+<p>3.由于新加坡的s3和法兰克福的s3使用的不同协议<br>所以,新加坡的需要使用 s3n<br>    法兰克福的使用 s3a, 需要指定节点位置<br>s3a需要使用 jets3t的0.9.4的版本,所以需要单独添加.</p>
+<p>4.参考资料<br><a href="https://issues-test.apache.org/jira/browse/HADOOP-13325" target="_blank" rel="external">法兰克福需要使用s3a</a></p>
 
       
 
@@ -443,10 +438,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">加密,解密</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">mysql</a>
               </li>
              
@@ -455,11 +446,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">postgre</a>
+                <a href="javascript:void(0)" class="js-tag color1">加密,解密</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">linux</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">spark</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">postgre</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -472,10 +471,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">redis</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">linux</a>
               </li>
             
             <div class="clearfix"></div>
