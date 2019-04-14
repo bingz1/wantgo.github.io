@@ -8,16 +8,16 @@
   <link rel="dns-prefetch" href="//blog.wantgo.me">
   <title>wantgo的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="河南大学10级,目前就职于WeWork">
+  <meta name="description" content="河南大学,目前就职于WeWork">
 <meta name="keywords" content="java python">
 <meta property="og:type" content="website">
 <meta property="og:title" content="wantgo的博客">
 <meta property="og:url" content="//blog.wantgo.me/index.html">
 <meta property="og:site_name" content="wantgo的博客">
-<meta property="og:description" content="河南大学10级,目前就职于WeWork">
+<meta property="og:description" content="河南大学,目前就职于WeWork">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="wantgo的博客">
-<meta name="twitter:description" content="河南大学10级,目前就职于WeWork">
+<meta name="twitter:description" content="河南大学,目前就职于WeWork">
   
     <link rel="alternative" href="/atom.xml" title="wantgo的博客" type="application/atom+xml">
   
@@ -46,7 +46,7 @@
 <div class="intrude-less">
 	<header id="header" class="inner">
 		<a href="/" class="profilepic">
-			<img src="" class="js-avatar">
+			<img src="/img/avatar.jpeg" class="js-avatar">
 		</a>
 		<hgroup>
 		  <h1 class="header-author"><a href="/">wantgo</a></h1>
@@ -82,13 +82,9 @@
 		<nav class="header-nav">
 			<div class="social">
 				
-					<a class="github" target="_blank" href="#" title="github"><i class="icon-github"></i></a>
+					<a class="github" target="_blank" href="https://github.com/wantgo" title="github"><i class="icon-github"></i></a>
 		        
-					<a class="weibo" target="_blank" href="#" title="weibo"><i class="icon-weibo"></i></a>
-		        
-					<a class="rss" target="_blank" href="#" title="rss"><i class="icon-rss"></i></a>
-		        
-					<a class="zhihu" target="_blank" href="#" title="zhihu"><i class="icon-zhihu"></i></a>
+					<a class="mail" target="_blank" href="/xiangbing.zhang6@wework.com" title="mail"><i class="icon-mail"></i></a>
 		        
 			</div>
 		</nav>
@@ -106,7 +102,7 @@
 	<div class="intrude-less">
 		<header id="header" class="inner">
 			<div class="profilepic">
-				<img src="" class="js-avatar">
+				<img src="/img/avatar.jpeg" class="js-avatar">
 			</div>
 			<hgroup>
 			  <h1 class="header-author js-header-author">wantgo</h1>
@@ -125,13 +121,9 @@
 			<nav class="header-nav">
 				<div class="social">
 					
-						<a class="github" target="_blank" href="#" title="github"><i class="icon-github"></i></a>
+						<a class="github" target="_blank" href="https://github.com/wantgo" title="github"><i class="icon-github"></i></a>
 			        
-						<a class="weibo" target="_blank" href="#" title="weibo"><i class="icon-weibo"></i></a>
-			        
-						<a class="rss" target="_blank" href="#" title="rss"><i class="icon-rss"></i></a>
-			        
-						<a class="zhihu" target="_blank" href="#" title="zhihu"><i class="icon-zhihu"></i></a>
+						<a class="mail" target="_blank" href="/xiangbing.zhang6@wework.com" title="mail"><i class="icon-mail"></i></a>
 			        
 				</div>
 			</nav>
@@ -179,13 +171,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <ol>
-<li><p>搜索文件内容</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">find . -name &quot;.*&quot; | xargs -n 20 grep &apos;/Users/zhaimi/scripts&apos;</div></pre></td></tr></table></figure>
-</li>
-<li><p>Nginx中查询访问量最高的10个IP</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cat access_ssl.mobile.o.bike.log | awk &apos;&#123;a[$1]++&#125; END &#123;for(b in a) print b&quot;\t&quot;a[b]&#125;&apos; | sort -k2 -r -n | head -n 50</div></pre></td></tr></table></figure></li>
-</ol>
+        <p>1.搜索文件内容<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">find . -name &quot;.*&quot; | xargs -n 20 grep &apos;/Users/zhaimi/scripts&apos;</div></pre></td></tr></table></figure></p>
+<p>2.Nginx中查询访问量最高的10个IP<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cat access_ssl.mobile.o.bike.log | awk &apos;&#123;a[$1]++&#125; END &#123;for(b in a) print b&quot;\t&quot;a[b]&#125;&apos; | sort -k2 -r -n | head -n 50</div></pre></td></tr></table></figure></p>
 
       
 
