@@ -6,18 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="//blog.wantgo.me">
-  <title>Tag: jetty | wantgo的博客</title>
+  <title>hadoop 3.0 集群安装一 | wantgo的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="河南大学10级,目前就职于oBike">
-<meta name="keywords" content="java python">
-<meta property="og:type" content="website">
-<meta property="og:title" content="wantgo的博客">
-<meta property="og:url" content="//blog.wantgo.me/tags/jetty/index.html">
+  <meta name="description" content="一. 配置基础环境1.hadoop 3.0 支持多NameNode模式,我们先尝试用单个NameNode模式.准备三台机器10.1.2.38  10.1.2.200 10.1.2.163 2.修改三台机器的hostname.查看机器的hostname1hostname 编辑hostname1vim /etc/hostname 重启机器后生效IP和hostname对应如下:10.1.2.38 had">
+<meta name="keywords" content="hadoop">
+<meta property="og:type" content="article">
+<meta property="og:title" content="hadoop 3.0 集群安装一">
+<meta property="og:url" content="//blog.wantgo.me/2019/04/14/hadoop 集群安装一/index.html">
 <meta property="og:site_name" content="wantgo的博客">
-<meta property="og:description" content="河南大学10级,目前就职于oBike">
+<meta property="og:description" content="一. 配置基础环境1.hadoop 3.0 支持多NameNode模式,我们先尝试用单个NameNode模式.准备三台机器10.1.2.38  10.1.2.200 10.1.2.163 2.修改三台机器的hostname.查看机器的hostname1hostname 编辑hostname1vim /etc/hostname 重启机器后生效IP和hostname对应如下:10.1.2.38 had">
+<meta property="og:updated_time" content="2019-04-14T07:09:14.807Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="wantgo的博客">
-<meta name="twitter:description" content="河南大学10级,目前就职于oBike">
+<meta name="twitter:title" content="hadoop 3.0 集群安装一">
+<meta name="twitter:description" content="一. 配置基础环境1.hadoop 3.0 支持多NameNode模式,我们先尝试用单个NameNode模式.准备三台机器10.1.2.38  10.1.2.200 10.1.2.163 2.修改三台机器的hostname.查看机器的hostname1hostname 编辑hostname1vim /etc/hostname 重启机器后生效IP和hostname对应如下:10.1.2.38 had">
   
     <link rel="alternative" href="/atom.xml" title="wantgo的博客" type="application/atom+xml">
   
@@ -165,60 +166,212 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-hadoop 集群安装一" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/08/01/spring-boot-jetty/" class="archive-article-date">
-  	<time datetime="2017-07-31T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-01</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/08/01/spring-boot-jetty/">spring-boot-jetty</a>
+    <h1 class="article-title" itemprop="name">
+      hadoop 3.0 集群安装一
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2019/04/14/hadoop 集群安装一/" class="archive-article-date">
+  	<time datetime="2019-04-14T07:09:14.806Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-14</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>一. 配置基础环境<br>1.hadoop 3.0 支持多NameNode模式,我们先尝试用单个NameNode模式.<br>准备三台机器<br>10.1.2.38  10.1.2.200 10.1.2.163</p>
+<p>2.修改三台机器的hostname.<br>查看机器的hostname<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hostname</div></pre></td></tr></table></figure></p>
+<p>编辑hostname<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vim /etc/hostname</div></pre></td></tr></table></figure></p>
+<p>重启机器后生效<br>IP和hostname对应如下:<br>10.1.2.38 hadoop-master<br>10.1.2.200 hadoop-slave1<br>10.1.2.163 hadoop-slave2</p>
+<p>3.ubuntu 安装java8</p>
+<p>4.设置三台机器可以自访问和互通<br><a href="http://www.ityouknow.com/hadoop/2017/07/24/hadoop-cluster-setup.html" target="_blank" rel="external">参考免密登录部分</a></p>
+<p>5.下载hadoop 3.0版本并解压到 /opt 目录下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">wget http://mirrors.hust.edu.cn/apache/hadoop/common/hadoop-3.0.0/hadoop-3.0.0.tar.gz</div><div class="line">tar xf hadoop-3.0.0.tar.gz /opt</div></pre></td></tr></table></figure></p>
+<p>6.配置环境变量<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">vim /etc/profile</div><div class="line"></div><div class="line">export HADOOP_HOME=/opt/hadoop-3.0.0</div><div class="line">export HADOOP_PREFIX=/opt/hadoop-3.0.0</div><div class="line">export HADOOP_HDFS_HOME=/opt/hadoop-3.0.0</div><div class="line">export HADOOP_CONF_DIR=/opt/hadoop-3.0.0/etc/hadoop</div><div class="line"></div><div class="line">source /etc/profile</div></pre></td></tr></table></figure></p>
+<p>二. 配置Hadoop参数<br>1.创建namenode,datenode,temp目录<br>/opt/hadoop-3.0.0/data/namenode<br>/opt/hadoop-3.0.0/data/datanode<br>/opt/hadoop-3.0.0/data/temp</p>
+<p>2.配置core-site.xml 文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">&lt;property&gt;</div><div class="line">    &lt;name&gt;hadoop.tmp.dir&lt;/name&gt;</div><div class="line">    &lt;value&gt;file:/opt/hadoop-3.0.0/data/temp&lt;/value&gt;</div><div class="line">    &lt;description&gt;Abase for other temporary directories.&lt;/description&gt;</div><div class="line">&lt;/property&gt;</div><div class="line">&lt;property&gt;</div><div class="line">    &lt;name&gt;fs.defaultFS&lt;/name&gt;</div><div class="line">    &lt;value&gt;hdfs://hadoop-master:9000&lt;/value&gt;</div><div class="line">&lt;/property&gt;</div><div class="line">&lt;property&gt;</div><div class="line">    &lt;name&gt;hadoop.proxyuser.ubuntu.groups&lt;/name&gt;</div><div class="line">    &lt;value&gt;ubuntu&lt;/value&gt;</div><div class="line">    &lt;description&gt;Allow the superuser oozie to impersonate any members of the group group1 and group2&lt;/description&gt;</div><div class="line">&lt;/property&gt;</div><div class="line"></div><div class="line">&lt;property&gt;</div><div class="line">    &lt;name&gt;hadoop.proxyuser.ubuntu.hosts&lt;/name&gt;</div><div class="line">    &lt;value&gt;10.1.2.38,127.0.0.1,localhost&lt;/value&gt;</div><div class="line">    &lt;description&gt;The superuser can connect only from host1 and host2 to impersonate a user&lt;/description&gt;</div><div class="line">&lt;/property&gt;</div></pre></td></tr></table></figure></p>
+<p>3.配置hdfs-site.xml<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">&lt;property&gt;</div><div class="line">   &lt;name&gt;dfs.replication&lt;/name&gt;</div><div class="line">   &lt;value&gt;2&lt;/value&gt;</div><div class="line">&lt;/property&gt;</div><div class="line">&lt;property&gt;</div><div class="line">   &lt;name&gt;dfs.namenode.name.dir&lt;/name&gt;</div><div class="line">   &lt;value&gt;/opt/hadoop-3.0.0/data/namenode&lt;/value&gt;</div><div class="line">&lt;/property&gt;</div><div class="line">&lt;property&gt;</div><div class="line">   &lt;name&gt;dfs.datanode.data.dir&lt;/name&gt;</div><div class="line">   &lt;value&gt;/opt/hadoop-3.0.0/data/datanode&lt;/value&gt;</div><div class="line">&lt;/property&gt;</div></pre></td></tr></table></figure></p>
+<p>4.配置yarn-site.xml<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">&lt;property&gt;</div><div class="line">    &lt;name&gt;yarn.resourcemanager.hostname&lt;/name&gt;</div><div class="line">    &lt;value&gt;hadoop-master&lt;/value&gt;</div><div class="line">&lt;/property&gt;</div><div class="line">&lt;property&gt;</div><div class="line">    &lt;name&gt;yarn.nodemanager.aux-services&lt;/name&gt;</div><div class="line">    &lt;value&gt;mapreduce_shuffle&lt;/value&gt;</div><div class="line">&lt;/property&gt;</div><div class="line">&lt;property&gt;</div><div class="line">    &lt;name&gt;yarn.nodemanager.env-whitelist&lt;/name&gt;</div><div class="line">    &lt;value&gt;JAVA_HOME,HADOOP_COMMON_HOME,HADOOP_HDFS_HOME,HADOOP_CONF_DIR,CLASSPATH_PREPEND_DISTCACHE,HADOOP_YARN_HOME,HADOOP_MAPRED_HOME&lt;/value&gt;</div><div class="line">&lt;/property&gt;</div><div class="line">&lt;property&gt;</div><div class="line">    &lt;name&gt;yarn.nodemanager.vmem-check-enabled&lt;/name&gt;</div><div class="line">    &lt;value&gt;false&lt;/value&gt;</div><div class="line">&lt;/property&gt;</div><div class="line">&lt;property&gt;</div><div class="line">    &lt;name&gt;yarn.nodemanager.resource.memory-mb&lt;/name&gt;</div><div class="line">    &lt;value&gt;49152&lt;/value&gt;</div><div class="line">&lt;/property&gt;</div><div class="line">&lt;property&gt;</div><div class="line">    &lt;name&gt;yarn.scheduler.maximum-allocation-mb&lt;/name&gt;</div><div class="line">    &lt;value&gt;49152&lt;/value&gt;</div><div class="line">&lt;/property&gt;</div></pre></td></tr></table></figure></p>
+<p>5.配置mapred-site.xml</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">&lt;property&gt;</div><div class="line">   &lt;name&gt;mapreduce.framework.name&lt;/name&gt;</div><div class="line">   &lt;value&gt;yarn&lt;/value&gt;</div><div class="line">&lt;/property&gt;</div><div class="line">&lt;property&gt;</div><div class="line">    &lt;name&gt;yarn.nodemanager.aux-services&lt;/name&gt;</div><div class="line">    &lt;value&gt;mapreduce_shuffle&lt;/value&gt;</div><div class="line">&lt;/property&gt;</div><div class="line">&lt;property&gt;</div><div class="line">    &lt;name&gt;yarn.nodemanager.aux-services.mapreduce.shuffle.class&lt;/name&gt;</div><div class="line">    &lt;value&gt;org.apache.hadoop.mapred.ShuffleHandler&lt;/value&gt;</div><div class="line">&lt;/property&gt;</div></pre></td></tr></table></figure>
+<p>6.配置 worker<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">hadoop-master</div><div class="line">hadoop-slave1</div><div class="line">hadoop-slave2</div></pre></td></tr></table></figure></p>
+<p>7.将整个hadoop3.0.0文件夹传到另外两个机器的/opt目录下<br>三,启动集群<br>1.格式化<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">bin/hadoop namenode -format</div></pre></td></tr></table></figure></p>
+<p>2.启动 hdfs<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./sbin/start-dfs.sh</div></pre></td></tr></table></figure></p>
+<p>关闭 hdfs<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./sbin/stop-dfs.sh</div></pre></td></tr></table></figure></p>
+<p>3.启动 yarn<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./sbin/start-yarn.sh</div></pre></td></tr></table></figure></p>
+<p>关闭yarn<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./sbin/stop-yarn.sh</div></pre></td></tr></table></figure></p>
+<p>4.查看启动状态<br>master上<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">jps</div><div class="line"></div><div class="line">31283 Jps</div><div class="line">27828 DataNode</div><div class="line">27685 NameNode</div><div class="line">28365 ResourceManager</div><div class="line">28030 SecondaryNameNode</div><div class="line">28510 NodeManager</div></pre></td></tr></table></figure></p>
+<p>slave 上<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">7209 DataNode</div><div class="line">7353 NodeManager</div><div class="line">8557 Jps</div></pre></td></tr></table></figure></p>
+<p><a href="http://10.1.2.38:8088/cluster/nodes" target="_blank" rel="external">http://10.1.2.38:8088/cluster/nodes</a><br><a href="http://10.1.2.38:9870/dfshealth.html#tab-overview" target="_blank" rel="external">http://10.1.2.38:9870/dfshealth.html#tab-overview</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div></pre></td><td class="code"><pre><div class="line">./bin/hadoop dfsadmin -report</div><div class="line"></div><div class="line">Configured Capacity: 1584913920000 (1.44 TB)</div><div class="line">Present Capacity: 1506181877760 (1.37 TB)</div><div class="line">DFS Remaining: 1506181787648 (1.37 TB)</div><div class="line">DFS Used: 90112 (88 KB)</div><div class="line">DFS Used%: 0.00%</div><div class="line">Replicated Blocks:</div><div class="line">  Under replicated blocks: 0</div><div class="line">  Blocks with corrupt replicas: 0</div><div class="line">  Missing blocks: 0</div><div class="line">  Missing blocks (with replication factor 1): 0</div><div class="line">  Pending deletion blocks: 0</div><div class="line">Erasure Coded Block Groups: </div><div class="line">  Low redundancy block groups: 0</div><div class="line">  Block groups with corrupt internal blocks: 0</div><div class="line">  Missing block groups: 0</div><div class="line">  Pending deletion blocks: 0</div><div class="line"></div><div class="line">-------------------------------------------------</div><div class="line">Live datanodes (3):</div><div class="line"></div><div class="line">Name: 10.1.2.163:9866 (hadoop-slave2)</div><div class="line">Hostname: hadoop-slave2</div><div class="line">Decommission Status : Normal</div><div class="line">Configured Capacity: 528304640000 (492.02 GB)</div><div class="line">DFS Used: 28672 (28 KB)</div><div class="line">Non DFS Used: 4665520128 (4.35 GB)</div><div class="line">DFS Remaining: 502063308800 (467.58 GB)</div><div class="line">DFS Used%: 0.00%</div><div class="line">DFS Remaining%: 95.03%</div><div class="line">Configured Cache Capacity: 0 (0 B)</div><div class="line">Cache Used: 0 (0 B)</div><div class="line">Cache Remaining: 0 (0 B)</div><div class="line">Cache Used%: 100.00%</div><div class="line">Cache Remaining%: 0.00%</div><div class="line">Xceivers: 1</div><div class="line">Last contact: Fri Dec 29 04:56:45 UTC 2017</div><div class="line">Last Block Report: Fri Dec 29 01:57:44 UTC 2017</div><div class="line"></div><div class="line"></div><div class="line">Name: 10.1.2.200:9866 (hadoop-slave1)</div><div class="line">Hostname: hadoop-slave1</div><div class="line">Decommission Status : Normal</div><div class="line">Configured Capacity: 528304640000 (492.02 GB)</div><div class="line">DFS Used: 28672 (28 KB)</div><div class="line">Non DFS Used: 4665528320 (4.35 GB)</div><div class="line">DFS Remaining: 502063300608 (467.58 GB)</div><div class="line">DFS Used%: 0.00%</div><div class="line">DFS Remaining%: 95.03%</div><div class="line">Configured Cache Capacity: 0 (0 B)</div><div class="line">Cache Used: 0 (0 B)</div><div class="line">Cache Remaining: 0 (0 B)</div><div class="line">Cache Used%: 100.00%</div><div class="line">Cache Remaining%: 0.00%</div><div class="line">Xceivers: 1</div><div class="line">Last contact: Fri Dec 29 04:56:45 UTC 2017</div><div class="line">Last Block Report: Fri Dec 29 02:09:33 UTC 2017</div><div class="line"></div><div class="line"></div><div class="line">Name: 10.1.2.38:9866 (hadoop-master)</div><div class="line">Hostname: hadoop-master</div><div class="line">Decommission Status : Normal</div><div class="line">Configured Capacity: 528304640000 (492.02 GB)</div><div class="line">DFS Used: 32768 (32 KB)</div><div class="line">Non DFS Used: 4673646592 (4.35 GB)</div><div class="line">DFS Remaining: 502055178240 (467.58 GB)</div><div class="line">DFS Used%: 0.00%</div><div class="line">DFS Remaining%: 95.03%</div><div class="line">Configured Cache Capacity: 0 (0 B)</div><div class="line">Cache Used: 0 (0 B)</div><div class="line">Cache Remaining: 0 (0 B)</div><div class="line">Cache Used%: 100.00%</div><div class="line">Cache Remaining%: 0.00%</div><div class="line">Xceivers: 1</div><div class="line">Last contact: Fri Dec 29 04:56:46 UTC 2017</div><div class="line">Last Block Report: Fri Dec 29 04:24:01 UTC 2017</div></pre></td></tr></table></figure></p>
+<p>四,查看日志信息<br>1.logs 目录下存储了启动相关信息<br>可以查看启动状态<br>如果出现错误,可以在这里分析<br>五,参考文档<br><a href="https://hadoop.apache.org/docs/current/index.html" target="_blank" rel="external">一</a><br><a href="http://www.ityouknow.com/hadoop/2017/07/24/hadoop-cluster-setup.html" target="_blank" rel="external">二</a><br><a href="http://blog.csdn.net/cc1949/article/details/78836141" target="_blank" rel="external">三</a></p>
+<p>hadoop dfsadmin -refreshNodes </p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/Wechat.jpeg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">jetty</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">hadoop</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://blog.wantgo.me/2019/04/14/hadoop 集群安装一/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2019/04/14/hive的安装/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          hive的安装
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/2019/04/14/gh-ost安装及使用/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">gh-ost安装及使用</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+  <div id="SOHUCS" sid="hadoop 集群安装一" ></div> 
+<script type="text/javascript"> 
+(function(){ 
+var appid = "cyt6UXlwH"; 
+var conf = "prod_2010e762104bacc575d70e91d8d60500"; 
+var width = window.innerWidth || document.documentElement.clientWidth; 
+if (width < 960) { 
+window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="//changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("//changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); </script>
+  
+
+  
 
 
           </div>
@@ -241,9 +394,9 @@ var _hmt = _hmt || [];
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: true,
 		toc_hide_index: true,

@@ -6,18 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="//blog.wantgo.me">
-  <title>Tag: jetty | wantgo的博客</title>
+  <title>区块链知识 | wantgo的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="河南大学10级,目前就职于oBike">
-<meta name="keywords" content="java python">
-<meta property="og:type" content="website">
-<meta property="og:title" content="wantgo的博客">
-<meta property="og:url" content="//blog.wantgo.me/tags/jetty/index.html">
+  <meta name="description" content="什么是 gas ，什么是 gas price 以及 data？12345在以太坊上，发送代币或调用智能合约，在区块链上执行写入操作，需要支付矿工计算费用，计费是按照 gas 计算的，gas 使用 ETH 来支付。无论你的调用的方法是成功还是失败，都需要支付计算费用。即使失败，矿工也验证并执行你的交易（计算），因此必须和成功交易一样支付矿工费。一笔转账需要花费矿工费 cost = gas Pric">
+<meta name="keywords" content="区块链">
+<meta property="og:type" content="article">
+<meta property="og:title" content="区块链知识">
+<meta property="og:url" content="//blog.wantgo.me/2019/04/14/区块链知识/index.html">
 <meta property="og:site_name" content="wantgo的博客">
-<meta property="og:description" content="河南大学10级,目前就职于oBike">
+<meta property="og:description" content="什么是 gas ，什么是 gas price 以及 data？12345在以太坊上，发送代币或调用智能合约，在区块链上执行写入操作，需要支付矿工计算费用，计费是按照 gas 计算的，gas 使用 ETH 来支付。无论你的调用的方法是成功还是失败，都需要支付计算费用。即使失败，矿工也验证并执行你的交易（计算），因此必须和成功交易一样支付矿工费。一笔转账需要花费矿工费 cost = gas Pric">
+<meta property="og:updated_time" content="2019-04-14T07:09:14.824Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="wantgo的博客">
-<meta name="twitter:description" content="河南大学10级,目前就职于oBike">
+<meta name="twitter:title" content="区块链知识">
+<meta name="twitter:description" content="什么是 gas ，什么是 gas price 以及 data？12345在以太坊上，发送代币或调用智能合约，在区块链上执行写入操作，需要支付矿工计算费用，计费是按照 gas 计算的，gas 使用 ETH 来支付。无论你的调用的方法是成功还是失败，都需要支付计算费用。即使失败，矿工也验证并执行你的交易（计算），因此必须和成功交易一样支付矿工费。一笔转账需要花费矿工费 cost = gas Pric">
   
     <link rel="alternative" href="/atom.xml" title="wantgo的博客" type="application/atom+xml">
   
@@ -165,60 +166,191 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-区块链知识" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/08/01/spring-boot-jetty/" class="archive-article-date">
-  	<time datetime="2017-07-31T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-01</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/08/01/spring-boot-jetty/">spring-boot-jetty</a>
+    <h1 class="article-title" itemprop="name">
+      区块链知识
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2019/04/14/区块链知识/" class="archive-article-date">
+  	<time datetime="2019-04-14T07:09:14.822Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-14</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ol>
+<li>什么是 gas ，什么是 gas price 以及 data？<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">在以太坊上，发送代币或调用智能合约，在区块链上执行写入操作，需要支付矿工计算费用，计费是按照 gas 计算的，gas 使用 ETH 来支付。无论你的调用的方法是成功还是失败，都需要支付计算费用。即使失败，矿工也验证并执行你的交易（计算），因此必须和成功交易一样支付矿工费。</div><div class="line"></div><div class="line">一笔转账需要花费矿工费 cost = gas Price × gas Limit，一笔标准的转账需要花费 21000 gas 和 0.00000002 ETH gas price，所以总的矿工费是 0.00042 Ether。通常情况下，如果有人只说 gas，指的就是 gas limit，gas limit 相当于汽车需要加多少汽油，gas price 相当于每升汽油的价格。</div><div class="line"></div><div class="line">gas limit 之所以称为限额，因为它是你愿意在一笔交易中花费 gas 的最大数量。交易所需的 gas 是通过调用智能合约执行多少代码来定义。 如果你不想花太多的 gas，通过降低 gas limit 将不会有太大的帮助。 因为你必须包括足够的 gas 来支付的计算资源，否则由于 gas 不够报错 out of gas。所有未使用的 gas 将在转账结束时退还。</div></pre></td></tr></table></figure>
+</li>
+</ol>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/Wechat.jpeg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">jetty</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">区块链</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://blog.wantgo.me/2019/04/14/区块链知识/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2019/04/14/aws密码登录/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          aws密码登录
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/2019/04/14/AES和DES的比较/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">AES和DES的比较</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+  <div id="SOHUCS" sid="区块链知识" ></div> 
+<script type="text/javascript"> 
+(function(){ 
+var appid = "cyt6UXlwH"; 
+var conf = "prod_2010e762104bacc575d70e91d8d60500"; 
+var width = window.innerWidth || document.documentElement.clientWidth; 
+if (width < 960) { 
+window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="//changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("//changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); </script>
+  
+
+  
 
 
           </div>
@@ -241,9 +373,9 @@ var _hmt = _hmt || [];
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: true,
 		toc_hide_index: true,

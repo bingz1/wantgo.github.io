@@ -6,18 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="//blog.wantgo.me">
-  <title>Tag: jetty | wantgo的博客</title>
+  <title>spark 读取s3 | wantgo的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="河南大学10级,目前就职于oBike">
-<meta name="keywords" content="java python">
-<meta property="og:type" content="website">
-<meta property="og:title" content="wantgo的博客">
-<meta property="og:url" content="//blog.wantgo.me/tags/jetty/index.html">
+  <meta name="description" content="由于我们在新加坡和法兰克福有两个s3的中心,所以在使用spark读取s3的时候,遇到了很多坑,记录一下. 1.访问新加坡中心的s3123456val conf = new SparkConf().setMaster(&amp;quot;local&amp;quot;)   val sc = SparkSession.builder().config(conf).getOrCreate().sparkContext">
+<meta name="keywords" content="spark">
+<meta property="og:type" content="article">
+<meta property="og:title" content="spark 读取s3">
+<meta property="og:url" content="//blog.wantgo.me/2019/04/14/spark读取s3/index.html">
 <meta property="og:site_name" content="wantgo的博客">
-<meta property="og:description" content="河南大学10级,目前就职于oBike">
+<meta property="og:description" content="由于我们在新加坡和法兰克福有两个s3的中心,所以在使用spark读取s3的时候,遇到了很多坑,记录一下. 1.访问新加坡中心的s3123456val conf = new SparkConf().setMaster(&amp;quot;local&amp;quot;)   val sc = SparkSession.builder().config(conf).getOrCreate().sparkContext">
+<meta property="og:updated_time" content="2019-04-14T07:09:14.844Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="wantgo的博客">
-<meta name="twitter:description" content="河南大学10级,目前就职于oBike">
+<meta name="twitter:title" content="spark 读取s3">
+<meta name="twitter:description" content="由于我们在新加坡和法兰克福有两个s3的中心,所以在使用spark读取s3的时候,遇到了很多坑,记录一下. 1.访问新加坡中心的s3123456val conf = new SparkConf().setMaster(&amp;quot;local&amp;quot;)   val sc = SparkSession.builder().config(conf).getOrCreate().sparkContext">
   
     <link rel="alternative" href="/atom.xml" title="wantgo的博客" type="application/atom+xml">
   
@@ -165,60 +166,193 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-spark读取s3" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/08/01/spring-boot-jetty/" class="archive-article-date">
-  	<time datetime="2017-07-31T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-01</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/08/01/spring-boot-jetty/">spring-boot-jetty</a>
+    <h1 class="article-title" itemprop="name">
+      spark 读取s3
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2019/04/14/spark读取s3/" class="archive-article-date">
+  	<time datetime="2019-04-14T07:09:14.842Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-14</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>由于我们在新加坡和法兰克福有两个s3的中心,所以在使用spark读取s3的时候,遇到了很多坑,记录一下.</p>
+<p>1.访问新加坡中心的s3<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">val conf = new SparkConf().setMaster(&quot;local&quot;)</div><div class="line">   val sc = SparkSession.builder().config(conf).getOrCreate().sparkContext</div><div class="line">   sc.hadoopConfiguration.set(&quot;fs.s3n.awsAccessKeyId&quot;, &quot;*&quot;)</div><div class="line">   sc.hadoopConfiguration.set(&quot;fs.s3n.awsSecretAccessKey&quot;, &quot;*&quot;)</div><div class="line"></div><div class="line">   val myRDD = sc.textFile(&quot;s3n://***&quot;)</div></pre></td></tr></table></figure></p>
+<p>2.访问法兰克福中心<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">val conf = new SparkConf().setMaster(&quot;local&quot;)</div><div class="line">   val sc = SparkSession.builder().config(conf).getOrCreate().sparkContext</div><div class="line">   sc.hadoopConfiguration.set(&quot;fs.s3a.access.key&quot;, &quot;*&quot;)</div><div class="line">   sc.hadoopConfiguration.set(&quot;fs.s3a.secret.key&quot;, &quot;*&quot;)</div><div class="line">   sc.hadoopConfiguration.set(&quot;fs.s3a.endpoint&quot;, &quot;s3.eu-central-1.amazonaws.com&quot;)</div><div class="line"></div><div class="line">   val myRDD = sc.textFile(&quot;s3a://**&quot;)</div></pre></td></tr></table></figure></p>
+<p>需要引入的外部包<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&quot;org.apache.hadoop&quot; % &quot;hadoop-aws&quot; % &quot;2.8.0&quot;,</div><div class="line">&quot;net.java.dev.jets3t&quot; % &quot;jets3t&quot; % &quot;0.9.4&quot;</div></pre></td></tr></table></figure></p>
+<p>3.由于新加坡的s3和法兰克福的s3使用的不同协议<br>所以,新加坡的需要使用 s3n<br>    法兰克福的使用 s3a, 需要指定节点位置<br>s3a需要使用 jets3t的0.9.4的版本,所以需要单独添加.</p>
+<p>4.参考资料<br><a href="https://issues-test.apache.org/jira/browse/HADOOP-13325" target="_blank" rel="external">法兰克福需要使用s3a</a></p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/Wechat.jpeg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">jetty</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">spark</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://blog.wantgo.me/2019/04/14/spark读取s3/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2019/04/14/postGis的使用/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          postgis的使用
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/2019/04/14/缓存未删除问题定位/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">线上缓存未删除问题定位</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+  <div id="SOHUCS" sid="spark读取s3" ></div> 
+<script type="text/javascript"> 
+(function(){ 
+var appid = "cyt6UXlwH"; 
+var conf = "prod_2010e762104bacc575d70e91d8d60500"; 
+var width = window.innerWidth || document.documentElement.clientWidth; 
+if (width < 960) { 
+window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="//changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("//changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); </script>
+  
+
+  
 
 
           </div>
@@ -241,9 +375,9 @@ var _hmt = _hmt || [];
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: true,
 		toc_hide_index: true,
