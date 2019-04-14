@@ -6,13 +6,13 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="//blog.wantgo.me">
-  <title>Tag: jetty | wantgo的博客</title>
+  <title>wantgo的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="河南大学10级,目前就职于oBike">
 <meta name="keywords" content="java python">
 <meta property="og:type" content="website">
 <meta property="og:title" content="wantgo的博客">
-<meta property="og:url" content="//blog.wantgo.me/tags/jetty/index.html">
+<meta property="og:url" content="//blog.wantgo.me/page/3/index.html">
 <meta property="og:site_name" content="wantgo的博客">
 <meta property="og:description" content="河南大学10级,目前就职于oBike">
 <meta name="twitter:card" content="summary">
@@ -167,34 +167,387 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
-  
+    <article id="post-hive的安装" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/08/01/spring-boot-jetty/" class="archive-article-date">
-  	<time datetime="2017-07-31T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-01</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
     <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/08/01/spring-boot-jetty/">spring-boot-jetty</a>
+      <a class="article-title" href="/2019/04/14/hive的安装/">hive的安装</a>
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2019/04/14/hive的安装/" class="archive-article-date">
+  	<time datetime="2019-04-14T07:09:14.808Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-14</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ol>
+<li><a href="https://www.cnblogs.com/EasonJim/p/7147787.html" target="_blank" rel="external">MySQL安装推荐</a></li>
+<li><a href="https://www.cnblogs.com/jchubby/p/5449350.html" target="_blank" rel="external">配置hive</a><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line">&lt;property&gt;</div><div class="line">	&lt;name&gt;hive.exec.local.scratchdir&lt;/name&gt;</div><div class="line">	&lt;value&gt;/usr/local/hive/iotmp&lt;/value&gt;</div><div class="line">&lt;/property&gt;</div><div class="line">&lt;property&gt;</div><div class="line">	&lt;name&gt;hive.exec.scratchdir&lt;/name&gt;</div><div class="line">	&lt;value&gt;/tmp/hive&lt;/value&gt;</div><div class="line">&lt;/property&gt;</div><div class="line">&lt;property&gt;</div><div class="line">&lt;name&gt;hive.server2.logging.operation.log.location&lt;/name&gt;</div><div class="line">&lt;value&gt;/usr/local/hive/iotmp&lt;/value&gt;</div><div class="line">&lt;/property&gt;</div><div class="line">&lt;property&gt;</div><div class="line">&lt;name&gt;hive.downloaded.resources.dir&lt;/name&gt;</div><div class="line">&lt;value&gt;/usr/local/hive/iotmp&lt;/value&gt;</div><div class="line">&lt;/property&gt;</div><div class="line">&lt;property&gt;</div><div class="line">&lt;name&gt;hive.querylog.location&lt;/name&gt;</div><div class="line">&lt;value&gt;/usr/local/hive/iotmp&lt;/value&gt;</div><div class="line">&lt;/property&gt;</div><div class="line">&lt;property&gt;</div><div class="line">    &lt;name&gt;javax.jdo.option.ConnectionURL&lt;/name&gt;</div><div class="line">    &lt;value&gt;jdbc:mysql://localhost:3306/hive?characterEncoding=UTF-8&amp;useSSL=false&lt;/value&gt;</div><div class="line">  &lt;/property&gt;</div><div class="line">  &lt;property&gt;</div><div class="line">    &lt;name&gt;javax.jdo.option.ConnectionDriverName&lt;/name&gt;</div><div class="line">    &lt;value&gt;com.mysql.cj.jdbc.Driver&lt;/value&gt;</div><div class="line">  &lt;/property&gt;</div><div class="line">  &lt;property&gt;</div><div class="line">    &lt;name&gt;javax.jdo.option.ConnectionUserName&lt;/name&gt;</div><div class="line">    &lt;value&gt;root&lt;/value&gt;</div><div class="line">  &lt;/property&gt;</div><div class="line">  &lt;property&gt;</div><div class="line">    &lt;name&gt;javax.jdo.option.ConnectionPassword&lt;/name&gt;</div><div class="line">    &lt;value&gt;r3[vs5Utmk6Iceg6&lt;/value&gt;</div><div class="line">  &lt;/property&gt;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>开启外部访问服务<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hive --service hiveserver2&amp;</div></pre></td></tr></table></figure></p>
+<ol>
+<li><p>加载Nginx日志</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">create external table lblog (</div><div class="line">request_time string,</div><div class="line">upstream_response_time string,</div><div class="line">remote_addr string,</div><div class="line">upstream_addr string,</div><div class="line">time_local string,</div><div class="line">host string,</div><div class="line">method string,</div><div class="line">request_url string,</div><div class="line">request_schema string,</div><div class="line">status string,</div><div class="line">bytes_sent string,</div><div class="line">http_referer string,</div><div class="line">http_user_agent string,</div><div class="line">gzip_ratio string,</div><div class="line">http_x_forwarded_for string,</div><div class="line">server_addr string</div><div class="line">)</div><div class="line">partitioned by (ds string)</div><div class="line">row format serde &apos;org.apache.hadoop.hive.contrib.serde2.RegexSerDe&apos;</div><div class="line">with serdeproperties (&apos;input.regex&apos; = &apos;(.*)\\s(.*)\\s(.*)\\s-\\s(.*)\\[(.*)\\]\\s(.*)\\s\&quot;(.*)\\s(.*)\\s(.*)\&quot;\\s(.*)\\s(.*)\\s\&quot;(.*)\&quot;\\s\&quot;(.*)\&quot;\\s\&quot;(.*)\&quot;\\s\&quot;(.*)\&quot;\\s-\\s\&quot;(.*)\&quot;&apos;,&apos;output.format.string&apos; = &apos;%1$s %2$s %3$s %4$s %5$s %6$s %7$s %8$s %9$s %10$s %11$s %12$s %13$s %14$s %15$s %16$s&apos;)</div><div class="line">location &apos;/lblog&apos;;</div></pre></td></tr></table></figure>
+</li>
+<li><p>加载打点日志</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">CREATE TABLE `log_app_ios` (</div><div class="line">  `userid` int,</div><div class="line">  `eventname` String ,</div><div class="line">  `eventdes` String ,</div><div class="line">  `eventvalue` String ,</div><div class="line">  `eventvalue2` String,</div><div class="line">  `eventvalue3` String,</div><div class="line">  `eventvalue4` String,</div><div class="line">  `eventtime` String,</div><div class="line">  `countrycode` String,</div><div class="line">  `longitude` String,</div><div class="line">  `latitude` String,</div><div class="line">  `ip` String,</div><div class="line">  `deviceid` String,</div><div class="line">  `devicemode` String ,</div><div class="line">  `osversion` String ,</div><div class="line">  `appversion` String,</div><div class="line">  `currency` String ,</div><div class="line">  `wifi` tinyint ,</div><div class="line">  `time` String </div><div class="line">) </div><div class="line">-- Use RegEx to parse each line</div><div class="line">ROW FORMAT SERDE &apos;org.apache.hadoop.hive.serde2.RegexSerDe&apos;</div><div class="line">WITH serdeproperties(</div><div class="line">  &quot;input.regex&quot; = &quot;([^ ]*) ([^ ]*) ([^ ]*) ([^ ]*) ([^ ]*) ([^ ]*) ([^ ]* [^ ]*) ([^ ]*) ([^ ]*) ([^ ]*) ([^ ]*) ([^ ]*) ([^ ]*) ([^ ]*) ([^ ]*) ([^ ]*) ([^ ]*) ([^ ]*) ([^ ]* [^ ]*)&quot;,</div><div class="line">  &quot;output.format.string&quot; = &quot;%1$s %2$s %3$s %4$s %5$s %6$s %7$s %8$s %9$s %10$s %11$s %12$s %13$s %14$s %15$s %16$s %17$s %18$s %19$s&quot;</div><div class="line">)</div><div class="line">-- This also supports gzip, just have to have a .gz extension</div><div class="line">STORED AS TEXTFILE</div><div class="line">location &apos;hdfs://10.1.2.38:9000/applog&apos;;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">hadoop</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/04/14/hive的安装/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-hadoop 集群安装一" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/04/14/hadoop 集群安装一/">hadoop 3.0 集群安装一</a>
+    </h1>
+  
+
+        
+        <a href="/2019/04/14/hadoop 集群安装一/" class="archive-article-date">
+  	<time datetime="2019-04-14T07:09:14.806Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-14</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>一. 配置基础环境<br>1.hadoop 3.0 支持多NameNode模式,我们先尝试用单个NameNode模式.<br>准备三台机器<br>10.1.2.38  10.1.2.200 10.1.2.163</p>
+<p>2.修改三台机器的hostname.<br>查看机器的hostname<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hostname</div></pre></td></tr></table></figure></p>
+<p>编辑hostname<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vim /etc/hostname</div></pre></td></tr></table></figure></p>
+<p>重启机器后生效<br>IP和hostname对应如下:<br>10.1.2.38 hadoop-master<br>10.1.2.200 hadoop-slave1<br>10.1.2.163 hadoop-slave2</p>
+<p>3.ubuntu 安装java8</p>
+<p>4.设置三台机器可以自访问和互通<br><a href="http://www.ityouknow.com/hadoop/2017/07/24/hadoop-cluster-setup.html" target="_blank" rel="external">参考免密登录部分</a></p>
+<p>5.下载hadoop 3.0版本并解压到 /opt 目录下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">wget http://mirrors.hust.edu.cn/apache/hadoop/common/hadoop-3.0.0/hadoop-3.0.0.tar.gz</div><div class="line">tar xf hadoop-3.0.0.tar.gz /opt</div></pre></td></tr></table></figure></p>
+<p>6.配置环境变量<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">vim /etc/profile</div><div class="line"></div><div class="line">export HADOOP_HOME=/opt/hadoop-3.0.0</div><div class="line">export HADOOP_PREFIX=/opt/hadoop-3.0.0</div><div class="line">export HADOOP_HDFS_HOME=/opt/hadoop-3.0.0</div><div class="line">export HADOOP_CONF_DIR=/opt/hadoop-3.0.0/etc/hadoop</div><div class="line"></div><div class="line">source /etc/profile</div></pre></td></tr></table></figure></p>
+<p>二. 配置Hadoop参数<br>1.创建namenode,datenode,temp目录<br>/opt/hadoop-3.0.0/data/namenode<br>/opt/hadoop-3.0.0/data/datanode<br>/opt/hadoop-3.0.0/data/temp</p>
+<p>2.配置core-site.xml 文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">&lt;property&gt;</div><div class="line">    &lt;name&gt;hadoop.tmp.dir&lt;/name&gt;</div><div class="line">    &lt;value&gt;file:/opt/hadoop-3.0.0/data/temp&lt;/value&gt;</div><div class="line">    &lt;description&gt;Abase for other temporary directories.&lt;/description&gt;</div><div class="line">&lt;/property&gt;</div><div class="line">&lt;property&gt;</div><div class="line">    &lt;name&gt;fs.defaultFS&lt;/name&gt;</div><div class="line">    &lt;value&gt;hdfs://hadoop-master:9000&lt;/value&gt;</div><div class="line">&lt;/property&gt;</div><div class="line">&lt;property&gt;</div><div class="line">    &lt;name&gt;hadoop.proxyuser.ubuntu.groups&lt;/name&gt;</div><div class="line">    &lt;value&gt;ubuntu&lt;/value&gt;</div><div class="line">    &lt;description&gt;Allow the superuser oozie to impersonate any members of the group group1 and group2&lt;/description&gt;</div><div class="line">&lt;/property&gt;</div><div class="line"></div><div class="line">&lt;property&gt;</div><div class="line">    &lt;name&gt;hadoop.proxyuser.ubuntu.hosts&lt;/name&gt;</div><div class="line">    &lt;value&gt;10.1.2.38,127.0.0.1,localhost&lt;/value&gt;</div><div class="line">    &lt;description&gt;The superuser can connect only from host1 and host2 to impersonate a user&lt;/description&gt;</div><div class="line">&lt;/property&gt;</div></pre></td></tr></table></figure></p>
+<p>3.配置hdfs-site.xml<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">&lt;property&gt;</div><div class="line">   &lt;name&gt;dfs.replication&lt;/name&gt;</div><div class="line">   &lt;value&gt;2&lt;/value&gt;</div><div class="line">&lt;/property&gt;</div><div class="line">&lt;property&gt;</div><div class="line">   &lt;name&gt;dfs.namenode.name.dir&lt;/name&gt;</div><div class="line">   &lt;value&gt;/opt/hadoop-3.0.0/data/namenode&lt;/value&gt;</div><div class="line">&lt;/property&gt;</div><div class="line">&lt;property&gt;</div><div class="line">   &lt;name&gt;dfs.datanode.data.dir&lt;/name&gt;</div><div class="line">   &lt;value&gt;/opt/hadoop-3.0.0/data/datanode&lt;/value&gt;</div><div class="line">&lt;/property&gt;</div></pre></td></tr></table></figure></p>
+<p>4.配置yarn-site.xml<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">&lt;property&gt;</div><div class="line">    &lt;name&gt;yarn.resourcemanager.hostname&lt;/name&gt;</div><div class="line">    &lt;value&gt;hadoop-master&lt;/value&gt;</div><div class="line">&lt;/property&gt;</div><div class="line">&lt;property&gt;</div><div class="line">    &lt;name&gt;yarn.nodemanager.aux-services&lt;/name&gt;</div><div class="line">    &lt;value&gt;mapreduce_shuffle&lt;/value&gt;</div><div class="line">&lt;/property&gt;</div><div class="line">&lt;property&gt;</div><div class="line">    &lt;name&gt;yarn.nodemanager.env-whitelist&lt;/name&gt;</div><div class="line">    &lt;value&gt;JAVA_HOME,HADOOP_COMMON_HOME,HADOOP_HDFS_HOME,HADOOP_CONF_DIR,CLASSPATH_PREPEND_DISTCACHE,HADOOP_YARN_HOME,HADOOP_MAPRED_HOME&lt;/value&gt;</div><div class="line">&lt;/property&gt;</div><div class="line">&lt;property&gt;</div><div class="line">    &lt;name&gt;yarn.nodemanager.vmem-check-enabled&lt;/name&gt;</div><div class="line">    &lt;value&gt;false&lt;/value&gt;</div><div class="line">&lt;/property&gt;</div><div class="line">&lt;property&gt;</div><div class="line">    &lt;name&gt;yarn.nodemanager.resource.memory-mb&lt;/name&gt;</div><div class="line">    &lt;value&gt;49152&lt;/value&gt;</div><div class="line">&lt;/property&gt;</div><div class="line">&lt;property&gt;</div><div class="line">    &lt;name&gt;yarn.scheduler.maximum-allocation-mb&lt;/name&gt;</div><div class="line">    &lt;value&gt;49152&lt;/value&gt;</div><div class="line">&lt;/property&gt;</div></pre></td></tr></table></figure></p>
+<p>5.配置mapred-site.xml</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">&lt;property&gt;</div><div class="line">   &lt;name&gt;mapreduce.framework.name&lt;/name&gt;</div><div class="line">   &lt;value&gt;yarn&lt;/value&gt;</div><div class="line">&lt;/property&gt;</div><div class="line">&lt;property&gt;</div><div class="line">    &lt;name&gt;yarn.nodemanager.aux-services&lt;/name&gt;</div><div class="line">    &lt;value&gt;mapreduce_shuffle&lt;/value&gt;</div><div class="line">&lt;/property&gt;</div><div class="line">&lt;property&gt;</div><div class="line">    &lt;name&gt;yarn.nodemanager.aux-services.mapreduce.shuffle.class&lt;/name&gt;</div><div class="line">    &lt;value&gt;org.apache.hadoop.mapred.ShuffleHandler&lt;/value&gt;</div><div class="line">&lt;/property&gt;</div></pre></td></tr></table></figure>
+<p>6.配置 worker<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">hadoop-master</div><div class="line">hadoop-slave1</div><div class="line">hadoop-slave2</div></pre></td></tr></table></figure></p>
+<p>7.将整个hadoop3.0.0文件夹传到另外两个机器的/opt目录下<br>三,启动集群<br>1.格式化<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">bin/hadoop namenode -format</div></pre></td></tr></table></figure></p>
+<p>2.启动 hdfs<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./sbin/start-dfs.sh</div></pre></td></tr></table></figure></p>
+<p>关闭 hdfs<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./sbin/stop-dfs.sh</div></pre></td></tr></table></figure></p>
+<p>3.启动 yarn<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./sbin/start-yarn.sh</div></pre></td></tr></table></figure></p>
+<p>关闭yarn<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./sbin/stop-yarn.sh</div></pre></td></tr></table></figure></p>
+<p>4.查看启动状态<br>master上<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">jps</div><div class="line"></div><div class="line">31283 Jps</div><div class="line">27828 DataNode</div><div class="line">27685 NameNode</div><div class="line">28365 ResourceManager</div><div class="line">28030 SecondaryNameNode</div><div class="line">28510 NodeManager</div></pre></td></tr></table></figure></p>
+<p>slave 上<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">7209 DataNode</div><div class="line">7353 NodeManager</div><div class="line">8557 Jps</div></pre></td></tr></table></figure></p>
+<p><a href="http://10.1.2.38:8088/cluster/nodes" target="_blank" rel="external">http://10.1.2.38:8088/cluster/nodes</a><br><a href="http://10.1.2.38:9870/dfshealth.html#tab-overview" target="_blank" rel="external">http://10.1.2.38:9870/dfshealth.html#tab-overview</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div></pre></td><td class="code"><pre><div class="line">./bin/hadoop dfsadmin -report</div><div class="line"></div><div class="line">Configured Capacity: 1584913920000 (1.44 TB)</div><div class="line">Present Capacity: 1506181877760 (1.37 TB)</div><div class="line">DFS Remaining: 1506181787648 (1.37 TB)</div><div class="line">DFS Used: 90112 (88 KB)</div><div class="line">DFS Used%: 0.00%</div><div class="line">Replicated Blocks:</div><div class="line">  Under replicated blocks: 0</div><div class="line">  Blocks with corrupt replicas: 0</div><div class="line">  Missing blocks: 0</div><div class="line">  Missing blocks (with replication factor 1): 0</div><div class="line">  Pending deletion blocks: 0</div><div class="line">Erasure Coded Block Groups: </div><div class="line">  Low redundancy block groups: 0</div><div class="line">  Block groups with corrupt internal blocks: 0</div><div class="line">  Missing block groups: 0</div><div class="line">  Pending deletion blocks: 0</div><div class="line"></div><div class="line">-------------------------------------------------</div><div class="line">Live datanodes (3):</div><div class="line"></div><div class="line">Name: 10.1.2.163:9866 (hadoop-slave2)</div><div class="line">Hostname: hadoop-slave2</div><div class="line">Decommission Status : Normal</div><div class="line">Configured Capacity: 528304640000 (492.02 GB)</div><div class="line">DFS Used: 28672 (28 KB)</div><div class="line">Non DFS Used: 4665520128 (4.35 GB)</div><div class="line">DFS Remaining: 502063308800 (467.58 GB)</div><div class="line">DFS Used%: 0.00%</div><div class="line">DFS Remaining%: 95.03%</div><div class="line">Configured Cache Capacity: 0 (0 B)</div><div class="line">Cache Used: 0 (0 B)</div><div class="line">Cache Remaining: 0 (0 B)</div><div class="line">Cache Used%: 100.00%</div><div class="line">Cache Remaining%: 0.00%</div><div class="line">Xceivers: 1</div><div class="line">Last contact: Fri Dec 29 04:56:45 UTC 2017</div><div class="line">Last Block Report: Fri Dec 29 01:57:44 UTC 2017</div><div class="line"></div><div class="line"></div><div class="line">Name: 10.1.2.200:9866 (hadoop-slave1)</div><div class="line">Hostname: hadoop-slave1</div><div class="line">Decommission Status : Normal</div><div class="line">Configured Capacity: 528304640000 (492.02 GB)</div><div class="line">DFS Used: 28672 (28 KB)</div><div class="line">Non DFS Used: 4665528320 (4.35 GB)</div><div class="line">DFS Remaining: 502063300608 (467.58 GB)</div><div class="line">DFS Used%: 0.00%</div><div class="line">DFS Remaining%: 95.03%</div><div class="line">Configured Cache Capacity: 0 (0 B)</div><div class="line">Cache Used: 0 (0 B)</div><div class="line">Cache Remaining: 0 (0 B)</div><div class="line">Cache Used%: 100.00%</div><div class="line">Cache Remaining%: 0.00%</div><div class="line">Xceivers: 1</div><div class="line">Last contact: Fri Dec 29 04:56:45 UTC 2017</div><div class="line">Last Block Report: Fri Dec 29 02:09:33 UTC 2017</div><div class="line"></div><div class="line"></div><div class="line">Name: 10.1.2.38:9866 (hadoop-master)</div><div class="line">Hostname: hadoop-master</div><div class="line">Decommission Status : Normal</div><div class="line">Configured Capacity: 528304640000 (492.02 GB)</div><div class="line">DFS Used: 32768 (32 KB)</div><div class="line">Non DFS Used: 4673646592 (4.35 GB)</div><div class="line">DFS Remaining: 502055178240 (467.58 GB)</div><div class="line">DFS Used%: 0.00%</div><div class="line">DFS Remaining%: 95.03%</div><div class="line">Configured Cache Capacity: 0 (0 B)</div><div class="line">Cache Used: 0 (0 B)</div><div class="line">Cache Remaining: 0 (0 B)</div><div class="line">Cache Used%: 100.00%</div><div class="line">Cache Remaining%: 0.00%</div><div class="line">Xceivers: 1</div><div class="line">Last contact: Fri Dec 29 04:56:46 UTC 2017</div><div class="line">Last Block Report: Fri Dec 29 04:24:01 UTC 2017</div></pre></td></tr></table></figure></p>
+<p>四,查看日志信息<br>1.logs 目录下存储了启动相关信息<br>可以查看启动状态<br>如果出现错误,可以在这里分析<br>五,参考文档<br><a href="https://hadoop.apache.org/docs/current/index.html" target="_blank" rel="external">一</a><br><a href="http://www.ityouknow.com/hadoop/2017/07/24/hadoop-cluster-setup.html" target="_blank" rel="external">二</a><br><a href="http://blog.csdn.net/cc1949/article/details/78836141" target="_blank" rel="external">三</a></p>
+<p>hadoop dfsadmin -refreshNodes </p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">hadoop</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/04/14/hadoop 集群安装一/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-gh-ost安装及使用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/04/14/gh-ost安装及使用/">gh-ost安装及使用</a>
+    </h1>
+  
+
+        
+        <a href="/2019/04/14/gh-ost安装及使用/" class="archive-article-date">
+  	<time datetime="2019-04-14T07:09:14.803Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-14</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>1.由于表结构更改会锁表,当表数据量大时,直接增加字段会对业务影响较大,但是互联网应用会频繁更改功能,不得不面对这样的需求.<br>  许多大的公司也会遇到这样的问题,GitHub开源了他们自己的方案:gh-ost.<br>  学习下如何使用<br>  使用限制:主库必须产生Row格式的二进制日志</p>
+<p>2.<a href="https://github.com/github/gh-ost" target="_blank" rel="external">github地址</a><br>3.安装<br><a href="https://github.com/github/gh-ost/releases/tag/v1.0.40" target="_blank" rel="external">下载地址</a><br>  可以直接下载编译好的文件,也可以下载源码自己编译,自己编译需要注意本机go版本<br>  (1)确认go版本<br>   gh-ost is a Go project; it is built with Go 1.8 (though 1.7 should work as well).<br>   编译的时候,推荐使用1.8,1.7也是可以的,所以先查看本机安装的go版本<br>   <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">~ go version</div><div class="line">go version go1.8.3 darwin/amd64</div></pre></td></tr></table></figure></p>
+<p>   (2)自己直接下载,解压得到 <code>gh-ost</code> 文件<br>   (3)查看版本<br>      <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">./gh-ost --version      </div><div class="line">1.0.40</div></pre></td></tr></table></figure></p>
+<p>   (4)为方便使用,将执行文件加到当前系统路径下</p>
+<p>   vim .bash_profile</p>
+   <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">alias gh-ost=&quot;~/soft/gh-ost&quot;</div></pre></td></tr></table></figure>
+<p>   使配置文件生效<br>   source ./.bash_profile</p>
+<p>4.使用</p>
+<p>  1.更新字段名称<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">gh-ost --host=127.0.0.1 --database=test --table=t_test --user=&quot;test&quot; --password=&quot;test&quot;  --alter=&quot;change column iu_renamed name  VARCHAR(100)&quot; --approve-renamed-columns --assume-rbr --initially-drop-ghost-table --initially-drop-old-table -ok-to-drop-table --allow-on-master --chunk-size 10000 --exact-rowcount  --execute</div></pre></td></tr></table></figure></p>
+<p>  2.添加字段<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">gh-ost --host=127.0.0.1 --database=test --table=t_test --user=&quot;test&quot; --password=&quot;test&quot;  --alter=&quot;add column test_id int(11) DEFAULT NULL COMMENT &apos;test&apos;&quot; --assume-rbr --initially-drop-ghost-table --initially-drop-old-table -ok-to-drop-table --allow-on-master --chunk-size 10000 --exact-rowcount  --execute</div></pre></td></tr></table></figure></p>
+<p>  3.添加索引<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">gh-ost --host=127.0.0.1 --database=test --table=t_test --user=&quot;test&quot; --password=&quot;test&quot;  --alter=&quot;add index index_test_id(test_id)&quot; --assume-rbr --initially-drop-ghost-table --initially-drop-old-table -ok-to-drop-table --allow-on-master --chunk-size 10000 --exact-rowcount  --execute</div></pre></td></tr></table></figure></p>
+<p> 5.参考资料<br>    <a href="http://www.cnblogs.com/wangtao_20/p/3504395.html" target="_blank" rel="external">为什么要用工具</a><br>    <a href="http://www.infoq.com/cn/articles/github-mysql-gh-ost-online-change-table-definition-tool" target="_blank" rel="external">功能讲解</a><br>    <a href="https://github.com/wing324/helloworld_zh/blob/master/MySQL/gh-ost/GitHub%E5%BC%80%E6%BA%90MySQL%20Online%20DDL%E5%B7%A5%E5%85%B7gh-ost%E5%8F%82%E6%95%B0%E8%A7%A3%E6%9E%90.md" target="_blank" rel="external">各个属性的含义</a><br>    <a href="https://github.com/github/gh-ost/tree/master/localtests" target="_blank" rel="external">各种例子</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">mysql</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/04/14/gh-ost安装及使用/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Flume 使用一" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/04/14/Flume 使用一/">Flume 发送 nginx 日志发到hdfs</a>
+    </h1>
+  
+
+        
+        <a href="/2019/04/14/Flume 使用一/" class="archive-article-date">
+  	<time datetime="2019-04-14T07:09:14.800Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-14</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>1.下载 Flume 1.8.0<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">wget http://mirrors.tuna.tsinghua.edu.cn/apache/flume/1.8.0/apache-flume-1.8.0-bin.tar.gz</div><div class="line">tar -zxvf apache-flume-1.8.0-bin.tar.gz </div><div class="line">mv apache-flume-1.8.0-bin flume</div><div class="line">cd flume/</div><div class="line">mv flume-env.sh.template flume-env.sh</div><div class="line"></div><div class="line">编辑 flume-env.sh  设置JAVA_HOME</div></pre></td></tr></table></figure></p>
+<p>2.将Nginx日志输出到控制台<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">a1.sources = r1</div><div class="line">a1.sinks = k1</div><div class="line">a1.channels = c1</div><div class="line"></div><div class="line"># 配置Source</div><div class="line">a1.sources.r1.type = exec</div><div class="line">a1.sources.r1.channels = c1</div><div class="line">a1.sources.r1.deserializer.outputCharset = UTF-8</div><div class="line"></div><div class="line"># 配置需要监控的日志输出目录</div><div class="line">a1.sources.r1.command = tail -F /var/log/nginx/access_ssl.mobile.o.bike.log</div><div class="line"></div><div class="line">a1.sinks.k1.type = logger</div><div class="line"></div><div class="line"># 配置Channel</div><div class="line">a1.channels.c1.type = memory</div><div class="line">a1.channels.c1.capacity = 10000  #通道容量</div><div class="line">a1.channels.c1.transactionCapacity = 1000  #每次传输多少条</div><div class="line"></div><div class="line"># 将三者连接</div><div class="line">a1.sources.r1.channel = c1</div><div class="line">a1.sinks.k1.channel = c1</div></pre></td></tr></table></figure></p>
+<p>bin/flume-ng agent –conf conf –conf-file conf/flume-conf.properties –name a1 -Dflume.root.logger=INFO,console</p>
+<p>3.将日志输出到HDFS<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"># 配置Agent</div><div class="line">a1.sources = r1</div><div class="line">a1.sinks = k1</div><div class="line">a1.channels = c1</div><div class="line"></div><div class="line"># 配置Source</div><div class="line">a1.sources.r1.type = exec</div><div class="line">a1.sources.r1.channels = c1</div><div class="line">a1.sources.r1.deserializer.outputCharset = UTF-8</div><div class="line"></div><div class="line"># 配置需要监控的日志输出目录</div><div class="line">a1.sources.r1.command = tail -F /var/log/nginx/access_ssl.mobile.o.bike.log</div><div class="line"></div><div class="line"># 配置Sink</div><div class="line">a1.sinks.k1.type = hdfs</div><div class="line">a1.sinks.k1.channel = c1</div><div class="line">a1.sinks.k1.hdfs.useLocalTimeStamp = true</div><div class="line">a1.sinks.k1.hdfs.path = hdfs://10.1.2.38:9000/nginx-log/%y-%m-%d</div><div class="line">a1.sinks.k1.hdfs.filePrefix = mobile</div><div class="line">a1.sinks.k1.hdfs.fileSuffix = .log</div><div class="line">a1.sinks.k1.hdfs.fileType = DataStream</div><div class="line">a1.sinks.k1.hdfs.rollInterval = 300  #防止生成过多小文件 设置成每5分钟一个文件</div><div class="line">a1.sinks.k1.hdfs.rollSize = 0</div><div class="line">a1.sinks.k1.hdfs.rollCount = 0</div><div class="line"></div><div class="line"># 配置Channel</div><div class="line">a1.channels.c1.type = memory</div><div class="line">a1.channels.c1.capacity = 10000  #通道容量</div><div class="line">a1.channels.c1.transactionCapacity = 1000  #每次传输多少条</div><div class="line"></div><div class="line"># 将三者连接</div><div class="line">a1.sources.r1.channel = c1</div><div class="line">a1.sinks.k1.channel = c1</div></pre></td></tr></table></figure></p>
+<p>启动<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">nohup bin/flume-ng agent --conf conf --conf-file conf/flume-conf.properties --name a1 &amp;</div></pre></td></tr></table></figure></p>
+<p>4.查看上传文件信息</p>
+<p>在 <a href="http://10.1.2.38:9870/explorer.html#/" target="_blank" rel="external">http://10.1.2.38:9870/explorer.html#/</a> 可以查看上传的文件信息</p>
+<p><a href="https://stackoverflow.com/questions/11593374/permission-denied-at-hdfs" target="_blank" rel="external">解决权限问题</a><br><a href="https://reverse.org.ua/flume-noclassdeffounderror-orgapachehadoopiosequencefilecompressiontype/" target="_blank" rel="external">flume依赖Hadoopjar包问题</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">hadoop</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/04/14/Flume 使用一/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-spring-boot-jetty" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/08/01/spring-boot-jetty/">spring-boot-jetty</a>
+    </h1>
+  
+
+        
+        <a href="/2017/08/01/spring-boot-jetty/" class="archive-article-date">
+  	<time datetime="2017-07-31T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-01</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>1.理解jmeter中的聚合报告<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">Label -为请求取样器的名称</div><div class="line"></div><div class="line">Samples - 用同一个请求取样器，发送请求的数量(注意：该值是不断累计的)。比如，10个线程数设置为10，迭代10次，那么每运行一次测试，该值就增加10*10=100</div><div class="line"></div><div class="line">Average - 默认情况下是单个Request的平均响应时间，当使用了Transaction Controller 时，也可以以Transaction为单位显示平均响应时间</div><div class="line"></div><div class="line">Median - 中位数。表示响应时间本不大于该时间值的请求样本数占总数的50%</div><div class="line"></div><div class="line">90% Line - 表示响应时间不大于该时间值的请求样本数占总数的90%</div><div class="line"></div><div class="line">Min - 针对同一请求取样器，请求样本的最小响应时间</div><div class="line"></div><div class="line">Max - 针对同一请求取样器，请求样本的最大响应时间</div><div class="line"></div><div class="line">Error % - 出现错误的请求样本的百分比</div><div class="line"></div><div class="line">Throughput - 吞吐量以“requests/second、requests /minute、requests /hour”来衡量。 时间单位已经被选取为second，所以，显示速率至少是1.0，即每秒1个请求。 当吞吐量被保存到CVS文件时，采用的是requests/second，所以30.0 requests/second 在CVS中被保存为0.5</div><div class="line"></div><div class="line">Kb/sec - 以Kilobytes/seond来衡量的吞吐量</div></pre></td></tr></table></figure></p>
+<p>2.Tomcat的简单配置<br><figure class="highlight yml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="attr">server:</span></div><div class="line"><span class="attr">  tomcat:</span></div><div class="line"><span class="attr">    max-threads:</span> <span class="number">500</span>   <span class="comment"># 默认连接是200个  我们调成500</span></div><div class="line"><span class="attr">    compression:</span> <span class="string">on</span>    <span class="comment"># 开启压缩</span></div></pre></td></tr></table></figure></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -206,19 +559,45 @@ var _hmt = _hmt || [];
 		</ul>
 	</div>
 
-          
+      
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/08/01/spring-boot-jetty/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
-  
-  
-    </div></section>
-  
 
-    
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+  
+    <nav id="page-nav">
+      <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
+    </nav>
+  
 
 
           </div>
@@ -240,10 +619,10 @@ var _hmt = _hmt || [];
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: false,
+		isHome: true,
 		isPost: false,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: true,
 		toc_hide_index: true,

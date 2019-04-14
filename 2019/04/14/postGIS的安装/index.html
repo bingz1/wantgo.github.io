@@ -6,18 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="//blog.wantgo.me">
-  <title>Tag: jetty | wantgo的博客</title>
+  <title>Mac下PostGis的安装 | wantgo的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="河南大学10级,目前就职于oBike">
-<meta name="keywords" content="java python">
-<meta property="og:type" content="website">
-<meta property="og:title" content="wantgo的博客">
-<meta property="og:url" content="//blog.wantgo.me/tags/jetty/index.html">
+  <meta name="description" content="1.安装postgre1brew install postgresql -v 2.安装postgis1brew install postgis 3.初始化本机环境1initdb /usr/local/var/postgres -E utf8 数据库默认用户是系统当前用户12345678910111213141516171819202122232425The files belonging to t">
+<meta name="keywords" content="postgre">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Mac下PostGis的安装">
+<meta property="og:url" content="//blog.wantgo.me/2019/04/14/postGIS的安装/index.html">
 <meta property="og:site_name" content="wantgo的博客">
-<meta property="og:description" content="河南大学10级,目前就职于oBike">
+<meta property="og:description" content="1.安装postgre1brew install postgresql -v 2.安装postgis1brew install postgis 3.初始化本机环境1initdb /usr/local/var/postgres -E utf8 数据库默认用户是系统当前用户12345678910111213141516171819202122232425The files belonging to t">
+<meta property="og:updated_time" content="2019-04-14T07:09:14.852Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="wantgo的博客">
-<meta name="twitter:description" content="河南大学10级,目前就职于oBike">
+<meta name="twitter:title" content="Mac下PostGis的安装">
+<meta name="twitter:description" content="1.安装postgre1brew install postgresql -v 2.安装postgis1brew install postgis 3.初始化本机环境1initdb /usr/local/var/postgres -E utf8 数据库默认用户是系统当前用户12345678910111213141516171819202122232425The files belonging to t">
   
     <link rel="alternative" href="/atom.xml" title="wantgo的博客" type="application/atom+xml">
   
@@ -165,60 +166,201 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-postGIS的安装" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/08/01/spring-boot-jetty/" class="archive-article-date">
-  	<time datetime="2017-07-31T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-01</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/08/01/spring-boot-jetty/">spring-boot-jetty</a>
+    <h1 class="article-title" itemprop="name">
+      Mac下PostGis的安装
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2019/04/14/postGIS的安装/" class="archive-article-date">
+  	<time datetime="2019-04-14T07:09:14.850Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-14</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>1.安装postgre<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">brew install postgresql -v</div></pre></td></tr></table></figure></p>
+<p>2.安装postgis<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">brew install postgis</div></pre></td></tr></table></figure></p>
+<p>3.初始化本机环境<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">initdb /usr/local/var/postgres -E utf8</div></pre></td></tr></table></figure></p>
+<p>数据库默认用户是系统当前用户<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">The files belonging to this database system will be owned by user &quot;****&quot;.</div><div class="line">This user must also own the server process.</div><div class="line"></div><div class="line">The database cluster will be initialized with locale &quot;en_US.UTF-8&quot;.</div><div class="line">The default text search configuration will be set to &quot;english&quot;.</div><div class="line"></div><div class="line">Data page checksums are disabled.</div><div class="line"></div><div class="line">creating directory /usr/local/var/postgres ... ok</div><div class="line">creating subdirectories ... ok</div><div class="line">selecting default max_connections ... 100</div><div class="line">selecting default shared_buffers ... 128MB</div><div class="line">selecting dynamic shared memory implementation ... posix</div><div class="line">creating configuration files ... ok</div><div class="line">running bootstrap script ... ok</div><div class="line">performing post-bootstrap initialization ... ok</div><div class="line">syncing data to disk ... ok</div><div class="line"></div><div class="line">WARNING: enabling &quot;trust&quot; authentication for local connections</div><div class="line">You can change this by editing pg_hba.conf or using the option -A, or</div><div class="line">--auth-local and --auth-host, the next time you run initdb.</div><div class="line"></div><div class="line">Success. You can now start the database server using:</div><div class="line"></div><div class="line">    pg_ctl -D /usr/local/var/postgres -l logfile start</div></pre></td></tr></table></figure></p>
+<p>查看版本<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">psql -V</div><div class="line">psql (PostgreSQL) 9.6.4</div></pre></td></tr></table></figure></p>
+<p>4.启动数据库<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start</div></pre></td></tr></table></figure></p>
+<p>创建数据库 默认用户未当前系统用户<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">createdb testDB</div></pre></td></tr></table></figure></p>
+<p>连接数据库<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">psql testDB</div></pre></td></tr></table></figure></p>
+<p>安装gis插件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">CREATE EXTENSION postgis;</div><div class="line">CREATE EXTENSION postgis_topology;</div></pre></td></tr></table></figure></p>
+<p>查看安装的插件信息<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">testDB=# \dx</div><div class="line">                                         List of installed extensions</div><div class="line">       Name       | Version |   Schema   |                             Description                             </div><div class="line">------------------+---------+------------+---------------------------------------------------------------------</div><div class="line"> plpgsql          | 1.0     | pg_catalog | PL/pgSQL procedural language</div><div class="line"> postgis          | 2.3.2   | public     | PostGIS geometry, geography, and raster spatial types and functions</div><div class="line"> postgis_topology | 2.3.2   | topology   | PostGIS topology spatial types and functions</div><div class="line">(3 rows)</div></pre></td></tr></table></figure></p>
+<p>5.编辑是否需要密码<br>编辑pg_hba.conf文件<br>trust 表示不需要密码<br>MD5 表示需要密码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"># TYPE  DATABASE        USER            ADDRESS                 METHOD</div><div class="line"></div><div class="line"># &quot;local&quot; is for Unix domain socket connections only</div><div class="line">local   all             all                                     trust</div><div class="line"># IPv4 local connections:</div><div class="line">host    all             all             127.0.0.1/32            trust</div><div class="line"># IPv6 local connections:</div><div class="line">host    all             all             ::1/128                 trust</div></pre></td></tr></table></figure></p>
+<ol>
+<li>更改密码<br>alter user zhaimi with password ‘testDB’;<br>将文件设置为需要密码</li>
+</ol>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/Wechat.jpeg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">jetty</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">postgre</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://blog.wantgo.me/2019/04/14/postGIS的安装/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2019/04/14/linux命令使用总结/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Linux命令使用总结
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/2019/04/14/Flume 使用二/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Flume发送文件到hdfs</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+  <div id="SOHUCS" sid="postGIS的安装" ></div> 
+<script type="text/javascript"> 
+(function(){ 
+var appid = "cyt6UXlwH"; 
+var conf = "prod_2010e762104bacc575d70e91d8d60500"; 
+var width = window.innerWidth || document.documentElement.clientWidth; 
+if (width < 960) { 
+window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="//changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("//changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); </script>
+  
+
+  
 
 
           </div>
@@ -241,9 +383,9 @@ var _hmt = _hmt || [];
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: true,
 		toc_hide_index: true,

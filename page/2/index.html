@@ -167,38 +167,32 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-gh-ost安装及使用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-MySQL使用总结" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/08/10/gh-ost安装及使用/">gh-ost安装及使用</a>
+      <a class="article-title" href="/2019/04/14/MySQL使用总结/">MySQL使用总结</a>
     </h1>
   
 
         
-        <a href="/2017/08/10/gh-ost安装及使用/" class="archive-article-date">
-  	<time datetime="2017-08-10T06:36:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-10</time>
+        <a href="/2019/04/14/MySQL使用总结/" class="archive-article-date">
+  	<time datetime="2019-04-14T07:09:14.828Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-14</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>1.由于表结构更改会锁表,当表数据量大时,直接增加字段会对业务影响较大,但是互联网应用会频繁更改功能,不得不面对这样的需求.<br>  许多大的公司也会遇到这样的问题,GitHub开源了他们自己的方案:gh-ost.<br>  学习下如何使用<br>  使用限制:主库必须产生Row格式的二进制日志</p>
-<p>2.<a href="https://github.com/github/gh-ost" target="_blank" rel="external">github地址</a><br>3.安装<br><a href="https://github.com/github/gh-ost/releases/tag/v1.0.40" target="_blank" rel="external">下载地址</a><br>  可以直接下载编译好的文件,也可以下载源码自己编译,自己编译需要注意本机go版本<br>  (1)确认go版本<br>   gh-ost is a Go project; it is built with Go 1.8 (though 1.7 should work as well).<br>   编译的时候,推荐使用1.8,1.7也是可以的,所以先查看本机安装的go版本<br>   <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">~ go version</div><div class="line">go version go1.8.3 darwin/amd64</div></pre></td></tr></table></figure></p>
-<p>   (2)自己直接下载,解压得到 <code>gh-ost</code> 文件<br>   (3)查看版本<br>      <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">./gh-ost --version      </div><div class="line">1.0.40</div></pre></td></tr></table></figure></p>
-<p>   (4)为方便使用,将执行文件加到当前系统路径下</p>
-<p>   vim .bash_profile</p>
-   <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">alias gh-ost=&quot;~/soft/gh-ost&quot;</div></pre></td></tr></table></figure>
-<p>   使配置文件生效<br>   source ./.bash_profile</p>
-<p>4.使用</p>
-<p>  1.更新字段名称<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">gh-ost --host=127.0.0.1 --database=test --table=t_test --user=&quot;test&quot; --password=&quot;test&quot;  --alter=&quot;change column iu_renamed name  VARCHAR(100)&quot; --approve-renamed-columns --assume-rbr --initially-drop-ghost-table --initially-drop-old-table -ok-to-drop-table --allow-on-master --chunk-size 10000 --exact-rowcount  --execute</div></pre></td></tr></table></figure></p>
-<p>  2.添加字段<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">gh-ost --host=127.0.0.1 --database=test --table=t_test --user=&quot;test&quot; --password=&quot;test&quot;  --alter=&quot;add column test_id int(11) DEFAULT NULL COMMENT &apos;test&apos;&quot; --assume-rbr --initially-drop-ghost-table --initially-drop-old-table -ok-to-drop-table --allow-on-master --chunk-size 10000 --exact-rowcount  --execute</div></pre></td></tr></table></figure></p>
-<p>  3.添加索引<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">gh-ost --host=127.0.0.1 --database=test --table=t_test --user=&quot;test&quot; --password=&quot;test&quot;  --alter=&quot;add index index_test_id(test_id)&quot; --assume-rbr --initially-drop-ghost-table --initially-drop-old-table -ok-to-drop-table --allow-on-master --chunk-size 10000 --exact-rowcount  --execute</div></pre></td></tr></table></figure></p>
-<p> 5.参考资料<br>    <a href="http://www.cnblogs.com/wangtao_20/p/3504395.html" target="_blank" rel="external">为什么要用工具</a><br>    <a href="http://www.infoq.com/cn/articles/github-mysql-gh-ost-online-change-table-definition-tool" target="_blank" rel="external">功能讲解</a><br>    <a href="https://github.com/wing324/helloworld_zh/blob/master/MySQL/gh-ost/GitHub%E5%BC%80%E6%BA%90MySQL%20Online%20DDL%E5%B7%A5%E5%85%B7gh-ost%E5%8F%82%E6%95%B0%E8%A7%A3%E6%9E%90.md" target="_blank" rel="external">各个属性的含义</a><br>    <a href="https://github.com/github/gh-ost/tree/master/localtests" target="_blank" rel="external">各种例子</a></p>
+        <p>1.添加字段设置默认创建时间<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> <span class="string">`table_name`</span></div><div class="line"><span class="keyword">ADD</span> <span class="keyword">COLUMN</span>  <span class="string">`CreateTime`</span> datetime <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="keyword">CURRENT_TIMESTAMP</span> <span class="keyword">COMMENT</span> <span class="string">'创建时间'</span> ;</div></pre></td></tr></table></figure></p>
+<p>将字段更新为默认创建时间<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> <span class="string">`table_name`</span></div><div class="line"><span class="keyword">MODIFY</span> <span class="keyword">COLUMN</span>  <span class="string">`CreateTime`</span> datetime <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="keyword">CURRENT_TIMESTAMP</span> <span class="keyword">COMMENT</span> <span class="string">'创建时间'</span> ;</div></pre></td></tr></table></figure></p>
+<p>2.添加字段设置默认更新时间<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> <span class="string">`table_name`</span></div><div class="line"><span class="keyword">ADD</span> <span class="keyword">COLUMN</span> <span class="string">`UpdateTime`</span> <span class="keyword">timestamp</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="keyword">CURRENT_TIMESTAMP</span> <span class="keyword">ON</span> <span class="keyword">UPDATE</span> <span class="keyword">CURRENT_TIMESTAMP</span> <span class="keyword">COMMENT</span> <span class="string">'更新时间'</span> ;</div></pre></td></tr></table></figure></p>
+<p>将字段修改为默认更新时间<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> <span class="string">`table_name`</span></div><div class="line"><span class="keyword">MODIFY</span> <span class="keyword">COLUMN</span> <span class="string">`UpdateTime`</span> <span class="keyword">timestamp</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="keyword">CURRENT_TIMESTAMP</span> <span class="keyword">ON</span> <span class="keyword">UPDATE</span> <span class="keyword">CURRENT_TIMESTAMP</span> <span class="keyword">COMMENT</span> <span class="string">'更新时间'</span> ;</div></pre></td></tr></table></figure></p>
+<p>3.更新以前数据<br>  场景:以前没有创建时间字段,这个字段是有两个其他字段代表的,两个字段只有一个字段有值,更新之前的数据的时候,采用下面的方法:<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">update</span> <span class="string">`order`</span> <span class="keyword">set</span> created_at = <span class="keyword">ifnull</span>(book_time,start_time) ;</div></pre></td></tr></table></figure></p>
+<p>4.删除索引<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> table_name <span class="keyword">DROP</span> <span class="keyword">INDEX</span> index_name</div></pre></td></tr></table></figure></p>
 
       
 
@@ -222,7 +216,7 @@ var _hmt = _hmt || [];
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/08/10/gh-ost安装及使用/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/04/14/MySQL使用总结/">展开全文 >></a>
         </p>
       
 
@@ -259,13 +253,13 @@ var _hmt = _hmt || [];
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/08/07/aws密码登录/">aws密码登录</a>
+      <a class="article-title" href="/2019/04/14/aws密码登录/">aws密码登录</a>
     </h1>
   
 
         
-        <a href="/2017/08/07/aws密码登录/" class="archive-article-date">
-  	<time datetime="2017-08-07T07:26:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-07</time>
+        <a href="/2019/04/14/aws密码登录/" class="archive-article-date">
+  	<time datetime="2019-04-14T07:09:14.825Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-14</time>
 </a>
         
       </header>
@@ -302,7 +296,7 @@ var _hmt = _hmt || [];
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/08/07/aws密码登录/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/04/14/aws密码登录/">展开全文 >></a>
         </p>
       
 
@@ -332,28 +326,30 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-spring-boot-jetty" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-区块链知识" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/08/01/spring-boot-jetty/">spring-boot-jetty</a>
+      <a class="article-title" href="/2019/04/14/区块链知识/">区块链知识</a>
     </h1>
   
 
         
-        <a href="/2017/08/01/spring-boot-jetty/" class="archive-article-date">
-  	<time datetime="2017-07-31T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-01</time>
+        <a href="/2019/04/14/区块链知识/" class="archive-article-date">
+  	<time datetime="2019-04-14T07:09:14.822Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-14</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>1.理解jmeter中的聚合报告<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">Label -为请求取样器的名称</div><div class="line"></div><div class="line">Samples - 用同一个请求取样器，发送请求的数量(注意：该值是不断累计的)。比如，10个线程数设置为10，迭代10次，那么每运行一次测试，该值就增加10*10=100</div><div class="line"></div><div class="line">Average - 默认情况下是单个Request的平均响应时间，当使用了Transaction Controller 时，也可以以Transaction为单位显示平均响应时间</div><div class="line"></div><div class="line">Median - 中位数。表示响应时间本不大于该时间值的请求样本数占总数的50%</div><div class="line"></div><div class="line">90% Line - 表示响应时间不大于该时间值的请求样本数占总数的90%</div><div class="line"></div><div class="line">Min - 针对同一请求取样器，请求样本的最小响应时间</div><div class="line"></div><div class="line">Max - 针对同一请求取样器，请求样本的最大响应时间</div><div class="line"></div><div class="line">Error % - 出现错误的请求样本的百分比</div><div class="line"></div><div class="line">Throughput - 吞吐量以“requests/second、requests /minute、requests /hour”来衡量。 时间单位已经被选取为second，所以，显示速率至少是1.0，即每秒1个请求。 当吞吐量被保存到CVS文件时，采用的是requests/second，所以30.0 requests/second 在CVS中被保存为0.5</div><div class="line"></div><div class="line">Kb/sec - 以Kilobytes/seond来衡量的吞吐量</div></pre></td></tr></table></figure></p>
-<p>2.Tomcat的简单配置<br><figure class="highlight yml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="attr">server:</span></div><div class="line"><span class="attr">  tomcat:</span></div><div class="line"><span class="attr">    max-threads:</span> <span class="number">500</span>   <span class="comment"># 默认连接是200个  我们调成500</span></div><div class="line"><span class="attr">    compression:</span> <span class="string">on</span>    <span class="comment"># 开启压缩</span></div></pre></td></tr></table></figure></p>
+        <ol>
+<li>什么是 gas ，什么是 gas price 以及 data？<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">在以太坊上，发送代币或调用智能合约，在区块链上执行写入操作，需要支付矿工计算费用，计费是按照 gas 计算的，gas 使用 ETH 来支付。无论你的调用的方法是成功还是失败，都需要支付计算费用。即使失败，矿工也验证并执行你的交易（计算），因此必须和成功交易一样支付矿工费。</div><div class="line"></div><div class="line">一笔转账需要花费矿工费 cost = gas Price × gas Limit，一笔标准的转账需要花费 21000 gas 和 0.00000002 ETH gas price，所以总的矿工费是 0.00042 Ether。通常情况下，如果有人只说 gas，指的就是 gas limit，gas limit 相当于汽车需要加多少汽油，gas price 相当于每升汽油的价格。</div><div class="line"></div><div class="line">gas limit 之所以称为限额，因为它是你愿意在一笔交易中花费 gas 的最大数量。交易所需的 gas 是通过调用智能合约执行多少代码来定义。 如果你不想花太多的 gas，通过降低 gas limit 将不会有太大的帮助。 因为你必须包括足够的 gas 来支付的计算资源，否则由于 gas 不够报错 out of gas。所有未使用的 gas 将在转账结束时退还。</div></pre></td></tr></table></figure>
+</li>
+</ol>
 
       
 
@@ -367,7 +363,7 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">jetty</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">区块链</a>
         		</li>
       		
 		</ul>
@@ -377,7 +373,7 @@ var _hmt = _hmt || [];
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/08/01/spring-boot-jetty/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/04/14/区块链知识/">展开全文 >></a>
         </p>
       
 
@@ -407,30 +403,152 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-spring-boot-redis2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-AES和DES的比较" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/07/27/spring-boot-redis2/">spring-boot-redis2</a>
+      <a class="article-title" href="/2019/04/14/AES和DES的比较/">AES和DES的比较</a>
     </h1>
   
 
         
-        <a href="/2017/07/27/spring-boot-redis2/" class="archive-article-date">
-  	<time datetime="2017-07-27T12:20:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-27</time>
+        <a href="/2019/04/14/AES和DES的比较/" class="archive-article-date">
+  	<time datetime="2019-04-14T07:09:14.819Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-14</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>spring-boot 中redis加连接池与不加连接池的对比</p>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="attr">redis:</span></div><div class="line"><span class="attr">    host:</span> <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span></div><div class="line"><span class="attr">    port:</span> <span class="number">6379</span></div><div class="line"><span class="attr">    pool:</span></div><div class="line"><span class="attr">      max-active:</span> <span class="number">50</span></div><div class="line"><span class="attr">      max-wait:</span> <span class="bullet">-1</span></div><div class="line"><span class="attr">      max-idle:</span> <span class="number">30</span></div><div class="line"><span class="attr">      min-idle:</span> <span class="number">10</span></div></pre></td></tr></table></figure>
-<p>1.没有连接池<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">查询个人信息	</div><div class="line">49661	7369	5607	12251	15276	22977	3	55819	0.006040957693159622	40.206127141422975	28.618696318948555	7.922400836480699</div><div class="line">总体	        </div><div class="line">49661	7369	5607	12251	15276	22977	3	55819	0.006040957693159622	40.206127141422975	28.618696318948555	7.922400836480699</div></pre></td></tr></table></figure></p>
-<p>2.有连接池<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">查询个人信息	</div><div class="line">18529	2239	2074	3517	4155	5600	17	10045	0.0260132764855092	120.72740066980283	90.50167842663117	23.310681386338757</div><div class="line">总体			</div><div class="line">18529	2239	2074	3517	4155	5600	17	10045	0.0260132764855092	120.72740066980283	90.50167842663117	23.310681386338757</div></pre></td></tr></table></figure></p>
+        <p>1.最近在调研APP端和服务端加密功能,需要用到对称加密算法,常用的对称加密算法有DES,3DES,AES<br>  AES是美国国家标准技术研究所NIST旨在取代DES 的新一代的加密标准</p>
+<style>
+.article-entry table {
+    width: 50%;
+}
+</style>
+
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th style="text-align:center">秘钥长度</th>
+<th style="text-align:right">运算速度</th>
+<th style="text-align:right">安全性</th>
+<th style="text-align:right">资源消耗</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DES</td>
+<td style="text-align:center">56位</td>
+<td style="text-align:right">较快</td>
+<td style="text-align:right">低</td>
+<td style="text-align:right">中</td>
+</tr>
+<tr>
+<td>3DES</td>
+<td style="text-align:center">112位或168位</td>
+<td style="text-align:right">慢</td>
+<td style="text-align:right">中</td>
+<td style="text-align:right">高</td>
+</tr>
+<tr>
+<td>AES</td>
+<td style="text-align:center">128,192,156位</td>
+<td style="text-align:right">快</td>
+<td style="text-align:right">高</td>
+<td style="text-align:right">低</td>
+</tr>
+</tbody>
+</table>
+<p> 所以 推荐使用AES加密算法</p>
+<p>2.DES代码段</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DES</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Logger LOGGER = LoggerFactory.getLogger(DES.class);</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line"><span class="comment">     * 加密</span></div><div class="line"><span class="comment">     * <span class="doctag">@param</span> datasource String</span></div><div class="line"><span class="comment">     * <span class="doctag">@param</span> password   String</span></div><div class="line"><span class="comment">     * <span class="doctag">@return</span> byte[]</span></div><div class="line"><span class="comment">     */</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">encrypt</span><span class="params">(String datasource, String password)</span> </span>&#123;</div><div class="line">        <span class="keyword">byte</span>[] result = datasource.getBytes();</div><div class="line">        SecureRandom random = <span class="keyword">new</span> SecureRandom();</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            DESKeySpec desKey = <span class="keyword">new</span> DESKeySpec(password.getBytes());</div><div class="line">            <span class="comment">//创建一个密匙工厂，然后用它把DESKeySpec转换成</span></div><div class="line">            SecretKeyFactory keyFactory = SecretKeyFactory.getInstance(<span class="string">"DES"</span>);</div><div class="line">            SecretKey securekey = keyFactory.generateSecret(desKey);</div><div class="line">            <span class="comment">//Cipher对象实际完成加密操作</span></div><div class="line">            Cipher cipher = Cipher.getInstance(<span class="string">"DES"</span>);</div><div class="line">            <span class="comment">//用密匙初始化Cipher对象</span></div><div class="line">            cipher.init(Cipher.ENCRYPT_MODE, securekey, random);</div><div class="line">            <span class="comment">//现在，获取数据并加密</span></div><div class="line">            <span class="comment">//正式执行加密操作</span></div><div class="line">            <span class="keyword">return</span> <span class="keyword">new</span> BASE64Encoder().encode(cipher.doFinal(result));</div><div class="line"></div><div class="line">        &#125; <span class="keyword">catch</span> (Throwable e) &#123;</div><div class="line">            <span class="keyword">if</span> (LOGGER.isErrorEnabled()) &#123;</div><div class="line">                LOGGER.error(<span class="string">"DES加密异常:&#123;&#125;"</span>, datasource, e);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line"><span class="comment">     * 解密</span></div><div class="line"><span class="comment">     *</span></div><div class="line"><span class="comment">     * <span class="doctag">@param</span> datasource String</span></div><div class="line"><span class="comment">     * <span class="doctag">@param</span> password   String</span></div><div class="line"><span class="comment">     * <span class="doctag">@return</span> byte[]</span></div><div class="line"><span class="comment">     */</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">decrypt</span><span class="params">(String datasource, String password)</span> </span>&#123;</div><div class="line">        <span class="comment">// DES算法要求有一个可信任的随机数源</span></div><div class="line">        SecureRandom random = <span class="keyword">new</span> SecureRandom();</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            <span class="comment">// 创建一个DESKeySpec对象</span></div><div class="line">            DESKeySpec desKey = <span class="keyword">new</span> DESKeySpec(password.getBytes());</div><div class="line">            <span class="comment">// 创建一个密匙工厂</span></div><div class="line">            SecretKeyFactory keyFactory = SecretKeyFactory.getInstance(<span class="string">"DES"</span>);</div><div class="line">            <span class="comment">// 将DESKeySpec对象转换成SecretKey对象</span></div><div class="line">            SecretKey securekey = keyFactory.generateSecret(desKey);</div><div class="line">            <span class="comment">// Cipher对象实际完成解密操作</span></div><div class="line">            Cipher cipher = Cipher.getInstance(<span class="string">"DES"</span>);</div><div class="line">            <span class="comment">// 用密匙初始化Cipher对象</span></div><div class="line">            cipher.init(Cipher.DECRYPT_MODE, securekey, random);</div><div class="line">            <span class="comment">// 真正开始解密操作</span></div><div class="line">            <span class="keyword">return</span> <span class="keyword">new</span> String(cipher.doFinal(<span class="keyword">new</span> BASE64Decoder().decodeBuffer(datasource)));</div><div class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</div><div class="line">            <span class="keyword">if</span> (LOGGER.isErrorEnabled()) &#123;</div><div class="line">                LOGGER.error(<span class="string">"DES解密异常:&#123;&#125;"</span>, datasource, e);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>AES 代码段<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AES</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Logger LOGGER = LoggerFactory.getLogger(DES.class);</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line"><span class="comment">     * 加密</span></div><div class="line"><span class="comment">     * <span class="doctag">@param</span> datasource 需要加密的内容</span></div><div class="line"><span class="comment">     * <span class="doctag">@param</span> password  加密密码</span></div><div class="line"><span class="comment">     * <span class="doctag">@return</span></span></div><div class="line"><span class="comment">     */</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">encrypt</span><span class="params">(String datasource, String password)</span> </span>&#123;</div><div class="line"></div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            KeyGenerator kgen = KeyGenerator.getInstance(<span class="string">"AES"</span>);</div><div class="line">            SecureRandom secureRandom = SecureRandom.getInstance(<span class="string">"SHA1PRNG"</span> );</div><div class="line">            secureRandom.setSeed(password.getBytes());</div><div class="line">            kgen.init(<span class="number">128</span>, secureRandom);</div><div class="line">            SecretKey secretKey = kgen.generateKey();</div><div class="line">            <span class="keyword">byte</span>[] enCodeFormat = secretKey.getEncoded();</div><div class="line">            SecretKeySpec key = <span class="keyword">new</span> SecretKeySpec(enCodeFormat, <span class="string">"AES"</span>);</div><div class="line">            Cipher cipher = Cipher.getInstance(<span class="string">"AES"</span>);<span class="comment">// 创建密码器</span></div><div class="line">            <span class="keyword">byte</span>[] byteContent = datasource.getBytes(<span class="string">"utf-8"</span>);</div><div class="line">            cipher.init(Cipher.ENCRYPT_MODE, key);<span class="comment">// 初始化</span></div><div class="line">            <span class="keyword">byte</span>[] result = cipher.doFinal(byteContent);</div><div class="line">            <span class="keyword">return</span> <span class="keyword">new</span> BASE64Encoder().encode(result); <span class="comment">// 加密</span></div><div class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</div><div class="line">            <span class="keyword">if</span> (LOGGER.isErrorEnabled()) &#123;</div><div class="line">                LOGGER.error(<span class="string">"AES加密异常:&#123;&#125;"</span>, datasource, e);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**解密</span></div><div class="line"><span class="comment">     * <span class="doctag">@param</span> datasource  待解密内容</span></div><div class="line"><span class="comment">     * <span class="doctag">@param</span> password 解密密钥</span></div><div class="line"><span class="comment">     * <span class="doctag">@return</span></span></div><div class="line"><span class="comment">     */</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">decrypt</span><span class="params">(String datasource, String password)</span> </span>&#123;</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            KeyGenerator kgen = KeyGenerator.getInstance(<span class="string">"AES"</span>);</div><div class="line">            SecureRandom secureRandom = SecureRandom.getInstance(<span class="string">"SHA1PRNG"</span> );</div><div class="line">            secureRandom.setSeed(password.getBytes());</div><div class="line">            kgen.init(<span class="number">128</span>, secureRandom);</div><div class="line">            SecretKey secretKey = kgen.generateKey();</div><div class="line">            <span class="keyword">byte</span>[] enCodeFormat = secretKey.getEncoded();</div><div class="line">            SecretKeySpec key = <span class="keyword">new</span> SecretKeySpec(enCodeFormat, <span class="string">"AES"</span>);</div><div class="line">            Cipher cipher = Cipher.getInstance(<span class="string">"AES"</span>);<span class="comment">// 创建密码器</span></div><div class="line">            cipher.init(Cipher.DECRYPT_MODE, key);<span class="comment">// 初始化</span></div><div class="line">            <span class="keyword">byte</span>[] result = cipher.doFinal(<span class="keyword">new</span> BASE64Decoder().decodeBuffer(datasource));</div><div class="line">            <span class="keyword">return</span> <span class="keyword">new</span> String(result); <span class="comment">// 加密</span></div><div class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</div><div class="line">            <span class="keyword">if</span> (LOGGER.isErrorEnabled()) &#123;</div><div class="line">                LOGGER.error(<span class="string">"AES解密异常:&#123;&#125;"</span>, datasource, e);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<ol>
+<li>速度比较<br>测试代码<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">public class AesTest &#123;</div><div class="line"></div><div class="line">    //待加密内容</div><div class="line">    String str = &quot;中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试&quot;;</div><div class="line">    //密码，长度要是8的倍数</div><div class="line">    String password = &quot;9588028820109132570743325311898426347857298773549468758875018579537757772163084478873699447306034466200616411960574122434059469100235892702736860872901247123456&quot;;</div><div class="line"></div><div class="line">    @Test</div><div class="line">    public void test() throws Exception &#123;</div><div class="line"></div><div class="line">        Long begin = System.currentTimeMillis();</div><div class="line">        for (int i=0;i&lt;100000;i++)&#123;</div><div class="line">            DES.decrypt(DES.encrypt(str,password),password);</div><div class="line">        &#125;</div><div class="line">        Long end = System.currentTimeMillis();</div><div class="line">        System.out.println(&quot;DES时间:&quot;+(end-begin));</div><div class="line"></div><div class="line">        Long beginAES = System.currentTimeMillis();</div><div class="line">        for (int i=0;i&lt;100000;i++)&#123;</div><div class="line">            AES.decrypt(AES.encrypt(str,password),password);</div><div class="line">        &#125;</div><div class="line">        Long endAES = System.currentTimeMillis();</div><div class="line">        System.out.println(&quot;AES时间:&quot;+(endAES-beginAES));</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>测试结果<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">DES时间:41969</div><div class="line">AES时间:24278</div></pre></td></tr></table></figure></p>
+<p>AES速度比DES速度更快一点</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">加密,解密</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/04/14/AES和DES的比较/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-spring-boot-mybaties" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/04/14/spring-boot-mybaties/">spring-boot-mybaties</a>
+    </h1>
+  
+
+        
+        <a href="/2019/04/14/spring-boot-mybaties/" class="archive-article-date">
+  	<time datetime="2019-04-14T07:09:14.817Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-14</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>本地调试  打印SQL语句<br>mybatis-config.xml文件的 settings 标签下 增加如下配置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;setting name=&quot;logImpl&quot; value=&quot;STDOUT_LOGGING&quot; /&gt;</div></pre></td></tr></table></figure>
 
       
 
@@ -454,81 +572,7 @@ var _hmt = _hmt || [];
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/07/27/spring-boot-redis2/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-mysql-deadLock" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/07/17/mysql-deadLock/">mysql-deadLock</a>
-    </h1>
-  
-
-        
-        <a href="/2017/07/17/mysql-deadLock/" class="archive-article-date">
-  	<time datetime="2017-07-17T08:19:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-17</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>查看死锁日志信息<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">show engine innodb status</div></pre></td></tr></table></figure></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">mysql</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/07/17/mysql-deadLock/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/04/14/spring-boot-mybaties/">展开全文 >></a>
         </p>
       
 
@@ -565,13 +609,13 @@ var _hmt = _hmt || [];
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/07/12/spring-boot-redis/">spring-boot-redis</a>
+      <a class="article-title" href="/2019/04/14/spring-boot-redis/">spring-boot-redis</a>
     </h1>
   
 
         
-        <a href="/2017/07/12/spring-boot-redis/" class="archive-article-date">
-  	<time datetime="2017-07-11T17:10:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-12</time>
+        <a href="/2019/04/14/spring-boot-redis/" class="archive-article-date">
+  	<time datetime="2019-04-14T07:09:14.815Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-14</time>
 </a>
         
       </header>
@@ -618,7 +662,7 @@ var _hmt = _hmt || [];
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/07/12/spring-boot-redis/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/04/14/spring-boot-redis/">展开全文 >></a>
         </p>
       
 
@@ -648,28 +692,27 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-spring-boot-mybaties" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-mysql-deadLock" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/07/10/spring-boot-mybaties/">spring-boot-mybaties</a>
+      <a class="article-title" href="/2019/04/14/mysql-deadLock/">mysql-deadLock</a>
     </h1>
   
 
         
-        <a href="/2017/07/10/spring-boot-mybaties/" class="archive-article-date">
-  	<time datetime="2017-07-10T07:37:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-10</time>
+        <a href="/2019/04/14/mysql-deadLock/" class="archive-article-date">
+  	<time datetime="2019-04-14T07:09:14.813Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-14</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>本地调试  打印SQL语句<br>mybatis-config.xml文件的 settings 标签下 增加如下配置</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;setting name=&quot;logImpl&quot; value=&quot;STDOUT_LOGGING&quot; /&gt;</div></pre></td></tr></table></figure>
+        <p>查看死锁日志信息<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">show engine innodb status</div></pre></td></tr></table></figure></p>
 
       
 
@@ -683,7 +726,7 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">spring-boot</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">mysql</a>
         		</li>
       		
 		</ul>
@@ -693,7 +736,83 @@ var _hmt = _hmt || [];
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/07/10/spring-boot-mybaties/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/04/14/mysql-deadLock/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-docker入门" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/04/14/docker入门/">docker 入门</a>
+    </h1>
+  
+
+        
+        <a href="/2019/04/14/docker入门/" class="archive-article-date">
+  	<time datetime="2019-04-14T07:09:14.810Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-14</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ docker run --name webserver -d -p 80:80 nginx</div></pre></td></tr></table></figure>
+<p>这条命令会用 nginx 镜像启动一个容器，命名为 webserver，并且映射了 80 端口，这样我们可以用浏览器去访问这个 nginx 服务器。</p>
+<p>进入容器内部<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker exec -it webserver bash</div></pre></td></tr></table></figure></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">docker</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/04/14/docker入门/">展开全文 >></a>
         </p>
       
 
@@ -725,7 +844,7 @@ var _hmt = _hmt || [];
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
     </nav>
   
 
@@ -737,7 +856,7 @@ var _hmt = _hmt || [];
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2017 wantgo
+    		&copy; 2019 wantgo
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
@@ -816,7 +935,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">加密,解密</a>
+                <a href="javascript:void(0)" class="js-tag color2">hadoop</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -825,6 +944,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">aws</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">docker</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -848,7 +971,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">区块链</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">redis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">加密,解密</a>
               </li>
             
             <div class="clearfix"></div>

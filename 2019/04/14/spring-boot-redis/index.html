@@ -6,18 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="//blog.wantgo.me">
-  <title>Tag: jetty | wantgo的博客</title>
+  <title>spring-boot-redis | wantgo的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="河南大学10级,目前就职于oBike">
-<meta name="keywords" content="java python">
-<meta property="og:type" content="website">
-<meta property="og:title" content="wantgo的博客">
-<meta property="og:url" content="//blog.wantgo.me/tags/jetty/index.html">
+  <meta name="description" content="需要解决2个问题 1.当redis连接失败时,可以去查询数据库2.当增加或者删除数据库字段导致序列化或者反序列话失败时,删除缓存信息,查询数据库,重新缓存 解决上面两个问题,两个思路 1.继承RedisTemplate,重写execute 方法,这个需要改变项目中RedisTemplate的引用2.修改源代码,重新打包,只需要修改项目的maven引用即可 一. 从GitHub上拉取源代码,找到修改">
+<meta name="keywords" content="spring-boot">
+<meta property="og:type" content="article">
+<meta property="og:title" content="spring-boot-redis">
+<meta property="og:url" content="//blog.wantgo.me/2019/04/14/spring-boot-redis/index.html">
 <meta property="og:site_name" content="wantgo的博客">
-<meta property="og:description" content="河南大学10级,目前就职于oBike">
+<meta property="og:description" content="需要解决2个问题 1.当redis连接失败时,可以去查询数据库2.当增加或者删除数据库字段导致序列化或者反序列话失败时,删除缓存信息,查询数据库,重新缓存 解决上面两个问题,两个思路 1.继承RedisTemplate,重写execute 方法,这个需要改变项目中RedisTemplate的引用2.修改源代码,重新打包,只需要修改项目的maven引用即可 一. 从GitHub上拉取源代码,找到修改">
+<meta property="og:image" content="http://image.wantgo.me/blog/2017-7-12-17-14.jpeg">
+<meta property="og:updated_time" content="2019-04-14T07:09:14.816Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="wantgo的博客">
-<meta name="twitter:description" content="河南大学10级,目前就职于oBike">
+<meta name="twitter:title" content="spring-boot-redis">
+<meta name="twitter:description" content="需要解决2个问题 1.当redis连接失败时,可以去查询数据库2.当增加或者删除数据库字段导致序列化或者反序列话失败时,删除缓存信息,查询数据库,重新缓存 解决上面两个问题,两个思路 1.继承RedisTemplate,重写execute 方法,这个需要改变项目中RedisTemplate的引用2.修改源代码,重新打包,只需要修改项目的maven引用即可 一. 从GitHub上拉取源代码,找到修改">
+<meta name="twitter:image" content="http://image.wantgo.me/blog/2017-7-12-17-14.jpeg">
   
     <link rel="alternative" href="/atom.xml" title="wantgo的博客" type="application/atom+xml">
   
@@ -165,60 +168,204 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-spring-boot-redis" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/08/01/spring-boot-jetty/" class="archive-article-date">
-  	<time datetime="2017-07-31T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-01</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/08/01/spring-boot-jetty/">spring-boot-jetty</a>
+    <h1 class="article-title" itemprop="name">
+      spring-boot-redis
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2019/04/14/spring-boot-redis/" class="archive-article-date">
+  	<time datetime="2019-04-14T07:09:14.815Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-14</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>需要解决2个问题</p>
+<p>1.当redis连接失败时,可以去查询数据库<br>2.当增加或者删除数据库字段导致序列化或者反序列话失败时,删除缓存信息,查询数据库,重新缓存</p>
+<p>解决上面两个问题,两个思路</p>
+<p>1.继承RedisTemplate,重写execute 方法,这个需要改变项目中RedisTemplate的引用<br>2.修改源代码,重新打包,只需要修改项目的maven引用即可</p>
+<p>一. 从GitHub上拉取源代码,找到修改点</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> &lt;T&gt; <span class="function">T <span class="title">execute</span><span class="params">(RedisCallback&lt;T&gt; action, <span class="keyword">boolean</span> exposeConnection, <span class="keyword">boolean</span> pipeline)</span> </span>&#123;</div><div class="line"></div><div class="line">		Assert.isTrue(initialized, <span class="string">"template not initialized; call afterPropertiesSet() before using it"</span>);</div><div class="line"></div><div class="line">		Assert.notNull(action, <span class="string">"Callback object must not be null"</span>);</div><div class="line"></div><div class="line">		RedisConnectionFactory factory = getConnectionFactory();</div><div class="line"></div><div class="line">		RedisConnection conn = <span class="keyword">null</span>;</div><div class="line"></div><div class="line">		<span class="keyword">try</span> &#123;</div><div class="line"></div><div class="line">			<span class="keyword">if</span> (enableTransactionSupport) &#123;</div><div class="line"></div><div class="line">				<span class="comment">// only bind resources in case of potential transaction synchronization</span></div><div class="line"></div><div class="line">				conn = RedisConnectionUtils.bindConnection(factory, enableTransactionSupport);</div><div class="line"></div><div class="line">			&#125; <span class="keyword">else</span> &#123;</div><div class="line"></div><div class="line">				conn = RedisConnectionUtils.getConnection(factory);</div><div class="line"></div><div class="line">			&#125;</div><div class="line"></div><div class="line">			<span class="keyword">boolean</span> existingConnection = TransactionSynchronizationManager.hasResource(factory);</div><div class="line"></div><div class="line">			RedisConnection connToUse = preProcessConnection(conn, existingConnection);</div><div class="line"></div><div class="line">			<span class="keyword">boolean</span> pipelineStatus = connToUse.isPipelined();</div><div class="line"></div><div class="line">			<span class="keyword">if</span> (pipeline &amp;&amp; !pipelineStatus) &#123;</div><div class="line"></div><div class="line">				connToUse.openPipeline();</div><div class="line"></div><div class="line">			&#125;</div><div class="line"></div><div class="line">			RedisConnection connToExpose = (exposeConnection ? connToUse : createRedisConnectionProxy(connToUse));</div><div class="line"></div><div class="line">			T result = action.doInRedis(connToExpose);</div><div class="line"></div><div class="line">			<span class="comment">// close pipeline</span></div><div class="line"></div><div class="line">			<span class="keyword">if</span> (pipeline &amp;&amp; !pipelineStatus) &#123;</div><div class="line"></div><div class="line">				connToUse.closePipeline();</div><div class="line"></div><div class="line">			&#125;</div><div class="line"></div><div class="line">			<span class="comment">// <span class="doctag">TODO:</span> any other connection processing?</span></div><div class="line"></div><div class="line">			<span class="keyword">return</span> postProcessResult(result, connToUse, existingConnection);</div><div class="line"></div><div class="line">		&#125; <span class="keyword">finally</span> &#123;</div><div class="line"></div><div class="line">			RedisConnectionUtils.releaseConnection(conn, factory);</div><div class="line"></div><div class="line">		&#125;</div><div class="line"></div><div class="line">	&#125;</div></pre></td></tr></table></figure>
+<p>我们可以看到,当有异常时,只进行的finally处理,我们加上捕获处理,记录异常信息</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div></pre></td><td class="code"><pre><div class="line">public &lt;T&gt; T execute(RedisCallback&lt;T&gt; action, boolean exposeConnection, boolean pipeline) &#123;</div><div class="line"></div><div class="line">	RedisConnectionFactory factory = getConnectionFactory();</div><div class="line"></div><div class="line">	RedisConnection conn = null;</div><div class="line"></div><div class="line">	try &#123;</div><div class="line"></div><div class="line">		if (enableTransactionSupport) &#123;</div><div class="line"></div><div class="line">			// only bind resources in case of potential transaction synchronization</div><div class="line"></div><div class="line">			conn = RedisConnectionUtils.bindConnection(factory, enableTransactionSupport);</div><div class="line"></div><div class="line">		&#125; else &#123;</div><div class="line"></div><div class="line">			conn = RedisConnectionUtils.getConnection(factory);</div><div class="line"></div><div class="line">		&#125;</div><div class="line"></div><div class="line">		boolean existingConnection = TransactionSynchronizationManager.hasResource(factory);</div><div class="line"></div><div class="line">		RedisConnection connToUse = preProcessConnection(conn, existingConnection);</div><div class="line"></div><div class="line">		boolean pipelineStatus = connToUse.isPipelined();</div><div class="line"></div><div class="line">		if (pipeline &amp;&amp; !pipelineStatus) &#123;</div><div class="line"></div><div class="line">			connToUse.openPipeline();</div><div class="line"></div><div class="line">		&#125;</div><div class="line"></div><div class="line">           RedisConnection connToExpose = (exposeConnection ? connToUse : createRedisConnectionProxy(connToUse));</div><div class="line"></div><div class="line">           T result = action.doInRedis(connToExpose);</div><div class="line"></div><div class="line">		// close pipeline</div><div class="line">		if (pipeline &amp;&amp; !pipelineStatus) &#123;</div><div class="line"></div><div class="line">			connToUse.closePipeline();</div><div class="line"></div><div class="line">		&#125;</div><div class="line"></div><div class="line">		// TODO: any other connection processing?</div><div class="line">		return postProcessResult(result, connToUse, existingConnection);</div><div class="line"></div><div class="line">	&#125; catch (Exception e)&#123;</div><div class="line"></div><div class="line">           logger.error(&quot;redis操作异常&quot;,e);</div><div class="line"></div><div class="line">           //1. 当由序列化产生的问题时,捕获异常,查询新的数据,重置缓存结果</div><div class="line"></div><div class="line">           //2. 如果是拿不到连接的异常时,直接返回null</div><div class="line"></div><div class="line">	    return null;</div><div class="line"></div><div class="line">       &#125;finally &#123;</div><div class="line"></div><div class="line">		RedisConnectionUtils.releaseConnection(conn, factory);</div><div class="line"></div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>二. 场景测试</p>
+<p> 1.将host改错,测试获取不到连接异常</p>
+<p> <img src="http://image.wantgo.me/blog/2017-7-12-17-14.jpeg" alt=""></p>
+<p> 捕获异常</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">org.springframework.data.redis.RedisConnectionFailureException: Cannot get Jedis connection; nested exception is redis.clients.jedis.exceptions.JedisConnectionException: Could not get a resource from the pool</div></pre></td></tr></table></figure>
+<p>取到为null的对象,继续去查询数据库</p>
+<p>2.定义时,不指定具体的对象值,试下強转时,是否会发生空指针异常</p>
+<p>经测试,无异常</p>
+<p>3.在序列化和反序列化异常时,返回null数据,业务正常进行﻿</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/Wechat.jpeg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">jetty</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">spring-boot</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://blog.wantgo.me/2019/04/14/spring-boot-redis/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2019/04/14/spring-boot-mybaties/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          spring-boot-mybaties
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/2019/04/14/mysql-deadLock/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">mysql-deadLock</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+  <div id="SOHUCS" sid="spring-boot-redis" ></div> 
+<script type="text/javascript"> 
+(function(){ 
+var appid = "cyt6UXlwH"; 
+var conf = "prod_2010e762104bacc575d70e91d8d60500"; 
+var width = window.innerWidth || document.documentElement.clientWidth; 
+if (width < 960) { 
+window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="//changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("//changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); </script>
+  
+
+  
 
 
           </div>
@@ -241,9 +388,9 @@ var _hmt = _hmt || [];
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: true,
 		toc_hide_index: true,

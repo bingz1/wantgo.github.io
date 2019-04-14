@@ -167,164 +167,6 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-spark读取s3" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/12/17/spark读取s3/">spark 读取s3</a>
-    </h1>
-  
-
-        
-        <a href="/2017/12/17/spark读取s3/" class="archive-article-date">
-  	<time datetime="2017-12-17T04:03:06.504Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-17</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>由于我们在新加坡和法兰克福有两个s3的中心,所以在使用spark读取s3的时候,遇到了很多坑,记录一下.</p>
-<p>1.访问新加坡中心的s3<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">val conf = new SparkConf().setMaster(&quot;local&quot;)</div><div class="line">   val sc = SparkSession.builder().config(conf).getOrCreate().sparkContext</div><div class="line">   sc.hadoopConfiguration.set(&quot;fs.s3n.awsAccessKeyId&quot;, &quot;*&quot;)</div><div class="line">   sc.hadoopConfiguration.set(&quot;fs.s3n.awsSecretAccessKey&quot;, &quot;*&quot;)</div><div class="line"></div><div class="line">   val myRDD = sc.textFile(&quot;s3n://***&quot;)</div></pre></td></tr></table></figure></p>
-<p>2.访问法兰克福中心<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">val conf = new SparkConf().setMaster(&quot;local&quot;)</div><div class="line">   val sc = SparkSession.builder().config(conf).getOrCreate().sparkContext</div><div class="line">   sc.hadoopConfiguration.set(&quot;fs.s3a.access.key&quot;, &quot;*&quot;)</div><div class="line">   sc.hadoopConfiguration.set(&quot;fs.s3a.secret.key&quot;, &quot;*&quot;)</div><div class="line">   sc.hadoopConfiguration.set(&quot;fs.s3a.endpoint&quot;, &quot;s3.eu-central-1.amazonaws.com&quot;)</div><div class="line"></div><div class="line">   val myRDD = sc.textFile(&quot;s3a://**&quot;)</div></pre></td></tr></table></figure></p>
-<p>需要引入的外部包<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&quot;org.apache.hadoop&quot; % &quot;hadoop-aws&quot; % &quot;2.8.0&quot;,</div><div class="line">&quot;net.java.dev.jets3t&quot; % &quot;jets3t&quot; % &quot;0.9.4&quot;</div></pre></td></tr></table></figure></p>
-<p>3.由于新加坡的s3和法兰克福的s3使用的不同协议<br>所以,新加坡的需要使用 s3n<br>    法兰克福的使用 s3a, 需要指定节点位置<br>s3a需要使用 jets3t的0.9.4的版本,所以需要单独添加.</p>
-<p>4.参考资料<br><a href="https://issues-test.apache.org/jira/browse/HADOOP-13325" target="_blank" rel="external">法兰克福需要使用s3a</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">spark</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/12/17/spark读取s3/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-MySQL使用总结" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/09/20/MySQL使用总结/">MySQL使用总结</a>
-    </h1>
-  
-
-        
-        <a href="/2017/09/20/MySQL使用总结/" class="archive-article-date">
-  	<time datetime="2017-09-20T08:37:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-20</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>1.添加字段设置默认创建时间<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> <span class="string">`table_name`</span></div><div class="line"><span class="keyword">ADD</span> <span class="keyword">COLUMN</span>  <span class="string">`CreateTime`</span> datetime <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="keyword">CURRENT_TIMESTAMP</span> <span class="keyword">COMMENT</span> <span class="string">'创建时间'</span> ;</div></pre></td></tr></table></figure></p>
-<p>将字段更新为默认创建时间<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> <span class="string">`table_name`</span></div><div class="line"><span class="keyword">MODIFY</span> <span class="keyword">COLUMN</span>  <span class="string">`CreateTime`</span> datetime <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="keyword">CURRENT_TIMESTAMP</span> <span class="keyword">COMMENT</span> <span class="string">'创建时间'</span> ;</div></pre></td></tr></table></figure></p>
-<p>2.添加字段设置默认更新时间<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> <span class="string">`table_name`</span></div><div class="line"><span class="keyword">ADD</span> <span class="keyword">COLUMN</span> <span class="string">`UpdateTime`</span> <span class="keyword">timestamp</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="keyword">CURRENT_TIMESTAMP</span> <span class="keyword">ON</span> <span class="keyword">UPDATE</span> <span class="keyword">CURRENT_TIMESTAMP</span> <span class="keyword">COMMENT</span> <span class="string">'更新时间'</span> ;</div></pre></td></tr></table></figure></p>
-<p>将字段修改为默认更新时间<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> <span class="string">`table_name`</span></div><div class="line"><span class="keyword">MODIFY</span> <span class="keyword">COLUMN</span> <span class="string">`UpdateTime`</span> <span class="keyword">timestamp</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="keyword">CURRENT_TIMESTAMP</span> <span class="keyword">ON</span> <span class="keyword">UPDATE</span> <span class="keyword">CURRENT_TIMESTAMP</span> <span class="keyword">COMMENT</span> <span class="string">'更新时间'</span> ;</div></pre></td></tr></table></figure></p>
-<p>3.更新以前数据<br>  场景:以前没有创建时间字段,这个字段是有两个其他字段代表的,两个字段只有一个字段有值,更新之前的数据的时候,采用下面的方法:<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">update</span> <span class="string">`order`</span> <span class="keyword">set</span> created_at = <span class="keyword">ifnull</span>(book_time,start_time) ;</div></pre></td></tr></table></figure></p>
-<p>4.删除索引<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> table_name <span class="keyword">DROP</span> <span class="keyword">INDEX</span> index_name</div></pre></td></tr></table></figure></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">mysql</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/09/20/MySQL使用总结/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-linux命令使用总结" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -332,20 +174,27 @@ var _hmt = _hmt || [];
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/09/08/linux命令使用总结/">Linux命令使用总结</a>
+      <a class="article-title" href="/2019/04/14/linux命令使用总结/">Linux命令使用总结</a>
     </h1>
   
 
         
-        <a href="/2017/09/08/linux命令使用总结/" class="archive-article-date">
-  	<time datetime="2017-09-08T06:50:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-08</time>
+        <a href="/2019/04/14/linux命令使用总结/" class="archive-article-date">
+  	<time datetime="2019-04-14T07:09:14.853Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-14</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <ol>
+<li><p>搜索文件内容</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">find . -name &quot;.*&quot; | xargs -n 20 grep &apos;/Users/zhaimi/scripts&apos;</div></pre></td></tr></table></figure>
+</li>
+<li><p>Nginx中查询访问量最高的10个IP</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cat access_ssl.mobile.o.bike.log | awk &apos;&#123;a[$1]++&#125; END &#123;for(b in a) print b&quot;\t&quot;a[b]&#125;&apos; | sort -k2 -r -n | head -n 50</div></pre></td></tr></table></figure></li>
+</ol>
+
       
 
       
@@ -368,84 +217,7 @@ var _hmt = _hmt || [];
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/09/08/linux命令使用总结/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-postGis的使用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/08/31/postGis的使用/">postgis的使用</a>
-    </h1>
-  
-
-        
-        <a href="/2017/08/31/postGis的使用/" class="archive-article-date">
-  	<time datetime="2017-08-31T03:08:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-31</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>1.查看附近单车功能<br>2.是否在某个区域内功能<br>3.附近有哪些多边形</p>
-<p>基础查询<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">#创建表信息</div><div class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> lbs(gid <span class="built_in">serial</span> PRIMARY <span class="keyword">KEY</span>, point geography(POINT,<span class="number">4326</span>),polygon geography(POLYGON,<span class="number">4326</span>));</div><div class="line"></div><div class="line">#插入数据</div><div class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> lbs (gid,point,polygon) <span class="keyword">VALUES</span> (<span class="number">1</span>,ST_GeographyFromText(<span class="string">'SRID=4326;POINT(121.456076 31.206964)'</span>), ST_GeographyFromText(<span class="string">'SRID=4326;POLYGON((121.450824 31.202472,121.450824 31.2114555,121.461327 31.202472,121.461327 31.211455,121.450824 31.202472))'</span>));</div><div class="line"></div><div class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> lbs (gid,point,polygon) <span class="keyword">VALUES</span> (<span class="number">2</span>,ST_GeographyFromText(<span class="string">'SRID=4326;POINT(121.465170 31.216699)'</span>), ST_GeographyFromText(<span class="string">'SRID=4326;POLYGON((121.459918 31.212207,121.459918 31.221191,31.221191 121.470421,121.470421 31.221191,121.459918 31.212207))'</span>));</div><div class="line"></div><div class="line">#查询表信息</div><div class="line"><span class="keyword">select</span> * <span class="keyword">from</span> lbs;</div><div class="line"></div><div class="line">#按照不同形式查询信息</div><div class="line"><span class="keyword">select</span> ST_AsGeoJson(point) <span class="keyword">from</span> lbs;</div><div class="line"><span class="keyword">select</span> asText(point) <span class="keyword">from</span> lbs;</div></pre></td></tr></table></figure></p>
-<p>功能查询<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">#1.查看两个点的距离</div><div class="line"><span class="keyword">SELECT</span> ST_Distance(<span class="string">'POINT(121.456076 31.206964)'</span>::geography, <span class="string">'POINT(121.465170 31.216699)'</span>:: geography);</div><div class="line"></div><div class="line"> st_distance  </div><div class="line"><span class="comment">--------------</span></div><div class="line"> 1384.1871299</div><div class="line"></div><div class="line">#2.查看附近1000米的点 ST_DWithin</div><div class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> lbs <span class="keyword">WHERE</span> ST_DWithin(point, ST_GeographyFromText(<span class="string">'SRID=4326;POINT(121.456076 31.206964)'</span>), <span class="number">1000</span>);</div><div class="line"></div><div class="line">#3.查看点是否在对边形内 ST_Within</div><div class="line"><span class="keyword">SELECT</span> gid,ST_AsText(point),ST_AsText(polygon),ST_Within(ST_GeomFromEWKT(<span class="string">'SRID=4326;POINT(121.461170 31.216699)'</span>), ST_GeomFromEWKT(ST_AsEWKT(polygon))) <span class="keyword">FROM</span> lbs ;</div><div class="line"><span class="keyword">SELECT</span> gid,ST_AsText(point),ST_AsText(polygon),ST_Within(ST_GeomFromEWKT(<span class="string">'SRID=4326;POINT(121.461170 31.216699)'</span>), polygon) <span class="keyword">FROM</span> lbs ;</div><div class="line"></div><div class="line">#4.判断两个多边形是否相交 ST_Intersects</div><div class="line"><span class="keyword">SELECT</span> gid,ST_AsText(point),ST_AsText(polygon) <span class="keyword">FROM</span> lbs <span class="keyword">where</span> ST_Intersects(ST_GeographyFromText(<span class="string">'SRID=4326;POLYGON((121.459918 31.212207,121.459918 31.221191,31.221191 121.470421,121.470421 31.221191,121.459918 31.212207))'</span>), polygon);</div><div class="line"></div><div class="line">#5.查询出不同格式信息的方法</div><div class="line"><span class="keyword">select</span> ST_GeographyFromText(<span class="string">'SRID=4326;POLYGON((121.459918 31.212207,121.459918 31.221191,31.221191 121.470421,121.470421 31.221191,121.459918 31.212207))'</span>);</div><div class="line"></div><div class="line"><span class="keyword">select</span> ST_GeomFromEWKT(<span class="string">'SRID=4326;POLYGON((121.459918 31.212207,121.459918 31.221191,31.221191 121.470421,121.470421 31.2211917,121.459918 31.212207))'</span>);</div><div class="line"></div><div class="line"><span class="keyword">SELECT</span> <span class="string">'SRID=4;POINT(0 0)'</span>::geometry;</div></pre></td></tr></table></figure></p>
-<p><a href="http://www.cnblogs.com/wuhenke/archive/2010/08/02/1790747.html" target="_blank" rel="external">参考连接</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">postgre</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/08/31/postGis的使用/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/04/14/linux命令使用总结/">展开全文 >></a>
         </p>
       
 
@@ -482,13 +254,13 @@ var _hmt = _hmt || [];
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/08/29/postGIS的安装/">Mac下PostGis的安装</a>
+      <a class="article-title" href="/2019/04/14/postGIS的安装/">Mac下PostGis的安装</a>
     </h1>
   
 
         
-        <a href="/2017/08/29/postGIS的安装/" class="archive-article-date">
-  	<time datetime="2017-08-29T08:56:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-29</time>
+        <a href="/2019/04/14/postGIS的安装/" class="archive-article-date">
+  	<time datetime="2019-04-14T07:09:14.850Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-14</time>
 </a>
         
       </header>
@@ -532,7 +304,236 @@ var _hmt = _hmt || [];
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/08/29/postGIS的安装/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/04/14/postGIS的安装/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Flume 使用二" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/04/14/Flume 使用二/">Flume发送文件到hdfs</a>
+    </h1>
+  
+
+        
+        <a href="/2019/04/14/Flume 使用二/" class="archive-article-date">
+  	<time datetime="2019-04-14T07:09:14.848Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-14</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">hadoop</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/04/14/Flume 使用二/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-postGis的使用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/04/14/postGis的使用/">postgis的使用</a>
+    </h1>
+  
+
+        
+        <a href="/2019/04/14/postGis的使用/" class="archive-article-date">
+  	<time datetime="2019-04-14T07:09:14.845Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-14</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>1.查看附近单车功能<br>2.是否在某个区域内功能<br>3.附近有哪些多边形</p>
+<p>基础查询<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">#创建表信息</div><div class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> lbs(gid <span class="built_in">serial</span> PRIMARY <span class="keyword">KEY</span>, point geography(POINT,<span class="number">4326</span>),polygon geography(POLYGON,<span class="number">4326</span>));</div><div class="line"></div><div class="line">#插入数据</div><div class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> lbs (gid,point,polygon) <span class="keyword">VALUES</span> (<span class="number">1</span>,ST_GeographyFromText(<span class="string">'SRID=4326;POINT(121.456076 31.206964)'</span>), ST_GeographyFromText(<span class="string">'SRID=4326;POLYGON((121.450824 31.202472,121.450824 31.2114555,121.461327 31.202472,121.461327 31.211455,121.450824 31.202472))'</span>));</div><div class="line"></div><div class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> lbs (gid,point,polygon) <span class="keyword">VALUES</span> (<span class="number">2</span>,ST_GeographyFromText(<span class="string">'SRID=4326;POINT(121.465170 31.216699)'</span>), ST_GeographyFromText(<span class="string">'SRID=4326;POLYGON((121.459918 31.212207,121.459918 31.221191,31.221191 121.470421,121.470421 31.221191,121.459918 31.212207))'</span>));</div><div class="line"></div><div class="line">#查询表信息</div><div class="line"><span class="keyword">select</span> * <span class="keyword">from</span> lbs;</div><div class="line"></div><div class="line">#按照不同形式查询信息</div><div class="line"><span class="keyword">select</span> ST_AsGeoJson(point) <span class="keyword">from</span> lbs;</div><div class="line"><span class="keyword">select</span> asText(point) <span class="keyword">from</span> lbs;</div></pre></td></tr></table></figure></p>
+<p>功能查询<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">#1.查看两个点的距离</div><div class="line"><span class="keyword">SELECT</span> ST_Distance(<span class="string">'POINT(121.456076 31.206964)'</span>::geography, <span class="string">'POINT(121.465170 31.216699)'</span>:: geography);</div><div class="line"></div><div class="line"> st_distance  </div><div class="line"><span class="comment">--------------</span></div><div class="line"> 1384.1871299</div><div class="line"></div><div class="line">#2.查看附近1000米的点 ST_DWithin</div><div class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> lbs <span class="keyword">WHERE</span> ST_DWithin(point, ST_GeographyFromText(<span class="string">'SRID=4326;POINT(121.456076 31.206964)'</span>), <span class="number">1000</span>);</div><div class="line"></div><div class="line">#3.查看点是否在对边形内 ST_Within</div><div class="line"><span class="keyword">SELECT</span> gid,ST_AsText(point),ST_AsText(polygon),ST_Within(ST_GeomFromEWKT(<span class="string">'SRID=4326;POINT(121.461170 31.216699)'</span>), ST_GeomFromEWKT(ST_AsEWKT(polygon))) <span class="keyword">FROM</span> lbs ;</div><div class="line"><span class="keyword">SELECT</span> gid,ST_AsText(point),ST_AsText(polygon),ST_Within(ST_GeomFromEWKT(<span class="string">'SRID=4326;POINT(121.461170 31.216699)'</span>), polygon) <span class="keyword">FROM</span> lbs ;</div><div class="line"></div><div class="line">#4.判断两个多边形是否相交 ST_Intersects</div><div class="line"><span class="keyword">SELECT</span> gid,ST_AsText(point),ST_AsText(polygon) <span class="keyword">FROM</span> lbs <span class="keyword">where</span> ST_Intersects(ST_GeographyFromText(<span class="string">'SRID=4326;POLYGON((121.459918 31.212207,121.459918 31.221191,31.221191 121.470421,121.470421 31.221191,121.459918 31.212207))'</span>), polygon);</div><div class="line"></div><div class="line">#5.查询出不同格式信息的方法</div><div class="line"><span class="keyword">select</span> ST_GeographyFromText(<span class="string">'SRID=4326;POLYGON((121.459918 31.212207,121.459918 31.221191,31.221191 121.470421,121.470421 31.221191,121.459918 31.212207))'</span>);</div><div class="line"></div><div class="line"><span class="keyword">select</span> ST_GeomFromEWKT(<span class="string">'SRID=4326;POLYGON((121.459918 31.212207,121.459918 31.221191,31.221191 121.470421,121.470421 31.2211917,121.459918 31.212207))'</span>);</div><div class="line"></div><div class="line"><span class="keyword">SELECT</span> <span class="string">'SRID=4;POINT(0 0)'</span>::geometry;</div></pre></td></tr></table></figure></p>
+<p><a href="http://www.cnblogs.com/wuhenke/archive/2010/08/02/1790747.html" target="_blank" rel="external">参考连接</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">postgre</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/04/14/postGis的使用/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-spark读取s3" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/04/14/spark读取s3/">spark 读取s3</a>
+    </h1>
+  
+
+        
+        <a href="/2019/04/14/spark读取s3/" class="archive-article-date">
+  	<time datetime="2019-04-14T07:09:14.842Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-14</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>由于我们在新加坡和法兰克福有两个s3的中心,所以在使用spark读取s3的时候,遇到了很多坑,记录一下.</p>
+<p>1.访问新加坡中心的s3<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">val conf = new SparkConf().setMaster(&quot;local&quot;)</div><div class="line">   val sc = SparkSession.builder().config(conf).getOrCreate().sparkContext</div><div class="line">   sc.hadoopConfiguration.set(&quot;fs.s3n.awsAccessKeyId&quot;, &quot;*&quot;)</div><div class="line">   sc.hadoopConfiguration.set(&quot;fs.s3n.awsSecretAccessKey&quot;, &quot;*&quot;)</div><div class="line"></div><div class="line">   val myRDD = sc.textFile(&quot;s3n://***&quot;)</div></pre></td></tr></table></figure></p>
+<p>2.访问法兰克福中心<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">val conf = new SparkConf().setMaster(&quot;local&quot;)</div><div class="line">   val sc = SparkSession.builder().config(conf).getOrCreate().sparkContext</div><div class="line">   sc.hadoopConfiguration.set(&quot;fs.s3a.access.key&quot;, &quot;*&quot;)</div><div class="line">   sc.hadoopConfiguration.set(&quot;fs.s3a.secret.key&quot;, &quot;*&quot;)</div><div class="line">   sc.hadoopConfiguration.set(&quot;fs.s3a.endpoint&quot;, &quot;s3.eu-central-1.amazonaws.com&quot;)</div><div class="line"></div><div class="line">   val myRDD = sc.textFile(&quot;s3a://**&quot;)</div></pre></td></tr></table></figure></p>
+<p>需要引入的外部包<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&quot;org.apache.hadoop&quot; % &quot;hadoop-aws&quot; % &quot;2.8.0&quot;,</div><div class="line">&quot;net.java.dev.jets3t&quot; % &quot;jets3t&quot; % &quot;0.9.4&quot;</div></pre></td></tr></table></figure></p>
+<p>3.由于新加坡的s3和法兰克福的s3使用的不同协议<br>所以,新加坡的需要使用 s3n<br>    法兰克福的使用 s3a, 需要指定节点位置<br>s3a需要使用 jets3t的0.9.4的版本,所以需要单独添加.</p>
+<p>4.参考资料<br><a href="https://issues-test.apache.org/jira/browse/HADOOP-13325" target="_blank" rel="external">法兰克福需要使用s3a</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">spark</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/04/14/spark读取s3/">展开全文 >></a>
         </p>
       
 
@@ -569,13 +570,13 @@ var _hmt = _hmt || [];
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/08/23/缓存未删除问题定位/">线上缓存未删除问题定位</a>
+      <a class="article-title" href="/2019/04/14/缓存未删除问题定位/">线上缓存未删除问题定位</a>
     </h1>
   
 
         
-        <a href="/2017/08/23/缓存未删除问题定位/" class="archive-article-date">
-  	<time datetime="2017-08-23T02:13:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-23</time>
+        <a href="/2019/04/14/缓存未删除问题定位/" class="archive-article-date">
+  	<time datetime="2019-04-14T07:09:14.839Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-14</time>
 </a>
         
       </header>
@@ -612,7 +613,7 @@ var _hmt = _hmt || [];
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/08/23/缓存未删除问题定位/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/04/14/缓存未删除问题定位/">展开全文 >></a>
         </p>
       
 
@@ -642,77 +643,30 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-AES和DES的比较" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-spring-boot-redis2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/08/14/AES和DES的比较/">AES和DES的比较</a>
+      <a class="article-title" href="/2019/04/14/spring-boot-redis2/">spring-boot-redis2</a>
     </h1>
   
 
         
-        <a href="/2017/08/14/AES和DES的比较/" class="archive-article-date">
-  	<time datetime="2017-08-14T11:08:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-14</time>
+        <a href="/2019/04/14/spring-boot-redis2/" class="archive-article-date">
+  	<time datetime="2019-04-14T07:09:14.834Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-14</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>1.最近在调研APP端和服务端加密功能,需要用到对称加密算法,常用的对称加密算法有DES,3DES,AES<br>  AES是美国国家标准技术研究所NIST旨在取代DES 的新一代的加密标准</p>
-<style>
-.article-entry table {
-    width: 50%;
-}
-</style>
-
-<table>
-<thead>
-<tr>
-<th>名称</th>
-<th style="text-align:center">秘钥长度</th>
-<th style="text-align:right">运算速度</th>
-<th style="text-align:right">安全性</th>
-<th style="text-align:right">资源消耗</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>DES</td>
-<td style="text-align:center">56位</td>
-<td style="text-align:right">较快</td>
-<td style="text-align:right">低</td>
-<td style="text-align:right">中</td>
-</tr>
-<tr>
-<td>3DES</td>
-<td style="text-align:center">112位或168位</td>
-<td style="text-align:right">慢</td>
-<td style="text-align:right">中</td>
-<td style="text-align:right">高</td>
-</tr>
-<tr>
-<td>AES</td>
-<td style="text-align:center">128,192,156位</td>
-<td style="text-align:right">快</td>
-<td style="text-align:right">高</td>
-<td style="text-align:right">低</td>
-</tr>
-</tbody>
-</table>
-<p> 所以 推荐使用AES加密算法</p>
-<p>2.DES代码段</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DES</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Logger LOGGER = LoggerFactory.getLogger(DES.class);</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line"><span class="comment">     * 加密</span></div><div class="line"><span class="comment">     * <span class="doctag">@param</span> datasource String</span></div><div class="line"><span class="comment">     * <span class="doctag">@param</span> password   String</span></div><div class="line"><span class="comment">     * <span class="doctag">@return</span> byte[]</span></div><div class="line"><span class="comment">     */</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">encrypt</span><span class="params">(String datasource, String password)</span> </span>&#123;</div><div class="line">        <span class="keyword">byte</span>[] result = datasource.getBytes();</div><div class="line">        SecureRandom random = <span class="keyword">new</span> SecureRandom();</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            DESKeySpec desKey = <span class="keyword">new</span> DESKeySpec(password.getBytes());</div><div class="line">            <span class="comment">//创建一个密匙工厂，然后用它把DESKeySpec转换成</span></div><div class="line">            SecretKeyFactory keyFactory = SecretKeyFactory.getInstance(<span class="string">"DES"</span>);</div><div class="line">            SecretKey securekey = keyFactory.generateSecret(desKey);</div><div class="line">            <span class="comment">//Cipher对象实际完成加密操作</span></div><div class="line">            Cipher cipher = Cipher.getInstance(<span class="string">"DES"</span>);</div><div class="line">            <span class="comment">//用密匙初始化Cipher对象</span></div><div class="line">            cipher.init(Cipher.ENCRYPT_MODE, securekey, random);</div><div class="line">            <span class="comment">//现在，获取数据并加密</span></div><div class="line">            <span class="comment">//正式执行加密操作</span></div><div class="line">            <span class="keyword">return</span> <span class="keyword">new</span> BASE64Encoder().encode(cipher.doFinal(result));</div><div class="line"></div><div class="line">        &#125; <span class="keyword">catch</span> (Throwable e) &#123;</div><div class="line">            <span class="keyword">if</span> (LOGGER.isErrorEnabled()) &#123;</div><div class="line">                LOGGER.error(<span class="string">"DES加密异常:&#123;&#125;"</span>, datasource, e);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line"><span class="comment">     * 解密</span></div><div class="line"><span class="comment">     *</span></div><div class="line"><span class="comment">     * <span class="doctag">@param</span> datasource String</span></div><div class="line"><span class="comment">     * <span class="doctag">@param</span> password   String</span></div><div class="line"><span class="comment">     * <span class="doctag">@return</span> byte[]</span></div><div class="line"><span class="comment">     */</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">decrypt</span><span class="params">(String datasource, String password)</span> </span>&#123;</div><div class="line">        <span class="comment">// DES算法要求有一个可信任的随机数源</span></div><div class="line">        SecureRandom random = <span class="keyword">new</span> SecureRandom();</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            <span class="comment">// 创建一个DESKeySpec对象</span></div><div class="line">            DESKeySpec desKey = <span class="keyword">new</span> DESKeySpec(password.getBytes());</div><div class="line">            <span class="comment">// 创建一个密匙工厂</span></div><div class="line">            SecretKeyFactory keyFactory = SecretKeyFactory.getInstance(<span class="string">"DES"</span>);</div><div class="line">            <span class="comment">// 将DESKeySpec对象转换成SecretKey对象</span></div><div class="line">            SecretKey securekey = keyFactory.generateSecret(desKey);</div><div class="line">            <span class="comment">// Cipher对象实际完成解密操作</span></div><div class="line">            Cipher cipher = Cipher.getInstance(<span class="string">"DES"</span>);</div><div class="line">            <span class="comment">// 用密匙初始化Cipher对象</span></div><div class="line">            cipher.init(Cipher.DECRYPT_MODE, securekey, random);</div><div class="line">            <span class="comment">// 真正开始解密操作</span></div><div class="line">            <span class="keyword">return</span> <span class="keyword">new</span> String(cipher.doFinal(<span class="keyword">new</span> BASE64Decoder().decodeBuffer(datasource)));</div><div class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</div><div class="line">            <span class="keyword">if</span> (LOGGER.isErrorEnabled()) &#123;</div><div class="line">                LOGGER.error(<span class="string">"DES解密异常:&#123;&#125;"</span>, datasource, e);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>AES 代码段<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AES</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Logger LOGGER = LoggerFactory.getLogger(DES.class);</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line"><span class="comment">     * 加密</span></div><div class="line"><span class="comment">     * <span class="doctag">@param</span> datasource 需要加密的内容</span></div><div class="line"><span class="comment">     * <span class="doctag">@param</span> password  加密密码</span></div><div class="line"><span class="comment">     * <span class="doctag">@return</span></span></div><div class="line"><span class="comment">     */</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">encrypt</span><span class="params">(String datasource, String password)</span> </span>&#123;</div><div class="line"></div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            KeyGenerator kgen = KeyGenerator.getInstance(<span class="string">"AES"</span>);</div><div class="line">            SecureRandom secureRandom = SecureRandom.getInstance(<span class="string">"SHA1PRNG"</span> );</div><div class="line">            secureRandom.setSeed(password.getBytes());</div><div class="line">            kgen.init(<span class="number">128</span>, secureRandom);</div><div class="line">            SecretKey secretKey = kgen.generateKey();</div><div class="line">            <span class="keyword">byte</span>[] enCodeFormat = secretKey.getEncoded();</div><div class="line">            SecretKeySpec key = <span class="keyword">new</span> SecretKeySpec(enCodeFormat, <span class="string">"AES"</span>);</div><div class="line">            Cipher cipher = Cipher.getInstance(<span class="string">"AES"</span>);<span class="comment">// 创建密码器</span></div><div class="line">            <span class="keyword">byte</span>[] byteContent = datasource.getBytes(<span class="string">"utf-8"</span>);</div><div class="line">            cipher.init(Cipher.ENCRYPT_MODE, key);<span class="comment">// 初始化</span></div><div class="line">            <span class="keyword">byte</span>[] result = cipher.doFinal(byteContent);</div><div class="line">            <span class="keyword">return</span> <span class="keyword">new</span> BASE64Encoder().encode(result); <span class="comment">// 加密</span></div><div class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</div><div class="line">            <span class="keyword">if</span> (LOGGER.isErrorEnabled()) &#123;</div><div class="line">                LOGGER.error(<span class="string">"AES加密异常:&#123;&#125;"</span>, datasource, e);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**解密</span></div><div class="line"><span class="comment">     * <span class="doctag">@param</span> datasource  待解密内容</span></div><div class="line"><span class="comment">     * <span class="doctag">@param</span> password 解密密钥</span></div><div class="line"><span class="comment">     * <span class="doctag">@return</span></span></div><div class="line"><span class="comment">     */</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">decrypt</span><span class="params">(String datasource, String password)</span> </span>&#123;</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            KeyGenerator kgen = KeyGenerator.getInstance(<span class="string">"AES"</span>);</div><div class="line">            SecureRandom secureRandom = SecureRandom.getInstance(<span class="string">"SHA1PRNG"</span> );</div><div class="line">            secureRandom.setSeed(password.getBytes());</div><div class="line">            kgen.init(<span class="number">128</span>, secureRandom);</div><div class="line">            SecretKey secretKey = kgen.generateKey();</div><div class="line">            <span class="keyword">byte</span>[] enCodeFormat = secretKey.getEncoded();</div><div class="line">            SecretKeySpec key = <span class="keyword">new</span> SecretKeySpec(enCodeFormat, <span class="string">"AES"</span>);</div><div class="line">            Cipher cipher = Cipher.getInstance(<span class="string">"AES"</span>);<span class="comment">// 创建密码器</span></div><div class="line">            cipher.init(Cipher.DECRYPT_MODE, key);<span class="comment">// 初始化</span></div><div class="line">            <span class="keyword">byte</span>[] result = cipher.doFinal(<span class="keyword">new</span> BASE64Decoder().decodeBuffer(datasource));</div><div class="line">            <span class="keyword">return</span> <span class="keyword">new</span> String(result); <span class="comment">// 加密</span></div><div class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</div><div class="line">            <span class="keyword">if</span> (LOGGER.isErrorEnabled()) &#123;</div><div class="line">                LOGGER.error(<span class="string">"AES解密异常:&#123;&#125;"</span>, datasource, e);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<ol>
-<li>速度比较<br>测试代码<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">public class AesTest &#123;</div><div class="line"></div><div class="line">    //待加密内容</div><div class="line">    String str = &quot;中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试中文测试&quot;;</div><div class="line">    //密码，长度要是8的倍数</div><div class="line">    String password = &quot;9588028820109132570743325311898426347857298773549468758875018579537757772163084478873699447306034466200616411960574122434059469100235892702736860872901247123456&quot;;</div><div class="line"></div><div class="line">    @Test</div><div class="line">    public void test() throws Exception &#123;</div><div class="line"></div><div class="line">        Long begin = System.currentTimeMillis();</div><div class="line">        for (int i=0;i&lt;100000;i++)&#123;</div><div class="line">            DES.decrypt(DES.encrypt(str,password),password);</div><div class="line">        &#125;</div><div class="line">        Long end = System.currentTimeMillis();</div><div class="line">        System.out.println(&quot;DES时间:&quot;+(end-begin));</div><div class="line"></div><div class="line">        Long beginAES = System.currentTimeMillis();</div><div class="line">        for (int i=0;i&lt;100000;i++)&#123;</div><div class="line">            AES.decrypt(AES.encrypt(str,password),password);</div><div class="line">        &#125;</div><div class="line">        Long endAES = System.currentTimeMillis();</div><div class="line">        System.out.println(&quot;AES时间:&quot;+(endAES-beginAES));</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>测试结果<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">DES时间:41969</div><div class="line">AES时间:24278</div></pre></td></tr></table></figure></p>
-<p>AES速度比DES速度更快一点</p>
+        <p>spring-boot 中redis加连接池与不加连接池的对比</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="attr">redis:</span></div><div class="line"><span class="attr">    host:</span> <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span></div><div class="line"><span class="attr">    port:</span> <span class="number">6379</span></div><div class="line"><span class="attr">    pool:</span></div><div class="line"><span class="attr">      max-active:</span> <span class="number">50</span></div><div class="line"><span class="attr">      max-wait:</span> <span class="bullet">-1</span></div><div class="line"><span class="attr">      max-idle:</span> <span class="number">30</span></div><div class="line"><span class="attr">      min-idle:</span> <span class="number">10</span></div></pre></td></tr></table></figure>
+<p>1.没有连接池<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">查询个人信息	</div><div class="line">49661	7369	5607	12251	15276	22977	3	55819	0.006040957693159622	40.206127141422975	28.618696318948555	7.922400836480699</div><div class="line">总体	        </div><div class="line">49661	7369	5607	12251	15276	22977	3	55819	0.006040957693159622	40.206127141422975	28.618696318948555	7.922400836480699</div></pre></td></tr></table></figure></p>
+<p>2.有连接池<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">查询个人信息	</div><div class="line">18529	2239	2074	3517	4155	5600	17	10045	0.0260132764855092	120.72740066980283	90.50167842663117	23.310681386338757</div><div class="line">总体			</div><div class="line">18529	2239	2074	3517	4155	5600	17	10045	0.0260132764855092	120.72740066980283	90.50167842663117	23.310681386338757</div></pre></td></tr></table></figure></p>
 
       
 
@@ -726,7 +680,7 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">加密,解密</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">spring-boot</a>
         		</li>
       		
 		</ul>
@@ -736,7 +690,7 @@ var _hmt = _hmt || [];
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/08/14/AES和DES的比较/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/04/14/spring-boot-redis2/">展开全文 >></a>
         </p>
       
 
@@ -773,13 +727,13 @@ var _hmt = _hmt || [];
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/08/10/aws rds 相关参数/">aws rds相关参数设置</a>
+      <a class="article-title" href="/2019/04/14/aws rds 相关参数/">aws rds相关参数设置</a>
     </h1>
   
 
         
-        <a href="/2017/08/10/aws rds 相关参数/" class="archive-article-date">
-  	<time datetime="2017-08-10T10:15:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-10</time>
+        <a href="/2019/04/14/aws rds 相关参数/" class="archive-article-date">
+  	<time datetime="2019-04-14T07:09:14.831Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-14</time>
 </a>
         
       </header>
@@ -814,7 +768,7 @@ var _hmt = _hmt || [];
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/08/10/aws rds 相关参数/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/04/14/aws rds 相关参数/">展开全文 >></a>
         </p>
       
 
@@ -846,7 +800,7 @@ var _hmt = _hmt || [];
   
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
     </nav>
   
 
@@ -858,7 +812,7 @@ var _hmt = _hmt || [];
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2017 wantgo
+    		&copy; 2019 wantgo
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
@@ -937,7 +891,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">加密,解密</a>
+                <a href="javascript:void(0)" class="js-tag color2">hadoop</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -946,6 +900,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">aws</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">docker</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -969,7 +927,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">区块链</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">redis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">加密,解密</a>
               </li>
             
             <div class="clearfix"></div>
